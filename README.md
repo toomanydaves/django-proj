@@ -5,16 +5,17 @@ This repository contains the source code for the website, [toomanydaves.net](htt
 *   git
 *   python/pip
 *   mysql
+*   [mysqlclient](https://docs.djangoproject.com/en/1.11/ref/databases/#mysql-db-api-drivers)
 
 ## Set up the Dev database
-Create a database called _toomanydaves_.
+Create a development database called _toomanydaves-dev_.
 
     mysql -u root -p
-    mysql> CREATE DATABASE toomanydaves;
+    mysql> CREATE DATABASE toomanydaves-dev;
 
-Create a user called _toomanydaves-admin_ with password _dev-password_ and full access to the db.
+Create a user called _toomanydaves_ with password _dev-password_ and full access to the db.
 
-    mysql> GRANT ALL PRIVILEGES ON toomanydaves.* TO 'toomanydaves-admin'@'localhost'
+    mysql> GRANT ALL PRIVILEGES ON toomanydaves-dev.* TO 'toomanydaves'@'localhost'
         -> IDENTIFIED BY 'dev-password';
 
 ## Get and install the source
