@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'toomanydaves_auth.apps.ToomanydavesAuthConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,12 +77,17 @@ WSGI_APPLICATION = 'toomanydaves.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'toomanydaves-dev',
+        'NAME': 'toomanydaves_dev',
         'USER': 'toomanydaves',
-        'PASSWORD': 'dev-password',
+        'PASSWORD': 'dev',
         'PORT': '3306',
     }
 }
+
+# User model
+# https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
+
+AUTH_USER_MODEL = 'toomanydaves_auth.User'
 
 
 # Password validation
