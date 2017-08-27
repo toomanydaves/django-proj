@@ -27,6 +27,9 @@ Confirm by quit'ing and logging in to db with user
     pip3 install
     python3 manage.py migrate
 
+## Add a superuser
+    python3 manage.py createsuperuser
+
 ## Run the Dev server
     python3 manage.py runserver
 
