@@ -17,13 +17,16 @@ from toomanydaves import views
 from toomanydaves_auth import views as toomanydaves_auth_views
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as contrib_auth_views
 
 urlpatterns = [
-    url(r'^$', views.welcome, name='welcome'),
-    url(r'^home/$', toomanydaves_auth_views.home, name='home'),
-    url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^$', views.index, name='index'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^join/$', views.join, name='join'),
+    url(r'^login/$', contrib_auth_views.login, name='login'),
+    url(r'^user/$', toomanydaves_auth_views.user, name='user'),
+    url(r'^logout/$', views.logout_user, name='logout_user'),
+    url(r'^admin/logout/$', views.logout_user, name='logout_user'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
 ]

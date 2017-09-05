@@ -1,13 +1,15 @@
+{% extends "toomanydaves/base.html" %}
+
+{% block title %}Log in{% endblock %}
+
 {% block content %}
-    <h2>Login</h2>
+    <p>
+        Use <a href="{% url 'social:begin' 'github' %}">GitHub</a>,
+        <a href="{% url 'social:begin' 'facebook' %}">Facebook</a> or
+    </>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit">Submit</button>
     </form>
-    <br>
-    <p><strong>--- OR ---</strong></p>
-    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a>
-    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-    <br>
 {% endblock %}

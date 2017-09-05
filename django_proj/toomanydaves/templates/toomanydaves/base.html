@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Too Many Daves{% endblock %}</title>
+    </head>
+    <body>
+        <div id="site-nav" class="container-fluid">
+            <nav class="navbar">
+                <a class="navbar-brand" href="/">Too Many Daves</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        {# TODO: disable active item #}
+                        <li class="nav-item">
+                            <a
+                                href="/about"
+                            >About</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a
+                                    href="/user"
+                                >{{ user.first_name }}</a>
+                            </li>
+                            {% if user.is_staff %}
+                                <li class="nav-item">
+                                    <a
+                                        href="/admin"
+                                    >Admin</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a
+                                    href="/logout"
+                                >Log out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a
+                                    href="/login"
+                                >Log in</a>/<a
+                                    href="/join"
+                                >Join</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div id="content" class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
