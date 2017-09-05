@@ -1,3 +1,5 @@
+import pdb
+
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
@@ -6,60 +8,90 @@ from django.core.mail import send_mail
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+"""
+    It's highly recommended to set up a custom User and UserManager model,
+    even if the default models seem sufficient.
+    Make sure to point AUTH_USER_MODEL to the User model
+    and to register the model in the app's admin.py.
+
+    (from https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#auth-custom-user)
+"""
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, username, email, first_name, last_name, password, **extra_fields):
-        if not username:
-            raise ValueError('The given username must be set')
+    def _create_user(self, email, username, password, **extra_fields):
         if not email:
-            raise ValueError('The given email must be set')
-        if not first_name:
-            raise ValueError('The given first name must be set')
-        if not last_name:
-            raise ValueError('The given last name must be set')
+            raise ValueError('A user must have an email address.')
 
-        email = self.normalize_email(email)
-        username = self.model.normalize_username(username)
-        user = self.model(username=username, email=email, first_name=first_name, last_name=last_name, **extra_fields)
+        email = self.normalize_email(email).lower()
+
+        """
+        This shouldn't be an error
+        The user should be able to merge accounts
+        TODO: merge user attributes
+        
+        """
+
+        if User.objects.filter(email = email).exists():
+            # TEMP don't merge just return user
+            # raise ValueError('A user must have a unique email address.')
+            return User.objects.filter(email=email).first()
+            
+
+
+        if not username:
+            raise ValueError('A user must have a username')
+
+        user = self.model(
+            username=self.model.normalize_username(username),
+            email=email,
+            **extra_fields
+        )
+
         user.set_password(password)
-        user.save(using=self._db)
+
+        # Save and catch IntegrityError (due to email being unique)
+        try:
+            user.save(using=self._db)
+
+        except IntegrityError:
+            raise ValueError('This email has already been registered.')
+
         return user
 
-    def create_user(self, username, email, first_name, last_name, password=None, **extra_fields):
+    def create_user(self, email, username, password=None, **extra_fields):
+        pdb.set_trace()
+
         extra_fields.setdefault('is_staff', False)
-        extra_fields.sefdefault('is_superuser', False)
-        return self._create_user(username, email, first_name, last_name, password, **extra_fields)
+        extra_fields.setdefault('is_superuser', False)
+        return self._create_user(email, username, password, **extra_fields)
         
 
-    def create_superuser(self, username, email, first_name, last_name, password, **extra_fields):
+    def create_superuser(self, email, username, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
         
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
+
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self._create_user(username, email, first_name, last_name, password, **extra_fields)
+        return self._create_user(email, username, password, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """
-    It's highly recommended to set up a custom user model, even if the default User model seems sufficient.
-    Make sure to point AUTH_USER_MODEL to it and register the model in the app's admin.py.
-    (from https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#auth-custom-user)
-
-    In this case, we want to require a user's email address except during third party sign-on.
-    """
 
     username_validator = UnicodeUsernameValidator()
 
     email = models.EmailField(
         _('email address'),
         unique=True,
-        help_text=_('Required. Must be a valid email address.'),
+        help_text=_('Required. Must be a unique & valid email address.'),
+        error_messages={
+            'unique':_('This email has already been registered.')
+        }
     )
     username = models.CharField(
         _('username'),
@@ -76,7 +108,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
-        help_text=_('Designates whether the user can log into this admin site.'),
+        help_text=_('Designates whether this user can log into the admin site.'),
     )
     is_active = models.BooleanField(
         _('active'),
@@ -92,7 +124,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', ]
+    REQUIRED_FIELDS = ['username', ]
 
     def clean(self):
         super().clean()
