@@ -94,7 +94,7 @@ DATABASES = {
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'user'
+LOGIN_REDIRECT_URL = '/'
 
 # User model
 # https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
