@@ -2,26 +2,30 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 class Project(models.Model):
-    url = Models.UrlField(unique=True)
-    name = Models.CharField()
-    description = Models.TextField()
+    url = models.URLField(unique=True)
+    name = models.CharField(
+        max_length=200,
+    )
+    description = models.TextField()
     UPCOMING = 'UPCOMING'
     ACTIVE = 'ACTIVE'
     ARCHIVED = 'ARCHIVED'
-    status = Models.CharField(
+    status = models.CharField(
         choices=(
             (UPCOMING, _('upcoming')), 
             (ACTIVE, _('active')),
             (ARCHIVED, _('archived')),
         ),
         default=UPCOMING,
+        max_length=20,
     )
     INTERNAL = 'INTERNAL'
     EXTERNAL = 'EXTERNAL'
-    origin = Models.CharField(
+    origin = models.CharField(
         choices=(
             (INTERNAL, _('internal')),
             (EXTERNAL, _('external')),
         ),
-        default=INITIATIVE,
+        default=INTERNAL,
+        max_length=20,
     )
