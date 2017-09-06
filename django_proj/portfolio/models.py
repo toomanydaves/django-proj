@@ -6,7 +6,9 @@ class Project(models.Model):
     name = models.CharField(
         max_length=200,
     )
-    description = models.TextField()
+    description = models.TextField(
+        blank=True,
+    )
     UPCOMING = 'UPCOMING'
     ACTIVE = 'ACTIVE'
     ARCHIVED = 'ARCHIVED'
