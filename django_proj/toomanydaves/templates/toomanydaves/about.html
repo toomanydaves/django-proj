@@ -1,81 +1,214 @@
 {% extends "toomanydaves/base.html" %}
 
 {% block title %}What is Too Many Daves?{% endblock %}
+
+{% block style %}
+<style>
+    #site-nav {
+        margin-bottom: 1rem;
+    }
+    .nav-tabs {
+        margin-bottom: 1rem;
+    }
+/*
+    .carousel-caption {
+        top: -4rem;
+        bottom: auto;
+    }
+    .carousel-indicators {
+        bottom: auto;
+        top: 1.2rem;
+    }
+    .carousel-inner {
+        padding-top: 4.8rem;
+    }
+    .carousel-item {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .carousel-control-next, .carousel-control-prev {
+        width: 3rem;
+    }
+*/
+</style>
+{% endblock %}
     
 {% block content %}
-    <div class="row">
-        <section id="too-many-daves-as-platfrom">
-            <h3>The Platform and its Portfolio</h3>
-            <p>
-                Too Many Daves is foremost a platform for showcasing a diverse portfolio of 
-                <a href="/projects">exemplary projects</a>.
-                Their shared purpose, to foster engagement, agency and creativity.
-            </p>
-            <p>
-                To spread love.
-                <a
-                    href="https://www.pinterest.de/BrooklynTours/spread-love-its-the-brooklyn-way/"
-                    target="_blank"
-                >It's the Brooklyn way!</a>
-            </p>
-        </section>
-    </div>
-    <div class="row">
-        <section id="explanation">
-            <h3>The Naming of Too Many Daves</h3>
-            <p>
-                Thankfully life presents us with immeasurable opportunities
-                to exercise our own creativity. Sadly though
-                as was the case in
-                <a href="#naming-of-the-daves">the naming of the Daves</a>,
-                if we don't act, they will simply pass us by.
-            </p>
-        </section>
-    </div>
-    <div class="row">
-        <section id="mission">
-            <h3>On a Mission from God</h3>
-            <p>
-                The moral of its namesake poem,
-                <a
-                    href="http://www.poetryfoundation.org/poems/42882"
-                    target="blank"
-                >Too Many Daves</a>,
-                inspires the mission of this Network:
-            </p>
-            <div class="jumbotron">
-                <h1>
-                    To be vigilant and active<br>
-                </h1>
-                <p class="lead">
-                    On as many fronts as possible,<br>
-                    To promote exhibitions of creativity and personal investment,<br>
-                    Wherever they might benefit from a little encouragement. 
-                </p>
-                {% if not user.is_authenticated %}
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="/join" role="button">
-                            Join us
-                        </a>
-                    </p>
-                {% endif %}
+    <div id="for-about-page" class="row">
+        <div class="col-12">
+            <div id="for-about-page-tabs" class="row">
+                <div class="col-12">
+                    <nav class="nav nav-tabs" id="about-page-tabs" role="tablist">
+                        <a
+                            id="philosophy-tab"
+                            class="nav-item nav-link active"
+                            data-toggle="tab"
+                            href="#philosophy"
+                            role="tab"
+                            aria-controls="philosophy"
+                            aria-expanded="true"
+                        >What is Too Many Daves?</a>
+                        <a
+                            id="history-tab"
+                            class="nav-item nav-link"
+                            data-toggle="tab"
+                            href="#history"
+                            role="tab"
+                            aria-controls="history"
+                        >Backstory</a>
+                    </nav>
+                </div>
             </div>
-        </section>
-    </div>
-    <div class="row">
-        <section id="poem">
-            <h3>The Eponymous Poem by Theodor Geisel</h3>
-            <blockquote id="naming-of-the-daves">
-                "Did I ever tell you that Mrs. McCave<br>
-                Had twenty-three sons and she named them all Dave?<br>
-                Well she did.&nbsp;&nbsp;And that wasn't a smart thing to do..."
-                <p class="small">
-                    <a
-                        href="http://www.poetryfoundation.org/poems/42882"
-                        target="_blank"
-                    >Read the whole text (whenever possible, outloud to children)</a>
-                </p>
-            </blockquote>
-        </section>
-    </div>
+            <div id="for-about-page-tab-content" class="row justify-content-center"><div class="col-10">
+                <div class="tab-content" id="about-page-tab-content">
+                    <div class="tab-pane fade show active" id="philosophy">
+                        <div id="for-philosophy" class="row bg-secondary text-dark">
+                            <div class="col-12">
+                                <div
+                                    id="philosophy-carousel"
+                                    class="carousel slide"
+                                    data-ride="carousel"
+                                    data-interval="10000"
+                                >
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#philosophy-carousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#philosophy-carousel" data-slide-to="1"></li>
+                                        <li data-target="#philosophy-carousel" data-slide-to="2"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div id="for-a-platform" class="row">
+                                                <div class="col-12">
+                                                    <div id="a-platform">
+                                                        <p>
+                                                            Too Many Daves is foremost a platform for curating, managing and showcasing 
+                                                            a diverse portfolio of 
+                                                            <a href="/projects">exemplary projects</a>.
+                                                            Their shared purpose, to foster engagement, agency and creativity.
+                                                        </p>
+                                                        <p>
+                                                            To spread love.
+                                                            <a
+                                                                href="https://www.pinterest.de/BrooklynTours/spread-love-its-the-brooklyn-way/"
+                                                                target="_blank"
+                                                            >It's the Brooklyn way!</a>
+                                                        </p>
+                                                        <div class="carousel-caption d-block">
+                                                            <h3>A Portfolio of Projects.</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div id="for-a-name" class="row">
+                                                <div class="col-12">
+                                                    <div id="a-name">
+                                                        <p>
+                                                            Too Many Daves takes its name from
+                                                            <a href="#the-poem">the eponymous poem by Theodor Geisel</a>,
+                                                            aka Dr. Seuss.
+                                                        </p>
+                                                        <blockquote class="blockquote text-right">
+                                                            <p>
+                                                                "Did I ever tell you that Mrs. McCave<br>
+                                                                Had twenty-three sons and she named them all Dave?<br>
+                                                                Well she did.&nbsp;&nbsp;And that wasn't a smart thing to do..."
+                                                            </p>
+                                                            <footer class="blockquote-footer">
+                                                                <a
+                                                                    href="http://www.poetryfoundation.org/poems/42882"
+                                                                    target="_blank"
+                                                                >Read the entire text</a>
+                                                            </footer>
+                                                        </blockquote>
+                                                        <p>
+                                                            On its surface, Too Many Daves is a poem about names and naming things.
+                                                            Its playful spirit captures the character of this network.
+                                                            But make no mistake, it is also a powerful cautionary tale;
+                                                            one whose moral inspires the mission of this organization.
+                                                        </p>
+                                                        <div class="carousel-caption d-block">
+                                                            <h3>A Name.</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div id="for-a-mission" class="row">
+                                                <div class="col-12">
+                                                    <div id="a-mission">
+                                                        <div id="for-mission" class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="jumbotron">
+                                                                    <h1>
+                                                                        To be vigilant and active<br>
+                                                                    </h1>
+                                                                    <p class="lead">
+                                                                        On as many fronts as possible,<br>
+                                                                        To promote exhibitions of creativity and personal investment,<br>
+                                                                        Wherever they might benefit from a little encouragement. 
+                                                                    </p>
+                                                                    {% if not user.is_authenticated %}
+                                                                        <p class="lead">
+                                                                            <a class="btn btn-primary btn-lg" href="/join" role="button">
+                                                                                Join us
+                                                                            </a>
+                                                                        </p>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <p>
+                                                                    Thankfully life presents us with immeasurable opportunities
+                                                                    to exercise our own creativity. Sadly though,
+                                                                    as was the case in
+                                                                    <a href="#naming-of-the-daves">the naming of the Daves</a>,
+                                                                    if we don't act, they will simply pass us by.
+                                                                </p>
+                                                                <p>
+                                                                    The moral of its namesake poem,
+                                                                    <a
+                                                                        href="http://www.poetryfoundation.org/poems/42882"
+                                                                        target="blank"
+                                                                    >Too Many Daves</a>,
+                                                                    inspires the mission of this Network...
+                                                                </p>
+                                                            </div>
+                                                            <div class="carousel-caption d-block">
+                                                                <h3>A Mission.</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#philosophy-carousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#philosophy-carousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="tab-pane fade"
+                            id="history"
+                            role="tabpanel"
+                            aria-labelledby="history-tab"
+                        >
+                            <div id="for-history" class="row">
+                                <div class="col-12"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
 {% endblock %}
