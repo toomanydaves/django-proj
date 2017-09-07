@@ -1,0 +1,15 @@
+{% extends "toomanydaves/base.html" %}
+
+{% block title %}People{% endblock %}
+
+{% block content %}
+    <div id="for-projects" class="row">
+    {% for person in people_list %}
+        <div class="col-12">
+            <h4>
+                <a href="/people/{{ person.id }}">{{ person }}</a>
+            </h4>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
