@@ -3,5 +3,9 @@
 {% block title %}{{ user.first_name }}{% endblock %}
 
 {% block content %}
-    <p>USER PAGE CONTENT (toomanydaves_auth/user.html)</p>
+    <div id="for-user" class="row">
+        <div class="col">
+            <h2>{{ user }}</h2>
+        </div>
+    </div>
 {% endblock %}
