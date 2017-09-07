@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^projects/$', views.projects, name='projects'),
-    url(r'^projects/([\w-]+)/$', views.project, name='project'),
+    url(r'^projects/(?P<project_id>[\w-]+)/$', views.project, name='project'),
 ]

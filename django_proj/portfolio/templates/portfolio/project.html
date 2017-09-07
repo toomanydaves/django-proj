@@ -2,8 +2,11 @@
 
 {% block title %}{{ project.name }}{% endblock %}
 
-{% block context %}
-    <p>
-        PROJECT PAGE CONTEXT (portfolio/project.html)
-    </p>
+{% block content %}
+    <div id="for-project" class="row">
+        <div class="col">
+            <h2>{{ project }}</h2>
+            <a href="{{ project.url }}">{{ project.url }}</a>
+        </div>
+    </div>
 {% endblock %}

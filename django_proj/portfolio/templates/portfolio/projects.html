@@ -3,7 +3,19 @@
 {% block title %}Projects{% endblock %}
 
 {% block content %}
-    <p>
-        PROJECTS PAGE CONTEXT (portfolio/projects.html)
-    </p>
+    <div id="for-projects" class="row">
+    {% for project in project_list %}
+        <div class="col-12">
+            <h4>
+                <a href="/portfolio/projects/{{ project.id }}">{{ project }}</a>
+            </h4>
+            <p>
+                <a
+                    href="{{ project.url }}" 
+                    target="_blank"
+                >{{ project.url }}</a>
+            </p>
+        </div>
+    {% endfor %}
+    </div>
 {% endblock %}
