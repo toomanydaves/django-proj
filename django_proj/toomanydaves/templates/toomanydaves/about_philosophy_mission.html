@@ -1,0 +1,40 @@
+<div id="for-a-mission" class="row">
+    <div class="col-12">
+        <div id="a-mission">
+            <div id="for-mission" class="row">
+                <div class="col-lg-6">
+                    <div class="jumbotron">
+                        <h1>
+                            To be vigilant and active<br>
+                        </h1>
+                        <p class="lead">
+                            On as many fronts as possible<br>
+                            In encouraging exhibitions of creativity and personal investment.
+                        </p>
+                        {% if not user.is_authenticated %}
+                            <p class="lead">
+                                <a class="btn btn-primary btn-lg" href="/join" role="button">
+                                    Join us
+                                </a>
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <p>
+                        Thankfully life presents us with immeasurable opportunities
+                        to exercise our own creativity. Sadly though,
+                        as was the case in the naming of the Daves,
+                        if we don't act, they will simply pass us by.
+                    </p>
+                    <p>
+                        Therefore we must be vigilant, and contribute our verse.
+                    </p>
+                </div>
+                <div class="carousel-caption d-block">
+                    <h3>A Mission from Uncle Walt.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

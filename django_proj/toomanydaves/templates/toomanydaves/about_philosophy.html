@@ -1,0 +1,39 @@
+<div class="tab-pane fade show active" id="philosophy">
+    <div id="for-philosophy" class="row bg-secondary text-dark">
+        <div class="col-12">
+            <div
+                id="philosophy-carousel"
+                class="carousel slide"
+                data-ride="carousel"
+                data-interval="14000"
+            >
+                <ol class="carousel-indicators">
+                    <li data-target="#philosophy-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#philosophy-carousel" data-slide-to="1"></li>
+                    <li data-target="#philosophy-carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% include "toomanydaves/about_philosophy_platform.html" %}
+                    </div>
+                    <div class="carousel-item">
+                        {% include "toomanydaves/about_philosophy_poem.html" %}
+                    </div>
+                    <div class="carousel-item">
+                        {% include "toomanydaves/about_philosophy_mission.html" %}
+                    </div>
+                </div>
+            </div>
+            <!--
+            <a class="carousel-control-prev" href="#philosophy-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#philosophy-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            -->
+        </div>
+    </div>
+</div>
