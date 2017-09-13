@@ -1,4 +1,5 @@
 {% extends "toomanydaves/base.html" %}
+{% load static %}
 
 {% block title %}What is Too Many Daves?{% endblock %}
 
@@ -13,6 +14,12 @@
     }
     .carousel-caption {
         bottom: -4rem;
+    }
+    .dot-matrix {
+        /* background: url("{% static "/images/dot-magenta.jpg" %}");
+        background: url("http://s14.directupload.net/images/111129/44ga9qid.png"); */
+        background: url("{% static "/images/dot-grey.png" %}"); */
+        
     }
 /*
     .carousel-indicators {
