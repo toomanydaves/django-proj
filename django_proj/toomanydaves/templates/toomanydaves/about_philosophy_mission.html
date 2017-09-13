@@ -1,58 +1,54 @@
 <div id="mission-slide" class="slide-background">
-<div class="dot-matrix background-secondary text-light">
-<div id="for-a-mission" class="row">
-    <div class="col-12">
-        <div id="a-mission">
-            <div id="for-mission" class="row">
-                <div class="col-lg-6">
+    <div class="dot-matrix background-secondary text-light">
+        <div id="for-a-mission" class="row">
+            <div class="col-lg-6">
+                <p class="lead">
+                    Thankfully life presents us with immeasurable opportunities
+                    to exercise our own creativity.
+                </p>
+                <p>
+                    Sadly though,
+                    as was the case in
+                    <a
+                        href="http://www.poetryfoundation.org/poems/42882"
+                        target="_blank"
+                    >the naming of the Daves</a>,
+                    if we don't act, they will simply pass us by.
+                </p>
+                <p>
+                    So we make it our mission,
+                    through work on the projects here,
+                    to remain vigilant
+                    and always mindful of our chance <a
+                        href="https://www.poetryfoundation.org/poems/51568/o-me-o-life"
+                        target="_blank"
+                    >to contribute a verse</a>,
+                    and to help others do the same.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="jumbotron text-dark">
+                    <h1>
+                        To be vigilant and active<br>
+                    </h1>
                     <p class="lead">
-                        Thankfully life presents us with immeasurable opportunities
-                        to exercise our own creativity.
+                        On as many fronts as possible<br>
+                        In encouraging exhibitions of creativity and personal investment.
                     </p>
-                    <p>
-                        Sadly though,
-                        as was the case in
-                        <a
-                            href="http://www.poetryfoundation.org/poems/42882"
-                            target="_blank"
-                        >the naming of the Daves</a>,
-                        if we don't act, they will simply pass us by.
-                    </p>
-                    <p>
-                        So we make it our mission,
-                        through work on the projects here,
-                        to remain vigilant
-                        and always mindful of our chance <a
-                            href="https://www.poetryfoundation.org/poems/51568/o-me-o-life"
-                            target="_blank"
-                        >to contribute a verse</a>,
-                        and to help others do the same.
-                    </p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="jumbotron text-dark">
-                        <h1>
-                            To be vigilant and active<br>
-                        </h1>
+                    {% if not user.is_authenticated %}
                         <p class="lead">
-                            On as many fronts as possible<br>
-                            In encouraging exhibitions of creativity and personal investment.
+                            <a class="btn btn-primary btn-lg" href="/join" role="button">
+                                Join us
+                            </a>
                         </p>
-                        {% if not user.is_authenticated %}
-                            <p class="lead">
-                                <a class="btn btn-primary btn-lg" href="/join" role="button">
-                                    Join us
-                                </a>
-                            </p>
-                        {% endif %}
-                    </div>
+                    {% endif %}
                 </div>
+            </div>
+            <div class="col-12">
                 <div class="carousel-caption d-block">
-                    <h3>A Mission from Uncle Walt.</h3>
+                    <h3>A Mission from God.</h3>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
