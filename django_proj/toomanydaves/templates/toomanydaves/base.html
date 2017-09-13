@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,13 +7,21 @@
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
             integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"       
-            crossorigin="anonymous">
-            <style>
-                #site-nav {
-                    margin-bottom: 1rem;
-                }
-            </style>
-            {% block style %}{% endblock %}
+            crossorigin="anonymous"
+        >
+        <link
+            rel="stylesheet"
+            href="{% static "/css/icon-font.css" %}"
+        >
+        <style>
+            #site-nav {
+                margin-bottom: 1rem;
+            }
+            #navbar-social {
+                flex-direction: row;
+            }
+        </style>
+        {% block style %}{% endblock %}
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -31,8 +40,7 @@
     </head>
     <body>
         <div id="site-nav" class="container-fluid">
-            <nav class="navbar sticky-top navbar-expand-sm">
-                <a class="navbar-brand" href="/">Too Many Daves</a>
+            <nav class="navbar sticky-top navbar-expand-md justify-content-start">
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -42,11 +50,11 @@
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon icon-menu"></span>
                 </button>
+                <a class="navbar-brand" href="/">Too Many Daves</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        {# TODO: disable active item #}
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a 
                                 class="nav-link"
@@ -65,40 +73,75 @@
                                 href="/people"
                             >People</a>
                         </li>
-                        {% if request.user.is_authenticated %}
-                            <li class="nav-item dropdown">
-                                <a
-                                    class="nav-link dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    href="#"
-                                    role="button"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                >{{ user.first_name }}</a>
-                                <div class="dropdown-menu">
-                                    {% if user.is_staff %}
-                                        <a class="dropdown-item" href="/admin">Admin</a>
-                                    {% endif %}
-                                    <a class="dropdown-item" href="/user">Profile</a>
-                                    <a class="dropdown-item" href="/logout">Log out</a>
-                                </div>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    href="/join"
-                                >Join up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    href="/login"
-                                >Log in</a>
-                            </li>
-                        {% endif %}
                     </ul>
                 </div>
+                <ul id="navbar-social" class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                    {% if request.user.is_authenticated %}
+                            <a
+                                class="nav-link dropdown-toggle"
+                                data-toggle="dropdown"
+                                href="#"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >{{ user.first_name }}</a>
+                            <div class="dropdown-menu">
+                                {% if user.is_staff %}
+                                    <a class="dropdown-item" href="/admin">Admin</a>
+                                {% endif %}
+                                <a class="dropdown-item" href="/user">Profile</a>
+                                <a class="dropdown-item" href="/logout">Log out</a>
+                            </div>
+                    {% else %}
+                            <a
+                                class="nav-link dropdown-toggle"
+                                data-toggle="dropdown"
+                                href="#"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >Join</a>
+                            <div class="dropdown-menu">
+                                <h6 class="dropdown-header">
+                                    Already signed up?
+                                </h6>
+                                <a
+                                    class="dropdown-item"
+                                    href="/login"
+                                >Log in</a>
+                                <h6 class="dropdown-header">
+                                    Everyone's welcome to join!
+                                </h6>
+                                <a
+                                    class="dropdown-item"
+                                    href="/join"
+                                >Sign up</a>
+                            </div>
+                    {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a 
+                            class="nav-link"
+                            href="http://facebook.com/toomanydaves"
+                            target="_blank"
+                        ><i class="icon-facebook"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a 
+                            class="nav-link"
+                            href="http://instagram.com/toomanydaves"
+                            target="_blank"
+                        ><i class="icon-instagram"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a 
+                            class="nav-link"
+                            href="/donations"
+                            target="_blank"
+                        ><i class="icon-donation"></i></a>
+                    </li>
+                </ul>
             </nav>
         </div>
         <div id="content" class="container">
