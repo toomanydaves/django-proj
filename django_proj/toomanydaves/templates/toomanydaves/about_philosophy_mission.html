@@ -1,25 +1,9 @@
+<div id="mission-slide" class="slide-background">
+<div class="dot-matrix background-secondary text-light">
 <div id="for-a-mission" class="row">
     <div class="col-12">
         <div id="a-mission">
             <div id="for-mission" class="row">
-                <div class="col-lg-6">
-                    <div class="jumbotron">
-                        <h1>
-                            To be vigilant and active<br>
-                        </h1>
-                        <p class="lead">
-                            On as many fronts as possible<br>
-                            In encouraging exhibitions of creativity and personal investment.
-                        </p>
-                        {% if not user.is_authenticated %}
-                            <p class="lead">
-                                <a class="btn btn-primary btn-lg" href="/join" role="button">
-                                    Join us
-                                </a>
-                            </p>
-                        {% endif %}
-                    </div>
-                </div>
                 <div class="col-lg-6">
                     <p class="lead">
                         Thankfully life presents us with immeasurable opportunities
@@ -45,10 +29,30 @@
                         and to help others do the same.
                     </p>
                 </div>
+                <div class="col-lg-6">
+                    <div class="jumbotron text-dark">
+                        <h1>
+                            To be vigilant and active<br>
+                        </h1>
+                        <p class="lead">
+                            On as many fronts as possible<br>
+                            In encouraging exhibitions of creativity and personal investment.
+                        </p>
+                        {% if not user.is_authenticated %}
+                            <p class="lead">
+                                <a class="btn btn-primary btn-lg" href="/join" role="button">
+                                    Join us
+                                </a>
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="carousel-caption d-block">
                     <h3>A Mission from Uncle Walt.</h3>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
