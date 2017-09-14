@@ -20,6 +20,9 @@
             #navbar-social {
                 flex-direction: row;
             }
+            .nav-item.dropdown {
+                white-space: nowrap;
+            }
         </style>
         {% block style %}{% endblock %}
         <script
@@ -58,12 +61,6 @@
                         <li class="nav-item">
                             <a 
                                 class="nav-link"
-                                href="/about"
-                            >About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a 
-                                class="nav-link"
                                 href="/portfolio/projects"
                             >Projects</a>
                         </li>
@@ -72,6 +69,22 @@
                                 class="nav-link"
                                 href="/people"
                             >People</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                data-toggle="dropdown"
+                                href="#"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >About</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/about">
+                                    What is Too Many Daves?
+                                </a>
+                                <a class="dropdown-item" href="/blog">Blog</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
