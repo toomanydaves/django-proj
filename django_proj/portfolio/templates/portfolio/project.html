@@ -3,10 +3,12 @@
 {% block title %}{{ project.name }}{% endblock %}
 
 {% block content %}
-    <div id="for-project" class="row">
-        <div class="col">
-            <h2>{{ project }}</h2>
-            <a href="{{ project.url }}">{{ project.url }}</a>
+    <div id="project" class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>{{ project }}</h2>
+                <a href="{{ project.url }}">{{ project.url }}</a>
+            </div>
         </div>
     </div>
 {% endblock %}

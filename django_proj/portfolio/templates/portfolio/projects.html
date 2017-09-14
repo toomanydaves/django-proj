@@ -3,19 +3,21 @@
 {% block title %}Projects{% endblock %}
 
 {% block content %}
-    <div id="for-projects" class="row">
-    {% for project in project_list %}
-        <div class="col-12">
-            <h4>
-                <a href="/portfolio/projects/{{ project.id }}">{{ project }}</a>
-            </h4>
-            <p>
-                <a
-                    href="{{ project.url }}" 
-                    target="_blank"
-                >{{ project.url }}</a>
-            </p>
+    <div id="projects" class="container">
+        <div class="row">
+            {% for project in project_list %}
+                <div class="col-12">
+                    <h4>
+                        <a href="/portfolio/projects/{{ project.id }}">{{ project }}</a>
+                    </h4>
+                    <p>
+                        <a
+                            href="{{ project.url }}" 
+                            target="_blank"
+                        >{{ project.url }}</a>
+                    </p>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
     </div>
 {% endblock %}
