@@ -29,7 +29,7 @@
         background-image: url({% static "/images/biggie-color-shift.jpg" %});
         background-position: 50% 15%;
     }
-    #poem-slide .slide-background-image {
+    #inspiration-slide .slide-background-image {
         background-image: url({% static "/images/dave_on_stilts.png" %});
         background-image: url(https://media.giphy.com/media/6wUXbEVERX8d2/giphy.gif);
         background-image: url(https://i.pinimg.com/564x/f4/7b/41/f47b41ec8ccb56d8de15448eac15fe45.jpg);
@@ -49,19 +49,6 @@
     .slide-background {
         height: 100%;
     }
-/*
-    .carousel-indicators {
-        bottom: auto;
-        top: 1.2rem;
-    }
-    .carousel-item {
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-    .carousel-control-next, .carousel-control-prev {
-        width: 3rem;
-    }
-*/
 </style>
 {% endblock %}
     
@@ -89,6 +76,14 @@
                                 role="tab"
                                 aria-controls="backstory"
                             >Backstory</a>
+                            <a
+                                id="poem-tab"
+                                class="nav-item nav-link"
+                                data-toggle="tab"
+                                href="#poem"
+                                role="tab"
+                                aria-controls="poem"
+                            >The Poem</a>
                         </nav>
                     </div>
                 </div>
@@ -97,6 +92,7 @@
         <div id="about-page-tab-content" class="tab-content">
             {% include "toomanydaves/about_philosophy.html" %}
             {% include "toomanydaves/about_backstory.html" %}
+            {% include "toomanydaves/about_poem.html" %}
         </div>
     </div> 
 {% endblock %}
