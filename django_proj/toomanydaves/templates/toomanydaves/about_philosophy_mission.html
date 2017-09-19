@@ -1,59 +1,36 @@
-<div id="mission-slide">
-    <div class="slide-background-image">
-        <div class="dot-matrix background-secondary text-light">
-            <div class="row slide-background">
-                <div class="col-lg-12">
-                    <div class="jumbotron text-light">
-                        <h1>
-                            To be vigilant and active<br>
-                        </h1>
+<div id="mission-slide" class="carousel-slide">
+    <div class="dot-matrix-bg text-light">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="jumbotron text-light">
+                    <h1>
+                        To be vigilant and active
+                    </h1>
+                    <p class="lead">
+                        On as many fronts as possible<br>
+                        Using all the tools at our disposal<br>
+                        In encouraging exhibitions of creativity and personal investment.
+                    </p>
+                    {% if not user.is_authenticated %}
                         <p class="lead">
-                            On as many fronts as possible<br>
-                            Using all the tools at our disposal<br>
-                            In encouraging exhibitions of creativity and personal investment.
+                            <a
+                                class="btn btn-primary btn-lg"
+                                href="/join"
+                                role="button"
+                            >
+                                Sign on
+                            </a>
                         </p>
-                        {% if not user.is_authenticated %}
-                            <p class="lead">
-                                <a class="btn btn-primary btn-lg" href="/join" role="button">
-                                    Join
-                                </a>
-                            </p>
-                        {% endif %}
-                    </div>
+                    {% endif %}
                 </div>
-                <div class="col-12">
-                    <div class="carousel-caption d-block">
-                        <h3>A Mission from the Captain.</h3>
-                    </div>
-                </div>
+            </div>
+            <div class="carousel-caption d-block">
+                <h3>
+                    A Mission from the Captain<sup><small><a
+                        href="#about-page-footnote-2"
+                    >[2]</a></small></sup>
+                </h3>
             </div>
         </div>
     </div>
 </div>
-<!--
-    <div class="col-lg-12">
-        <p class="lead">
-            Thankfully life presents us with immeasurable opportunities
-            to exercise our own creativity.
-        </p>
-        <p>
-            Sadly though,
-            as was the case in
-            <a
-                href="http://www.poetryfoundation.org/poems/42882"
-                target="_blank"
-            >the naming of the Daves</a>,
-            if we don't act, they will simply pass us by.
-        </p>
-        <p>
-            So we make it our mission,
-            through work on the projects here,
-            to remain vigilant
-            and always mindful of our chance <a
-                href="https://www.poetryfoundation.org/poems/51568/o-me-o-life"
-                target="_blank"
-            >to contribute a verse</a>,
-            and to help others do the same.
-        </p>
-    </div>
--->

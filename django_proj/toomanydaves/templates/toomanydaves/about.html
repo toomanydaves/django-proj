@@ -1,98 +1,100 @@
 {% extends "toomanydaves/base.html" %}
+
 {% load static %}
 
 {% block title %}What is Too Many Daves?{% endblock %}
 
 {% block style %}
 <style>
-    .nav-tabs {
-        margin-bottom: 1rem;
-    }
-    .dot-matrix {
-        background: url("{% static "/images/dot-grey.png" %}");
-        height: 100%;
-        
-    }
-    .slide-background-image {
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 550px;
-    }
-    #philosophy .carousel-control-next,
-    #philosophy .carousel-control-prev {
-        width: 36px;
-    }
-    #platform-slide .slide-background-image {
-        background-image: url(https://i.pinimg.com/564x/ea/44/e2/ea44e2163e5e23828caf6b8bedcfbfc4.jpg);
-        background-image: url(https://i.pinimg.com/564x/21/3e/ce/213eceb37322af0d9aefe043c746591c.jpg);
-        background-image: url({% static "/images/biggie-color-shift.jpg" %});
-        background-position: 50% 15%;
-    }
-    #inspiration-slide .slide-background-image {
-        background-image: url({% static "/images/dave_on_stilts.png" %});
-        background-image: url(https://media.giphy.com/media/6wUXbEVERX8d2/giphy.gif);
-        background-image: url(https://i.pinimg.com/564x/f4/7b/41/f47b41ec8ccb56d8de15448eac15fe45.jpg);
-        background-image: url(https://i.pinimg.com/564x/4c/1a/53/4c1a53ec948024d0fe96aea36c2686a0.jpg);
-        background-image: url(https://i.pinimg.com/564x/b6/ed/b9/b6edb9bebc09460767c33ff771b871db.jpg);
-        background-image: url(https://i.pinimg.com/564x/09/be/43/09be43c29b5d70fd751e33118f6d1fa3.jpg);
-        background-image: url(https://i.pinimg.com/564x/f9/9d/37/f99d378f2bd308d0285965f29d86adb9.jpg);
-    }
-    #mission-slide .slide-background-image {
-        background-image: url(https://media.giphy.com/media/12GR62Fr1YmrCM/giphy.gif);
-        background-image: url(https://i.pinimg.com/564x/96/ca/0d/96ca0d0c78e2a7001ce9a023138a83e2.jpg)
-    }
-    #philosophy .jumbotron {
-        background-color: inherit;
-        border-radius: 0;
-    }
-    .slide-background {
-        height: 100%;
-    }
+.nav-tabs {
+    margin-bottom: 1rem;
+}
+.dot-matrix-bg {
+    background: url("{% static "/images/dot-grey.png" %}");
+    height: 100%;
+}
+.sean-jacke-bg {
+    background: url("{% static "/images/seanjacke_cover.jpg" %}");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 330px;
+}
+.carousel-slide {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 550px;
+}
+#philosophy .carousel-control-next,
+#philosophy .carousel-control-prev {
+    width: 36px;
+    margin-bottom: 3rem;
+}
+#platform-slide {
+    background-position: 50% 25%;
+    background-image: url({% static "/images/biggie-color-shift.jpg" %});
+}
+#inspiration-slide {
+    background-image: url(https://i.pinimg.com/564x/f9/9d/37/f99d378f2bd308d0285965f29d86adb9.jpg);
+}
+#mission-slide {
+    background-image: url(https://i.pinimg.com/564x/96/ca/0d/96ca0d0c78e2a7001ce9a023138a83e2.jpg)
+}
+#philosophy .jumbotron {
+    background-color: inherit;
+    border-radius: 0;
+}
+.slide-background {
+    height: 100%;
+}
 </style>
 {% endblock %}
-    
+
 {% block content %}
-    <div id="about-page">
-        <div id="about-page-tabs">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <nav class="nav nav-tabs" role="tablist">
-                            <a
-                                id="philosophy-tab"
-                                class="nav-item nav-link active"
-                                data-toggle="tab"
-                                href="#philosophy"
-                                role="tab"
-                                aria-controls="philosophy"
-                                aria-expanded="true"
-                            >What is Too Many Daves?</a>
-                            <a
-                                id="backstory-tab"
-                                class="nav-item nav-link"
-                                data-toggle="tab"
-                                href="#backstory"
-                                role="tab"
-                                aria-controls="backstory"
-                            >Backstory</a>
-                            <a
-                                id="poem-tab"
-                                class="nav-item nav-link"
-                                data-toggle="tab"
-                                href="#poem"
-                                role="tab"
-                                aria-controls="poem"
-                            >The Poem</a>
-                        </nav>
-                    </div>
+<div id="about-page">
+    <div id="about-page-tabs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="nav nav-tabs" role="tablist">
+                        <a
+                            id="philosophy-tab"
+                            class="nav-item nav-link active"
+                            data-toggle="tab"
+                            href="#philosophy"
+                            role="tab"
+                            aria-controls="philosophy"
+                            aria-expanded="true"
+                        >What is Too Many Daves?</a>
+                        <a
+                            id="backstory-tab"
+                            class="nav-item nav-link"
+                            data-toggle="tab"
+                            href="#backstory"
+                            role="tab"
+                            aria-controls="backstory"
+                        >Backstory</a>
+                        <a
+                            id="poem-tab"
+                            class="nav-item nav-link"
+                            data-toggle="tab"
+                            href="#poem"
+                            role="tab"
+                            aria-controls="poem"
+                        >The Poem</a>
+                    </nav>
                 </div>
             </div>
         </div>
-        <div id="about-page-tab-content" class="tab-content">
-            {% include "toomanydaves/about_philosophy.html" %}
-            {% include "toomanydaves/about_backstory.html" %}
-            {% include "toomanydaves/about_poem.html" %}
-        </div>
-    </div> 
+    </div>
+    <div id="about-page-tab-content" class="tab-content">
+        {% include "toomanydaves/about_philosophy.html" %}
+        {% include "toomanydaves/about_backstory.html" %}
+        {% include "toomanydaves/about_poem.html" %}
+    </div>
+    <div id="about-page-footnotes" class="mt-5">
+        {% include "toomanydaves/about_footnotes.html" %}
+    </div>
+</div> 
 {% endblock %}
