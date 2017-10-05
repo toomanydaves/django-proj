@@ -11,7 +11,7 @@
                     id="philosophy-carousel"
                     class="carousel slide"
                     data-ride="carousel"
-                    data-interval="10000"
+                    data-interval="11000"
                 >
                     <ol class="carousel-indicators">
                         <li
@@ -21,6 +21,7 @@
                         ></li>
                         <li data-target="#philosophy-carousel" data-slide-to="1"></li>
                         <li data-target="#philosophy-carousel" data-slide-to="2"></li>
+                        <li data-target="#philosophy-carousel" data-slide-to="3"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -31,6 +32,9 @@
                         </div>
                         <div class="carousel-item">
                             {% include "toomanydaves/about_philosophy_mission.html" %}
+                        </div>
+                        <div class="carousel-item">
+                            {% include "toomanydaves/about_philosophy_network.html" %}
                         </div>
                     </div>
                     <a

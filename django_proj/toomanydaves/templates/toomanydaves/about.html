@@ -6,6 +6,12 @@
 
 {% block style %}
 <style>
+.long-dash-after::after {
+    content: "\2014";
+}
+.long-dash-before::before {
+    content: "\2014";
+}
 .nav-tabs {
     margin-bottom: 1rem;
 }
@@ -14,7 +20,7 @@
     height: 100%;
 }
 .sean-jacke-bg {
-    background: url("{% static "/images/seanjacke_cover.jpg" %}");
+    background: url({% static "/images/seanjacke_cover.jpg" %});
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -41,9 +47,16 @@
 #mission-slide {
     background-image: url(https://i.pinimg.com/564x/96/ca/0d/96ca0d0c78e2a7001ce9a023138a83e2.jpg)
 }
+#network-slide {
+    background-position: 50% 5%;
+    background-image: url({% static "/images/alexander_girard.jpg" %});
+}
 #philosophy .jumbotron {
     background-color: inherit;
     border-radius: 0;
+}
+#about-page-footnotes {
+    margin-top: 10rem;
 }
 .slide-background {
     height: 100%;
@@ -93,7 +106,7 @@
         {% include "toomanydaves/about_backstory.html" %}
         {% include "toomanydaves/about_poem.html" %}
     </div>
-    <div id="about-page-footnotes" class="mt-5">
+    <div id="about-page-footnotes">
         {% include "toomanydaves/about_footnotes.html" %}
     </div>
 </div> 

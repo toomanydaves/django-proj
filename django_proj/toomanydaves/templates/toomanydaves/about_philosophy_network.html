@@ -1,0 +1,38 @@
+<div id="network-slide" class="carousel-slide">
+    <div class="dot-matrix-bg text-light">
+        <div class="row">
+            <div class="col-12">
+                <div class="jumbotron text-light">
+                    <h1>
+                        Standing Together
+                    </h1>
+                    <p class="lead">
+                        <em>Too Many Daves</em>
+                        is a diverse collection of makers, teachers, organizers,<br>
+                        designers, activitists, students, artists and other rabbel-rousers.
+                    </p>
+                    <p class="lead">
+                        <span class="long-dash-after">
+                            Its membership is open to anyone sympathetic towards its mission
+                        </span><br>
+                        to foster creativity, engagement, reflection and wonder.
+                    </p>
+                    {% if not user.is_authenticated %}
+                        <p class="lead">
+                            <a
+                                class="btn btn-primary btn-lg"
+                                href="/join"
+                                role="button"
+                            >
+                                Join us
+                            </a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="carousel-caption d-block">
+                <h3>A Network of Individuals.</h3>
+            </div>
+        </div>
+    </div>
+</div>
