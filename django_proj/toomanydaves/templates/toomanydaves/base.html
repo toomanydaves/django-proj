@@ -28,11 +28,32 @@
             section h4,
             section h5,
             section h6 {
-                font-family: 'Oswald', sans-serif;
             }
             section p {
                 font-family: 'Cardo', serif;
                 font-size: 1.1rem;
+            }
+            .text-serif {
+                font-family: 'Cardo', serif;
+            }
+            .text-sans-serif-headings h1,
+            .text-sans-serif-headings h2,
+            .text-sans-serif-headings h3,
+            .text-sans-serif-headings h4,
+            .text-sans-serif-headings h5,
+            .text-sans-serif-headings h6,
+            .text-sans-serif {
+                font-family: 'Oswald', sans-serif;
+            }
+            .long-dash-after::after {
+                content: "\2014";
+            }
+            .long-dash-before::before {
+                content: "\2014";
+            }
+            .dot-matrix-bg {
+                background: url("{% static "/images/dot-grey.png" %}");
+                height: 100%;
             }
         </style>
         {% block style %}{% endblock %}

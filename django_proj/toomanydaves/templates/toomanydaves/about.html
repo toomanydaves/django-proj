@@ -6,25 +6,8 @@
 
 {% block style %}
 <style>
-.long-dash-after::after {
-    content: "\2014";
-}
-.long-dash-before::before {
-    content: "\2014";
-}
 .nav-tabs {
     margin-bottom: 1rem;
-}
-.dot-matrix-bg {
-    background: url("{% static "/images/dot-grey.png" %}");
-    height: 100%;
-}
-.sean-jacke-bg {
-    background: url({% static "/images/seanjacke_cover.jpg" %});
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 330px;
 }
 .carousel-slide {
     background-position: center;
@@ -57,6 +40,13 @@
 }
 #about-page-footnotes {
     margin-top: 10rem;
+}
+.sean-jacke-bg {
+    background: url({% static "/images/seanjacke_cover.jpg" %});
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 330px;
 }
 .slide-background {
     height: 100%;
