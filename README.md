@@ -26,7 +26,7 @@ Logging in to db with user to confirm success.
     cd toomanydaves
     pip3 install
 
-## Create an .env file in the directory with manage.py to store your local credentials
+## Create an .env file in the top-level directory to store your local credentials
     SECRET_KEY='+-v6=l%adqy7#hv5sff%^@=v-myynv0+47%#^^0f%nesx7a5m7'
     DEBUG=True
     DB_NAME='toomanydaves_dev'
