@@ -1,7 +1,63 @@
 {% extends "toomanydaves/base.html" %}
 
-{% block title %}Join{% endblock %}
+{% load static %}
+
+{% block title %}Join Too Many Daves{% endblock %}
+
+{% block style %}
+<style>
+.nav-tabs {
+    margin-bottom: 1rem;
+}
+</style>
+{% endblock %}
 
 {% block content %}
-    <p>JOIN PAGE CONTENT (toomanydaves/join.html)</p>
+<div id="join-page">
+    <div id="join-page-tabs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul id="join-page-tabs" class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a
+                                id="sign-up-tab"
+                                class="nav-link active"
+                                data-toggle="tab"
+                                href="#sign-up"
+                                role="tab"
+                                aria-controls="sign-up"
+                            >Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id="donations-tab"
+                                class="nav-link"
+                                data-toggle="tab"
+                                href="#donations"
+                                role="tab"
+                                aria-controls="donations"
+                            >Donations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                id="project-work-tab"
+                                class="nav-link"
+                                data-toggle="tab"
+                                href="#project-work"
+                                role="tab"
+                                aria-controls="project-work"
+                            >Work on a Project</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="join-page-tab-content" class="tab-content">
+        {% include "toomanydaves/join_sign-up.html" %}
+        {% include "toomanydaves/join_donations.html" %}
+        {% include "toomanydaves/join_project-work.html" %}
+    </div>
+</div>
 {% endblock %}
