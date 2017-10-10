@@ -55,6 +55,23 @@
                 background: url("{% static "/images/dot-grey.png" %}");
                 height: 100%;
             }
+            .tooltip-inner {
+                text-align: left;
+            }
+            .tooltip-target {
+                color: inherit;
+                text-decoration-color: #888;
+                text-decoration-line: underline;
+                text-decoration-style: dotted;
+                cursor: help;
+            }
+            .tooltip-target:hover {
+                color: inherit;
+                text-decoration: none;
+            }
+            .text-light .tooltip-target {
+                text-decoration-color: #ccc;
+            }
         </style>
         {% block style %}{% endblock %}
         <script
@@ -85,7 +102,7 @@
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span class="navbar-toggler-icon icon-menu"></span>
+                <span class="navbar-toggler-icon icon-menu"></span>
                 </button>
                 <a class="navbar-brand" href="/">Too Many Daves</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -199,5 +216,10 @@
             </div>
         </footer>
         -->
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
     </body>
 </html>

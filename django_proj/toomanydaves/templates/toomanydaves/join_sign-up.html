@@ -12,24 +12,28 @@
                     to exercise our creativity.
                 </h4>
                 <p class="lead">
-                    Unfortunately
-                    <span class="long-dash-before long-dash-after">
-                        as in the naming of the Daves
-                    </span>
+                    Unfortunately, <a
+                        class="tooltip-target"
+                        href="#tooltip-title"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        data-html="true"
+                        title="<span><a href=&quot;/about#tab=poem&quot;
+                        target=&quot;_blank&quot;>Read the poem</a>...</span>"
+                    >as in the naming of the Daves</a>,
                     these too often go squandered.<br>
-                    Help change that!
+                    <span class="long-dash-after">Don't let that happen</span> join us
+                    and we can combine our strength for the common good!
                 </p>
+                <h5>
+                    Login or register
+                </h5>
                 <p>
-                    You can choose either to register directly<br>
-                    with an existing
-                    <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>
+                    Use your <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>
                     (or <a href="{% url 'social:begin' 'github' %}">GitHub</a>)
                     account,<br>
-                    or simply <button type="submit" disabled>submit</button>
-                    <input placeholder="an email address">
-                </p>
-                <p>
-                    We look forward to welcoming you aboard!
+                    or <button type="submit" disabled>submit</button>
+                    <input placeholder="your email address">
                 </p>
             </div>
         </div>
