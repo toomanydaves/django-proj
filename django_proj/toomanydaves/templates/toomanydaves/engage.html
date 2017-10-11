@@ -1,5 +1,7 @@
 {% extends "toomanydaves/base.html" %}
 
+{% load static %}
+
 {% block title %}Join Too Many Daves{% endblock %}
 
 {% block style %}
@@ -11,20 +13,20 @@
 {% endblock %}
 
 {% block content %}
-<div id="join-page">
+<div id="engage-page">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <ul id="join-page-tabs" class="nav nav-tabs" role="tablist">
+                <ul id="engage-page-tabs" class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a
-                            id="sign-up-tab"
+                            id="join-tab"
                             class="nav-link active"
                             data-toggle="tab"
-                            href="#sign-up"
+                            href="#join"
                             role="tab"
-                            aria-controls="sign-up"
-                        >Sign up</a>
+                            aria-controls="join"
+                        >Join us</a>
                     </li>
                     <li class="nav-item">
                         <a
@@ -50,10 +52,10 @@
             </div>
         </div>
     </div>
-    <div id="join-page-tab-content" class="tab-content">
-        {% include "toomanydaves/join_sign-up.html" %}
-        {% include "toomanydaves/join_donations.html" %}
-        {% include "toomanydaves/join_project-work.html" %}
+    <div id="engage-page-tab-content" class="tab-content">
+        {% include "toomanydaves/engage_join.html" %}
+        {% include "toomanydaves/engage_donations.html" %}
+        {% include "toomanydaves/engage_project-work.html" %}
     </div>
 </div>
 {% endblock %}

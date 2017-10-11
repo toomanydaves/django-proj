@@ -13,8 +13,8 @@ def logout_user(request):
     #Redirect to a success page
     return render(request, 'toomanydaves/index.html')
 
-def join(request):
+def engage(request):
     # TODO Like login
     # Render form / accept post / redirect to index
 
-    return render(request, 'toomanydaves/join.html')
+    return render(request, 'toomanydaves/engage.html')
