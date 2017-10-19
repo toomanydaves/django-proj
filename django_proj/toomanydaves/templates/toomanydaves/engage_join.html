@@ -5,13 +5,27 @@
     aria-labelledby="join-tab"
 >
     <div class="container">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-5 order-lg-7">
+                <div class="jumbotron">
+                    <h3>
+                        Login or register
+                    </h3>
+                    <p>
+                        Use a <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>
+                        (or <a href="{% url 'social:begin' 'github' %}">GitHub</a>)
+                        account,<br>
+                        or <button type="submit" disabled>submit</button>
+                        <input placeholder="your email address">
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 order-lg-1">
                 <h4>
                     Fortunately life presents us with countless opportunities
                     to exercise our creativity.
                 </h4>
-                <p class="lead">
+                <p>
                     Unfortunately, <a
                         class="tooltip-target"
                         href="#tooltip-title"
@@ -21,19 +35,13 @@
                         title="<span><a href=&quot;/about#tab=poem&quot;
                         target=&quot;_blank&quot;>Read the poem</a>...</span>"
                     >as in the naming of the Daves</a>,
-                    these too often go squandered.<br>
-                    <span class="long-dash-after">Don't let that happen</span> join us.
-                    Together we can make a difference.
+                    these too often go squandered...
                 </p>
-                <h3>
-                    Login or register
-                </h3>
                 <p>
-                    Use your <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>
-                    (or <a href="{% url 'social:begin' 'github' %}">GitHub</a>)
-                    account,<br>
-                    or <button type="submit" disabled>submit</button>
-                    <input placeholder="your email address">
+                    <span class="lead">
+                        <span class="long-dash-after">Don't let that happen</span> join us.
+                    </span><br>
+                    Together we'll make a difference.
                 </p>
             </div>
         </div>

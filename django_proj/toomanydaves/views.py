@@ -1,8 +1,8 @@
 from django.contrib.auth import logout
 from django.shortcuts import render
 
-def index(request):
-    return render(request, 'toomanydaves/index.html')
+def home(request):
+    return render(request, 'toomanydaves/home.html')
 
 def about(request):
     return render(request, 'toomanydaves/about.html')
@@ -11,7 +11,7 @@ def logout_user(request):
     logout(request)
 
     #Redirect to a success page
-    return render(request, 'toomanydaves/index.html')
+    return render(request, 'toomanydaves/home.html')
 
 def engage(request):
     # TODO Like login

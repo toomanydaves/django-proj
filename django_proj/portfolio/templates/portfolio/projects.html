@@ -10,6 +10,9 @@
                     <h4>
                         <a href="/portfolio/projects/{{ project.id }}">{{ project }}</a>
                     </h4>
+                        {% if project.description %}
+                        <h6>{{ project.description }}</h6>
+                        {% endif %}
                     <p>
                         <a
                             href="{{ project.url }}" 

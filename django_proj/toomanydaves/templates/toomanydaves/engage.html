@@ -30,16 +30,6 @@
                     </li>
                     <li class="nav-item">
                         <a
-                            id="donations-tab"
-                            class="nav-link"
-                            data-toggle="tab"
-                            href="#donations"
-                            role="tab"
-                            aria-controls="donations"
-                        >Donations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a
                             id="project-work-tab"
                             class="nav-link"
                             data-toggle="tab"
@@ -48,14 +38,24 @@
                             aria-controls="project-work"
                         >Work on a Project</a>
                     </li>
+                    <li class="nav-item">
+                        <a
+                            id="donations-tab"
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#donations"
+                            role="tab"
+                            aria-controls="donations"
+                        >Donations</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div id="engage-page-tab-content" class="tab-content">
         {% include "toomanydaves/engage_join.html" %}
-        {% include "toomanydaves/engage_donations.html" %}
         {% include "toomanydaves/engage_project-work.html" %}
+        {% include "toomanydaves/engage_donations.html" %}
     </div>
 </div>
 {% endblock %}

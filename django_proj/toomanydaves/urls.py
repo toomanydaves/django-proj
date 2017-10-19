@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.contrib.auth import views as contrib_auth_views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.home, name='home'),
     url(r'^about/$', views.about, name='about'),
     url(r'^people/$', toomanydaves_auth_views.people, name="people"),
     url(r'^people/(?P<user_id>[\w-]+)/$', toomanydaves_auth_views.person, name="person"),
