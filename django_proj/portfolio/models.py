@@ -1,6 +1,15 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+class Tag(models.Model):
+    name=models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+
 class Project(models.Model):
     url = models.URLField(unique=True)
     name = models.CharField(
@@ -35,6 +44,10 @@ class Project(models.Model):
         blank=True,
         upload_to='project_logos'
     )
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ('name',)

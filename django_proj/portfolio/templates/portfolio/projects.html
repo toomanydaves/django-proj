@@ -13,6 +13,15 @@
                         <img class="card-img-top" src="{{ project.logo.url }}" alt="logo">
                         {% endif %}
                         <div class="card-body">
+                            {% if project.tags %}
+                            <ul class="list-inline">
+                                {% for tag in project.tags.all %}
+                                <li class="list-inline-item">
+                                    <span class="badge badge-warning">{{ tag.name }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
                             <h4>
                                 <a href="/portfolio/projects/{{ project.id }}">{{ project }}</a>
                             </h4>
