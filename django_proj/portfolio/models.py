@@ -31,6 +31,10 @@ class Project(models.Model):
         default=INTERNAL,
         max_length=20,
     )
+    logo = models.FileField(
+        blank=True,
+        upload_to='project_logos'
+    )
 
     def __str__(self):
         return self.name

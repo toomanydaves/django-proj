@@ -5,22 +5,31 @@
 {% block content %}
     <div id="projects" class="container">
         <div class="row">
-            {% for project in project_list %}
-                <div class="col-12">
-                    <h4>
-                        <a href="/portfolio/projects/{{ project.id }}">{{ project }}</a>
-                    </h4>
-                        {% if project.description %}
-                        <h6>{{ project.description }}</h6>
+            <div class="col-12">
+                <div class="card-columns">
+                {% for project in project_list %}
+                    <div class="card w-75">
+                        {% if project.logo %}
+                        <img class="card-img-top" src="{{ project.logo.url }}" alt="logo">
                         {% endif %}
-                    <p>
-                        <a
-                            href="{{ project.url }}" 
-                            target="_blank"
-                        >{{ project.url }}</a>
-                    </p>
+                        <div class="card-body">
+                            <h4>
+                                <a href="/portfolio/projects/{{ project.id }}">{{ project }}</a>
+                            </h4>
+                                {% if project.description %}
+                                <h6>{{ project.description }}</h6>
+                                {% endif %}
+                            <p>
+                                <a
+                                    href="{{ project.url }}" 
+                                    target="_blank"
+                                >{{ project.url }}</a>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
                 </div>
-            {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

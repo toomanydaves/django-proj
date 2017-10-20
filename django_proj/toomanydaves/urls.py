@@ -15,7 +15,9 @@ Including another URLconf
 """
 from toomanydaves import views
 from toomanydaves_auth import views as toomanydaves_auth_views
+from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as contrib_auth_views
 
@@ -32,4 +34,4 @@ urlpatterns = [
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
     url(r'^portfolio/', include('portfolio.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
