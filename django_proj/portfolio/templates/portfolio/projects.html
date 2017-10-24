@@ -121,9 +121,9 @@
                         var $card = $(this);
 
                         if (projects.includes(parseInt($card.attr('id').slice(8)))) {
-                            $card.show();
+                            $card.fadeIn();
                         } else {
-                            $card.hide();
+                            $card.fadeOut();
                         }
                     });
                 }
