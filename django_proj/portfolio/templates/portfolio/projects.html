@@ -4,6 +4,10 @@
 
 {% block style %}
 <style>
+    label {
+        margin-bottom: 0;
+    }
+
     .card-columns {
         column-count: 1;
     }
@@ -30,22 +34,35 @@
     <div id="projects" class="container">
         <div class="row mb-3">
             <div class="col text-right">
-                <ul class="list-inline">
-                    {% for tag in tag_list %}
-                    <li class="list-inline-item">
-                        <span class="badge badge-warning">{{ tag.name }} <a
-                            href="portfolio/toggle-{{ tag.id }}"
-                        >x</a></span>
-                    </li>
-                    {% endfor %}
-                </ul>
+                <form id="tags" action="/portfolio" method="get">
+                    <ul class="list-inline">
+                        {% for tag in tag_list %}
+                        <li class="list-inline-item">
+                            <span class="badge badge-warning">
+                                <label for="{{ tag.id }}">{{ tag.name }}</label>
+                                <input
+                                    id="{{ tag.id }}"
+                                    value="{{ tag.id }}"
+                                    name="tag"
+                                    type="checkbox"
+                                    {% if not tag.exclude %}checked{% endif %}
+                                >
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </form>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="card-columns">
                 {% for project in project_list %}
-                    <div class="card">
+                    <div
+                        id="project_{{ project.id }}"
+                        class="card"
+                        {% if project.exclude %}style="display: none;"{% endif %}
+                    >
                         {% if project.logo %}
                         <img class="card-img-top" src="{{ project.logo.url }}" alt="logo">
                         {% endif %}
@@ -72,4 +89,48 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    var $form = $('form#tags');
+    var $tags = $('input[name="tag"]');
+
+    function filterByTag(e) {
+        var excludedTags = [];
+        var $target = $(e.target);
+
+        if ($target.is('input')) {
+            $target
+            .parent('.badge')
+            .toggleClass('badge-warning badge-light');
+
+            $tags.each(function () {
+                if (!this.checked) {
+                    excludedTags.push(this.id);
+                }
+            });
+
+            $.ajax({
+                method: 'get',
+                url: '/portfolio/',
+                data: $form.serialize(),
+                dataType: 'json',
+                success: function (projects) {
+                    $('.card').each(function () {
+                        var $card = $(this);
+
+                        if (projects.includes(parseInt($card.attr('id').slice(8)))) {
+                            $card.show();
+                        } else {
+                            $card.hide();
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    $form.click(filterByTag);
+</script>
 {% endblock %}
