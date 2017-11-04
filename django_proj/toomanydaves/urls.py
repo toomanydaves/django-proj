@@ -23,15 +23,17 @@ from django.contrib.auth import views as contrib_auth_views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    url(r'^about/$', views.about, name='about'),
+    url(r'^backstory/$', views.backstory, name='backstory'),
+    url(r'^poem/$', views.poem, name='poem'),
+    url(r'^engage/$', views.engage, name='engage'),
+    url(r'^portfolio/', include('portfolio.urls')),
+    url(r'^blog/$', include('blog.urls')),
     url(r'^people/$', toomanydaves_auth_views.people, name="people"),
     url(r'^people/(?P<user_id>[\w-]+)/$', toomanydaves_auth_views.person, name="person"),
-    url(r'^engage/$', views.engage, name='engage'),
     url(r'^login/$', contrib_auth_views.login, name='login'),
     url(r'^user/$', toomanydaves_auth_views.user, name='user'),
     url(r'^logout/$', views.logout_user, name='logout'),
     url(r'^admin/logout/$', views.logout_user, name='logout_admin'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
-    url(r'^portfolio/', include('portfolio.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

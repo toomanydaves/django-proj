@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'social_django',
     'toomanydaves_auth.apps.ToomanydavesAuthConfig',
     'portfolio.apps.PortfolioConfig',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [

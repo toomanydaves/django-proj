@@ -1,67 +1,106 @@
-<div
-    id="philosophy"
-    class="tab-pane fade show active"
-    role="tabpanel"
-    aria-labelledby="philosophy-tab"
->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div
-                    id="philosophy-carousel"
-                    class="carousel slide"
-                    data-ride="carousel"
-                    data-interval="11000"
-                >
-                    <ol class="carousel-indicators">
-                        <li
-                            data-target="#philosophy-carousel"
-                            data-slide-to="0"
-                            class="active"
-                        ></li>
-                        <li data-target="#philosophy-carousel" data-slide-to="1"></li>
-                        <li data-target="#philosophy-carousel" data-slide-to="2"></li>
-                        <li data-target="#philosophy-carousel" data-slide-to="3"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            {% include "toomanydaves/about_philosophy_platform.html" %}
-                        </div>
-                        <div class="carousel-item">
-                            {% include "toomanydaves/about_philosophy_inspiration.html" %}
-                        </div>
-                        <div class="carousel-item">
-                            {% include "toomanydaves/about_philosophy_mission.html" %}
-                        </div>
-                        <div class="carousel-item">
-                            {% include "toomanydaves/about_philosophy_network.html" %}
-                        </div>
+{% load static %}
+
+<style>
+.carousel-indicators {
+    bottom: 10px;
+}
+.carousel-slide {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 560px;
+}
+.carousel-caption {
+    top: 4px;
+    bottom: auto;
+}
+.carousel-control-next,
+.carousel-control-prev {
+    bottom: auto;
+    top: 50%;
+    width: 36px;
+    margin-bottom: 1rem;
+}
+#philosophy-carousel .jumbotron {
+    background-color: inherit;
+    border-radius: 0;
+    padding-left: 7%;
+    padding-right: 7%;
+    text-shadow: 0 0 30px #333;
+    height: 550px;
+}
+#platform-slide {
+    background-position: 50% 25%;
+    background-image: url({% static "/images/biggie-color-shift.jpg" %});
+}
+#inspiration-slide {
+    background-image: url(https://i.pinimg.com/564x/f9/9d/37/f99d378f2bd308d0285965f29d86adb9.jpg);
+}
+#mission-slide {
+    background-image: url(https://i.pinimg.com/564x/96/ca/0d/96ca0d0c78e2a7001ce9a023138a83e2.jpg)
+}
+#network-slide {
+    background-position: 50% 5%;
+    background-image: url({% static "/images/alexander_girard.jpg" %});
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div
+                id="philosophy-carousel"
+                class="carousel slide"
+                data-ride="carousel"
+                data-interval="12000"
+            >
+                <ol class="carousel-indicators">
+                    <li
+                        data-target="#philosophy-carousel"
+                        data-slide-to="0"
+                        class="active"
+                    ></li>
+                    <li data-target="#philosophy-carousel" data-slide-to="1"></li>
+                    <li data-target="#philosophy-carousel" data-slide-to="2"></li>
+                    <li data-target="#philosophy-carousel" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% include "toomanydaves/about_philosophy_platform.html" %}
                     </div>
-                    <a
-                        class="carousel-control-prev align-items-end"
-                        href="#philosophy-carousel"
-                        role="button"
-                        data-slide="prev"
-                    >
-                        <span
-                            class="carousel-control-prev-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a
-                        class="carousel-control-next align-items-end"
-                        href="#philosophy-carousel"
-                        role="button"
-                        data-slide="next"
-                    >
-                        <span
-                            class="carousel-control-next-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="carousel-item">
+                        {% include "toomanydaves/about_philosophy_inspiration.html" %}
+                    </div>
+                    <div class="carousel-item">
+                        {% include "toomanydaves/about_philosophy_mission.html" %}
+                    </div>
+                    <div class="carousel-item">
+                        {% include "toomanydaves/about_philosophy_network.html" %}
+                    </div>
                 </div>
+                <a
+                    class="carousel-control-prev align-items-end"
+                    href="#philosophy-carousel"
+                    role="button"
+                    data-slide="prev"
+                >
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a
+                    class="carousel-control-next align-items-end"
+                    href="#philosophy-carousel"
+                    role="button"
+                    data-slide="next"
+                >
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
     </div>

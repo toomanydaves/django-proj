@@ -1,4 +1,10 @@
+{% extends "toomanydaves/base.html" %}
+
 {% load static %}
+
+{% block title %}Backstory of Too Many Daves{% endblock %}
+
+{% block style %}
 <style>
     #backstory .jumbotron {
         background-position: 50% 25%;
@@ -26,6 +32,9 @@
         height: 330px;
     }
 </style>
+{% endblock %}
+
+{% block content %}
 <div id="backstory">
     <div class="container-fluid pl-0 pr-0 mb-3">
         <div class="sean-jacke-bg text-dark">
@@ -42,7 +51,7 @@
                         <span class="long-dash-after">I'm the prime-mover behind
                         <em class="brand">Too Many Daves</em></span><br>
                         the one who started things in motion.<br>
-                        In what follows, I gave it my best to bring you
+                        In what follows, I've done my best to bring you
                         up to speed.
                     </p>
                 </div>
@@ -311,3 +320,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

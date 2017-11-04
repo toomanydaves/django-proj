@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    function colorFlow ($els, next) {
+        var sequence = true;
+        var intermediateColor = '#fff';
+        var restingColor = '#f1443d';
+        var duration = 100;
+        var $el;
+
+        if (sequence) {
+            $el = $els.first();
+        } else {
+            $el = $els.eq(Math.floor(Math.random() * $els.length));
+        }
+
+        $els = $els.not($el);
+
+        $el.velocity({ fill: intermediateColor }, duration, function () {
+                $el.velocity({ 'fill': restingColor });
+
+                if ($els.length) {
+                    colorFlow($els, next);
+                } else {
+                    if (next) {
+                        next();
+                    }
+                }
+            }
+        );
+    }
+
+    function fallDown ($els, next, y, delay, duration) {
+        var random = true;
+        var y = y || '240px';
+        var duration = duration || 400;
+        var delay = delay || 600;
+        var $el = random ? $els.eq(Math.floor(Math.random() * $els.length)) : $els.first();
+        $els = $els.not($el);
+
+        window.setTimeout(function () {
+            $el.velocity({ translateY: y }, duration);
+
+            if ($els.length) {
+                fallDown($els, next, y, delay/2, duration);
+            } else {
+                if (next) {
+                    next();
+                }
+            }
+        }, delay);
+    }
+
+    function slideOut (next) {
+        window.setTimeout(function () {
+            $('#logo-claim').fadeOut(450);
+            $('#svg-logo').velocity({ height: 0 }, 500, function () {
+                $('#logo').velocity({ 'padding-top': 0 }, 200, function () {
+                    if (next) {
+                        next();
+                    }
+                });
+            });
+        }, 600);
+    }
+</script>

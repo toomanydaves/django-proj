@@ -2,21 +2,7 @@
     <div class="dot-matrix-bg text-light">
         <div class="row">
             <div class="col-12">
-                <div class="jumbotron text-light">
-                    <h1>
-                        Standing Together
-                    </h1>
-                    <p class="lead">
-                        <em>Too Many Daves</em>
-                        is a motley collection of makers, teachers, organizers, producers,
-                        designers, activitists, students, artists and other rabbel-rousers.
-                    </p>
-                    <p class="lead">
-                        <span class="long-dash-after">
-                            Its membership is open to anyone sympathetic towards its mission
-                        </span><br>
-                        to foster creativity, engagement, reflection and wonder.
-                    </p>
+                <div class="jumbotron text-light d-flex flex-column-reverse">
                     {% if not user.is_authenticated %}
                         <p class="lead">
                             <a
@@ -28,10 +14,25 @@
                             </a>
                         </p>
                     {% endif %}
+                    <p class="lead">
+                        <span class="long-dash-after">
+                            Its membership is open to anyone sympathetic towards its mission
+                        </span><br>
+                        to foster creativity, engagement, reflection and wonder.
+                    </p>
+                    <p class="lead">
+                        <em>Too Many Daves</em>
+                        is a motley collection of makers, teachers, organizers, producers,
+                        designers, activitists, students, artists, concerned citizens
+                        and other rabbel-rousers.
+                    </p>
+                    <h1>
+                        Standing Together
+                    </h1>
                 </div>
             </div>
             <div class="carousel-caption d-block">
-                <h3>A Network of Individuals.</h3>
+                <h2>A Group of Folks.</h2>
             </div>
         </div>
     </div>

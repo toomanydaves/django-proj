@@ -9,47 +9,9 @@
 .nav-tabs {
     margin-bottom: 1rem;
 }
-.carousel-slide {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 550px;
-}
-#philosophy .carousel-control-next,
-#philosophy .carousel-control-prev {
-    width: 36px;
-    margin-bottom: 1rem;
-}
-#platform-slide {
-    background-position: 50% 25%;
-    background-image: url({% static "/images/biggie-color-shift.jpg" %});
-}
-#inspiration-slide {
-    background-image: url(https://i.pinimg.com/564x/f9/9d/37/f99d378f2bd308d0285965f29d86adb9.jpg);
-}
-#mission-slide {
-    background-image: url(https://i.pinimg.com/564x/96/ca/0d/96ca0d0c78e2a7001ce9a023138a83e2.jpg)
-}
-#network-slide {
-    background-position: 50% 5%;
-    background-image: url({% static "/images/alexander_girard.jpg" %});
-}
-#philosophy .jumbotron {
-    background-color: inherit;
-    border-radius: 0;
-}
+
 #about-page-footnotes {
     margin-top: 10rem;
-}
-.sean-jacke-bg {
-    background: url({% static "/images/seanjacke_cover.jpg" %});
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 330px;
-}
-.slide-background {
-    height: 100%;
 }
 </style>
 {% endblock %}
@@ -65,32 +27,32 @@
                             id="philosophy-tab"
                             class="nav-item nav-link active"
                             data-toggle="tab"
-                            href="#philosophy"
+                            href="#philosophy-pane"
                             role="tab"
-                            aria-controls="philosophy"
+                            aria-controls="philosophy-pane"
                             aria-expanded="true"
                         >
-                        <span class="d-none d-md-block">What is
-                            <em class="brand">Too Many Daves?</em>
-                        </span>
-                        <span class="d-none d-sm-block d-md-none">Too Many Daves?</span>
-                        <span class="d-block d-sm-none">What it is</span>
+                            <span class="d-none d-md-block">What is
+                                <em class="brand">Too Many Daves?</em>
+                            </span>
+                            <span class="d-none d-sm-block d-md-none">Too Many Daves?</span>
+                            <span class="d-block d-sm-none">What it is</span>
                         </a>
                         <a
                             id="backstory-tab"
                             class="nav-item nav-link"
                             data-toggle="tab"
-                            href="#backstory"
+                            href="#backstory-pane"
                             role="tab"
-                            aria-controls="backstory"
+                            aria-controls="backstory-pane"
                         >Backstory</a>
                         <a
                             id="poem-tab"
                             class="nav-item nav-link"
                             data-toggle="tab"
-                            href="#poem"
+                            href="#poem-pane"
                             role="tab"
-                            aria-controls="poem"
+                            aria-controls="poem-pane"
                         >The Poem</a>
                     </nav>
                 </div>
@@ -98,9 +60,29 @@
         </div>
     </div>
     <div id="about-page-tab-content" class="tab-content">
-        {% include "toomanydaves/about_philosophy.html" %}
-        {% include "toomanydaves/about_backstory.html" %}
-        {% include "toomanydaves/about_poem.html" %}
+        <div id="philosophy-pane"
+            class="tab-pane fade show active"
+            role="tabpanel"
+            aria-labelledby="philosophy-tab"
+        >
+            {% include "toomanydaves/about_philosophy.html" %}
+        </div>
+        <div
+            id="backstory-pane"
+            class="tab-pane fade text-sans-serif-headings"
+            role="tabpanel"
+            aria-labelledby="backstory-tab"
+        >
+            {% include "toomanydaves/about_backstory.html" %}
+        </div>
+        <div
+            id="poem-pane"
+            class="tab-pane fade"
+            role="tabpanel"
+            aria-labelledby="poem-tab"
+        >
+            {% include "toomanydaves/about_poem.html" %}
+        </div>
     </div>
     <div id="about-page-footnotes">
         {% include "toomanydaves/about_footnotes.html" %}

@@ -4,8 +4,11 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'toomanydaves/home.html')
 
-def about(request):
-    return render(request, 'toomanydaves/about.html')
+def backstory(request):
+    return render(request, 'toomanydaves/backstory.html')
+
+def poem(request):
+    return render(request, 'toomanydaves/poem.html')
 
 def logout_user(request):
     logout(request)
