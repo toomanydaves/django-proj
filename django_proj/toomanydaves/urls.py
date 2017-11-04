@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^poem/$', views.poem, name='poem'),
     url(r'^engage/$', views.engage, name='engage'),
     url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^blog/$', include('blog.urls')),
+    url(r'^blog/', include('blog.urls')),
     url(r'^people/$', toomanydaves_auth_views.people, name="people"),
     url(r'^people/(?P<user_id>[\w-]+)/$', toomanydaves_auth_views.person, name="person"),
     url(r'^login/$', contrib_auth_views.login, name='login'),

@@ -15,6 +15,10 @@ class Project(models.Model):
     name = models.CharField(
         max_length=200,
     )
+    claim = models.CharField(
+        blank=True,
+        max_length=400,
+    )
     description = models.TextField(
         blank=True,
     )
