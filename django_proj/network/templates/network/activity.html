@@ -1,0 +1,17 @@
+<div id="network-activity" class="container">
+    <div class="row">
+        <div class="col-12 text-serif">
+            <p>
+                <span class="lead">{{ greeting }}, {{ user.first_name }}.</span><br>
+                Happy <span class="day-of-the-week"></span>.
+            </p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var now = Date.now();
+    var dateNow = new Date(now);
+    var dayOfWeek = dateNow.toLocaleString(window.navigator.language, { weekday: 'long' });
+
+    $('#network-activity .day-of-the-week').text(dayOfWeek);
+</script>

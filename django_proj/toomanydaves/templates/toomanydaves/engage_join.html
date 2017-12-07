@@ -1,72 +1,23 @@
-<div
-    id="join"
-    class="tab-pane fade show active"
-    role="tabpanel"
-    aria-labelledby="join-tab"
->
-    <div class="container">
-        <div class="row justify-content-between">
-            {% if not user.is_authenticated %}
-            <div class="col-12 col-lg-5 order-lg-7">
-                <div class="jumbotron">
-                    <h3>
-                        Login or register
-                    </h3>
-                    <p>
-                        Use a <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>
-                        (or <a href="{% url 'social:begin' 'github' %}">GitHub</a>)
-                        account,<br>
-                        or <button type="submit" disabled>submit</button>
-                        <input placeholder="your email address">
-                    </p>
-                    <small class="text-secondary">
-                        <p>
-                            If you're wondering what kind of a commitment
-                            you're making by registering,
-                            rest assured that all you're doing is signing up
-                            to receive informative and infrequent emails
-                            that couldn't be easier to unsubscribe from
-                            should you choose to.
-                        </p>
-                        <p>
-                            Plus when you're here and logged in, you can make use this
-                            site's functionality in ways that aren't possible to offer
-                            people who have not registered.
-                        </p>
-                        <p>
-                            To learn more,
-                            our privacy policy and membership terms
-                            are explained <a href="/terms">in detail here</a>.
-                        </p>
-                    </small>
-                </div>
-            </div>
-            {% endif %}
-            <div class="col-12 col-lg-6 order-lg-1">
-                <div class="jumbotron text-light join-bg">
-                    <h4>
-                        Fortunately life presents us with countless opportunities
-                        to exercise our creativity.
-                    </h4>
-                    <p>
-                        Unfortunately, <a
-                            class="tooltip-target"
-                            href="#tooltip-title"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            data-html="true"
-                            title="<span><a href=&quot;/about#tab=poem&quot;
-                            target=&quot;_blank&quot;>Read the poem</a>...</span>"
-                        >as in the naming of the Daves</a>,
-                        these too often go squandered...
-                    </p>
-                    <p>
-                        <span class="lead">
-                            <span class="long-dash-after">Don't let that happen</span> join us!
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="jumbotron text-light join-bg">
+    <h4>
+        Fortunately life presents us with countless opportunities
+        to exercise our creativity.
+    </h4>
+    <p>
+        Unfortunately, <a
+            class="tooltip-target"
+            href="#tooltip-title"
+            data-toggle="tooltip"
+            data-placement="top"
+            data-html="true"
+            title="<span><a href=&quot;/about#tab=poem&quot;
+            target=&quot;_blank&quot;>Read the poem</a>...</span>"
+        >as in the naming of the Daves</a>,
+        these too often go squandered...
+    </p>
+    <p>
+        <span class="lead">
+            <span class="long-dash-after">Don't let that happen</span> join us!
+        </span>
+    </p>
 </div>

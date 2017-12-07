@@ -1,0 +1,194 @@
+{% extends 'toomanydaves/base.html' %}
+
+{% block title %}{{ user.first_name }} | Too Many Daves{% endblock %}
+
+{% block nav %}
+    {% include "toomanydaves/nav.html" %}
+{% endblock %}
+
+{% block content %}
+<div id="dashboard">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h6 class="text-right">
+                    <small class="text-uppercase">Dashboard</small>
+                </h6>
+                <ul id="dashboard-tabs" class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a
+                            id="activity-tab"
+                            class="nav-link active"
+                            data-toggle="tab"
+                            href="#activity-pane"
+                            role="tab"
+                            aria-controls="activity"
+                        >Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            id="profile-tab"
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#profile-pane"
+                            role="tab"
+                            aria-controls="profile"
+                        >Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            id="projects-tab"
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#projects-pane"
+                            role="tab"
+                            aria-controls="projects"
+                        >Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            id="posts-tab"
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#posts-pane"
+                            role="tab"
+                            aria-controls="posts"
+                        >Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            id="support-tab"
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#support-pane"
+                            role="tab"
+                            aria-controls="support"
+                        >Support</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="dashboard-tab-content" class="tab-content">
+        <div
+            id="activity-pane"
+            class="tab-pane fade show active"
+            role="tabpanel"
+            aria-labelledby="activity-tab"
+        >{% include "network/activity.html" %}</div>
+        <div
+            id="profile-pane"
+            class="tab-pane fade"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-9 text-sans-serif-headings">
+                        <h4>{{ user }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            id="projects-pane"
+            class="tab-pane fade"
+            role="tabpanel"
+            aria-labelledby="projects-tab"
+        >
+            {% include "network/projects.html" %}
+        </div>
+        <div
+            id="posts-pane"
+            class="tab-pane fade"
+            role="tabpanel"
+            aria-labelledby="posts-tab"
+        >
+            <div id="blog-editor" class="container">
+                <div class="row text-sans-serif-headings">
+                    <div class="col-12 col-lg-6">
+                        <h3>Posts</h3>
+                        <p>You haven't posted anything yet...</p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h3>Drafts</h3>
+                        <p>
+                            Start by creating a draft.<br>
+                            We'll save it for as long as you'd like.</br>
+                            When you're ready, post it!
+                        </p>
+                        <p>
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                data-toggle="modal"
+                                data-target="#new-draft-editor-modal"
+                            >New Draft</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            id="support-pane"
+            class="tab-pane fade"
+            role="tabpanel"
+            aria-labelledby="support-tab"
+        >
+            {% include "network/support.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block modal %}
+<div
+    id="new-draft-editor-modal"
+    class="modal fade"
+    tabindex="-1"
+    data-backdrop="static"
+    role="dialog"
+    aria-labelledby="new-draft-editor-modal-title"
+    aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="new-draft-editor-modal-title" class="modal-title">New Draft</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% include "blog/draft-editor.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+<div
+    id="existing-draft-editor-modal"
+    class="modal fade"
+    tabindex="-1"
+    data-backdrop="static"
+    role="dialog"
+    aria-labelledby="existing-draft-editor-modal-title"
+    aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="existing-draft-editor-modal-title" class="modal-title">New Draft</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% include "blog/draft-editor.html" %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

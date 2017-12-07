@@ -18,42 +18,25 @@
             rel="stylesheet"
         >
         <link
+            href="https://fonts.googleapis.com/css?family=Abril+Fatface"
+            rel="stylesheet"
+        >
+        <link
             rel="stylesheet"
             href="{% static "/css/icon-font.css" %}"
         >
         <style>
-            section h1,
-            section h2,
-            section h3,
-            section h4,
-            section h5,
-            section h6 {
+            body { 
+                background-color: #f5f5f5;
             }
-            section p {
-                font-family: 'Cardo', serif;
-                font-size: 1.1rem;
+            .navbar {
+                align-items: left;
             }
-            .text-serif {
-                font-family: 'Cardo', serif;
+            .modal-header {
+                border-bottom: none;
             }
-            .text-sans-serif-headings h1,
-            .text-sans-serif-headings h2,
-            .text-sans-serif-headings h3,
-            .text-sans-serif-headings h4,
-            .text-sans-serif-headings h5,
-            .text-sans-serif-headings h6,
-            .text-sans-serif {
-                font-family: 'Oswald', sans-serif;
-            }
-            .long-dash-after::after {
-                content: "\2014";
-            }
-            .long-dash-before::before {
-                content: "\2014";
-            }
-            .dot-matrix-bg {
-                background: url("{% static "/images/dot-grey.png" %}");
-                height: 100%;
+            .modal-footer {
+                border-top: none;
             }
             .tooltip-inner {
                 text-align: left;
@@ -71,6 +54,31 @@
             }
             .text-light .tooltip-target {
                 text-decoration-color: #ccc;
+            }
+            .text-serif {
+                font-family: 'Cardo', serif;
+            }
+            .text-sans-serif-headings h1,
+            .text-sans-serif-headings h2,
+            .text-sans-serif-headings h3,
+            .text-sans-serif-headings h4,
+            .text-sans-serif-headings h5,
+            .text-sans-serif-headings h6,
+            .text-sans-serif {
+                font-family: 'Oswald', sans-serif;
+            }
+            .text-fat-serif {
+                font-family: 'Abril Fatface', cursive;
+            }
+            .long-dash-after::after {
+                content: "\2014";
+            }
+            .long-dash-before::before {
+                content: "\2014";
+            }
+            .dot-matrix-bg {
+                background: url("{% static "/images/dot-grey.png" %}");
+                height: 100%;
             }
         </style>
         {% block style %}{% endblock %}
@@ -96,26 +104,31 @@
         {% block script-links %}{% endblock %}
     </head>
     <body>
-        {% include "toomanydaves/nav.html" %}
-        <div id="content">
+        <div
+            id="bg"
+            style="
+                position: fixed;
+                height: 100%;
+                width: 100%
+            "
+        >{% block bg %}{% endblock %}</div>
+
+        {% block nav %}{% endblock %}
+
+        <div id="content" style="margin-bottom: 5rem">
             {% block content %}{% endblock %}
         </div>
-        <!--
-        <footer id="site-footer" class="container">
-            <div class="row">
-                <div class="col-12">
-                    <p>
-                        © 2018 Too Many Daves. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
-        </footer>
-        -->
+
+        {% block footer %}{% endblock %}
+
+        {% block modal %}{% endblock %}
+
         <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
         </script>
+
         {% block script %}{% endblock %}
     </body>
 </html>

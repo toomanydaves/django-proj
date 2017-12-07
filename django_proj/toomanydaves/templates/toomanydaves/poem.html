@@ -4,6 +4,10 @@
 
 {% block title %}Too Many Daves by Dr. Seuss{% endblock %}
 
+{% block nav %}
+    {% include "toomanydaves/nav.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -14,24 +18,40 @@
                         src="{% static "/images/dave_on_stilts.png" %}"
                         class="float-left float-md-right"
                     >
-                    <small class="text-uppercase">Too Many Daves</small>
-                    was written by Dr. Seuss with a playfulness that captures
+                    This poem was written by Dr. Seuss with a playfulness that inspires
                     the spirit at the heart of this endeavor.
                 </p>
                 <p class="lead">
-                    And yet the poem is also a cautionary tale
-                    whose powerful moral of not wasting opportunites
-                    speaks to the importance of action in support of
-                    <a
-                        href="#tab=what-is-too-many-daves&slide=mission"
-                    >the mission at hand</a>.
+                    Equally important, it is also a cautionary tale
+                    whose powerful moral to not waste opportunites is
+                    the call to action in support of creativity
+                    that
+                    <a href="/">
+                        <em class="brand text-uppercase">Too Many Daves</em>
+                    </a>
+                    makes its mission.
                 </p>
             </div>
         </div>
         <div class="col-md-8 order-md-1 col-lg-8 order-lg-5">
             <h1>Too Many Daves</h1>
-            <h6 class="text-uppercase">By Theodore Geisel (Dr. Seuss)</h6>
-            <br>
+            <h6 class="mb-5">
+                <a
+                    class="text-uppercase"
+                    href="https://www.poetryfoundation.org/poets/theodor-geisel"
+                    target="_blank"
+                >Theodore Geisel aka Dr. Seuss
+                </a><br>
+                <span class="small">
+                    from
+                    <a
+                        href="https://smile.amazon.com/Sneetches-Other-Stories-Dr-Seuss/dp/0394800893"
+                        target="_blank"
+                    ><em>The Sneetches and Other Stories</em>
+                    </a><br>
+                    (New York: Random House, 1961)
+                </span>
+            </h6>
             <p>
                 Did I ever tell you that Mrs. McCave<br>
                 Had twenty-three sons and she named them all Dave?<br>

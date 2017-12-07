@@ -3,18 +3,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="jumbotron text-light d-flex flex-column-reverse">
+                    {% if not user.is_authenticated %}
                     <div>
                         <a
                             class="btn btn-primary btn-lg"
-                            href="/users"
+                            href="/engage"
                             role="button"
                         >
-                            Meet the Community
+                            Join
                         </a>
                     </div>
+                    {% endif %}
                     <p class="lead">
-                        On as many fronts as possible<br>
-                        Using all the tools at our disposal<br>
+                        On as many fronts as possible,<br>
                         In encouraging exhibitions of creativity and personal investment.
                     </p>
                     <h1>
@@ -32,13 +33,13 @@
                             you are here</span>that life exists and identity.<br>
                             That the powerful play goes on,
                             and you may contribute a verse.&quot;</span>"
-                        >To be vigilant and active</a>
+                        >To be vigilant and active,</a>
                     </h1>
                 </div>
             </div>
             <div class="carousel-caption d-block">
                 <h2>
-                    A Mission.
+                    A Shared Mission.
                 </h2>
             </div>
         </div>

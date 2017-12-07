@@ -1,16 +1,71 @@
 {% extends 'toomanydaves/base.html' %}
 
-{% block title %}The Journey of Too Many Daves{% endblock %}
+{% block title %}The Journal of Too Many Daves{% endblock %}
+
+{% block style %}
+   <style>
+        .post {
+            margin-bottom: 2rem;
+        }
+   </style> 
+{% endblock %}
+
+{% block nav %}
+    {% include "toomanydaves/nav.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="text-sans-serif">The Journey of <em class="brand">Too Many Daves</em></h1>
-            <h6><small>A Collaborative Weblog</small></h6>
+    <div class="row mb-3">
+        <div class="col-12 text-right mb-3">
+            <h1 class="text-serif" style="margin-bottom: 0">
+                The Journal of
+                <br class="d-lg-none">
+                <span class="text-uppercase">Too Many Daves</span>
+            </h1>
+            <h6><small class="text-serif">A Collaborative Weblog</small></h6>
         </div>
-        <div class="col-12">
-            <p>This is the <a href="/backstory">backstory</a>.
-            <p>This is the <a href="/poem">poem</a>.
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-8">
+            <div class="post">
+                <h3 class="text-sans-serif">Up and Running!</h3>
+                <h6>Today at 4:35 by <a href="people/1">Sean Jacke</a></h6>
+                <p class="text-serif">
+                    This is the crazy thing that happened.
+                    Everything! This has been such a rush.
+                    Everyone should have the experience to put something on the Net.
+                    Something they've worked hard on and hope people will respond to.
+                    It's like building a table.
+                    You bring it into the world.
+                    People can then relate to it.
+                    This extension of you...
+                </p>
+            </div>
+            <div class="post">
+                <h3 class="text-sans-serif">Lots of Help</h3>
+                <h6>2 days ago by <a href="people/2">Katrin Jacke</a></h6>
+                <p class="text-serif">
+                    It takes a lot of help to do anything big.
+                    It just makes sense.
+                    I've got a body, you do too. We can be in two places at once.
+                    I speak two languages, you do too. If we're lucky we now speak four.
+                </p>
+            </div>
+        </div>
+        <div class="col-12 col-sm-4">
+            <div class="mb-sm-4">
+                <h4><a class="text-uppercase" href="/backstory">backstory</a></h4>
+                <div class="d-none d-sm-block">
+                    {% include 'blog/backstory.html' %}
+                </div>
+            </div>
+            <div>
+                <h4><a class="text-uppercase" href="/about">about</a></h4>
+                <div class="d-none d-sm-block">
+                    {% include 'blog/about.html' %}
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'toomanydaves_auth.apps.ToomanydavesAuthConfig',
     'portfolio.apps.PortfolioConfig',
     'blog.apps.BlogConfig',
+    'network.apps.NetworkConfig',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +97,7 @@ DATABASES = {
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/network/dashboard'
 
 # User model
 # https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project

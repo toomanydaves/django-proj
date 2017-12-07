@@ -1,36 +1,23 @@
-<div
-    id="project-work"
-    class="tab-pane fade"
-    role="tabpanel"
-    aria-labelledby="project-work-tab"
->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h4>
-                    You want to contribute to an individual project?
-                </h4>
-                <p class="lead">
-                    Terrific! Projects are always looking for help.
-                </p>
-                <div class="text-serif">
-                    <p>
-                        Most projects are actively searching for volunteers,
-                        and some, for new talent to join their teams.
-                        Typically most projects provide information about what they need
-                        and how to be in touch directly on their website.
-                        This should definitely be your first recourse.
-                        However{% if not user.is_authenticated %} if you're a member{% endif %},
-                        you may also want to send a message to other members
-                        affliated with the project{% if not user.is_authenticated %}&nbsp;(if
-                        you're not, it's probably a good time
-                        to <a href="#tab=sign-up">join</a></span>){% endif %}.
-                        When you're ready, go to <a href="/portfolio">the Portfolio</a>,
-                        locate the project, and
-                        you should be able to find the information you need.<br>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<h4>
+    You want to contribute to an individual project?
+</h4>
+<p class="lead">
+    Terrific! Projects are always looking for help.
+</p>
+<div class="text-serif">
+    <p>
+        Most projects are actively searching for volunteers,
+        and some, for new talent to join their teams.
+        Typically most projects provide information about what they need
+        and how to be in touch directly on their website.
+        This should definitely be your first recourse.
+        However{% if not user.is_authenticated %} if you're a member{% endif %},
+        you may also want to send a message to other members
+        affliated with the project{% if not user.is_authenticated %}&nbsp;(if
+        you're not, it's probably a good time
+        to <a href="#tab=sign-up">join</a></span>){% endif %}.
+        When you're ready, go to <a href="/portfolio">the Portfolio</a>,
+        locate the project, and
+        you should be able to find the information you need.<br>
+    </p>
 </div>

@@ -34,6 +34,10 @@
 </style>
 {% endblock %}
 
+{% block nav %}
+    {% include "toomanydaves/nav.html" %}
+{% endblock %}
+
 {% block content %}
     <div id="projects" class="container">
         <div class="row mb-3">
@@ -99,6 +103,8 @@
 <script type="text/javascript">
     var $form = $('form#tags');
     var $tags = $('input[name="tag"]');
+
+    $('body').addClass('dot-matrix-bg');
 
     function filterByTag(e) {
         var excludedTags = [];

@@ -1,10 +1,17 @@
 <script type="text/javascript">
-    function colorFlow ($els, next) {
+    function colorFlow ($els, next, opacity) {
         var sequence = true;
         var intermediateColor = '#fff';
         var restingColor = '#f1443d';
         var duration = 100;
+        var options = { };
         var $el;
+
+        if (opacity !== undefined) {
+            options.opacity = opacity;
+        } else {
+            options.fill = intermediateColor;
+        }
 
         if (sequence) {
             $el = $els.first();
@@ -14,11 +21,14 @@
 
         $els = $els.not($el);
 
-        $el.velocity({ fill: intermediateColor }, duration, function () {
-                $el.velocity({ 'fill': restingColor });
+        $el.velocity(options, duration, function () {
+                $el.velocity({
+                    'fill': restingColor,
+                    'opacity': '1.0'
+                });
 
                 if ($els.length) {
-                    colorFlow($els, next);
+                    colorFlow($els, next, opacity);
                 } else {
                     if (next) {
                         next();
@@ -32,7 +42,7 @@
         var random = true;
         var y = y || '240px';
         var duration = duration || 400;
-        var delay = delay || 600;
+        var delay = delay || 300;
         var $el = random ? $els.eq(Math.floor(Math.random() * $els.length)) : $els.first();
         $els = $els.not($el);
 

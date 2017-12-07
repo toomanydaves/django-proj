@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: #fff;
+        background-color: #111312;
         background-position: center center;
         background-size: cover;
         background-attachment: fixed;
@@ -48,35 +48,34 @@
             <span class="navbar-toggler-icon icon-menu"></span>
         </button>
         <a class="navbar-brand" href="/">
-            <span style="visibility: hidden">Too Many Daves</span>
-            <div id="inline-logo" style="position: absolute; top: 20px">
+            <div id="inline-logo" style="display: none; position: absolute; top: 20px">
                 {% include "toomanydaves/logo/_inline.html" %}
             </div>
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav text-fat-serif">
+            <ul class="navbar-nav d-none">
                 <li class="nav-item">
                     <a 
-                        class="nav-link h5"
+                        class="nav-link"
                         href="/portfolio"
                     >Portfolio</a>
                 </li>
                 <li class="nav-item">
                     <a 
-                        class="nav-link h5"
+                        class="nav-link"
                         href="/blog"
                     >Posts</a>
                 </li>
                 <li class="nav-item">
                     <a 
-                        class="nav-link h5"
+                        class="nav-link"
                         href="/people"
                     >Peeps</a>
                 </li>
             </ul>
         </div>
         <ul id="navbar-social" class="navbar-nav ml-auto flex-row">
-            <li class="nav-item">
+           <li class="nav-item">
                 <a 
                     class="nav-link"
                     href="http://facebook.com/toomanydaves.net"
@@ -115,5 +114,20 @@
             {% endif %}
         </ul>
     </nav>
-    {% include "toomanydaves/logo/inline/_animation.html" %}
+    <div
+        id="centered-logo"
+        style="visibility: hidden"
+        class="row justify-content-center mb-4"
+    >
+        <div class="col"></div>
+        <div class="col-auto">
+            {% include "toomanydaves/logo/_centered.html" %}
+            <h4 class="logo-claim text-white">
+                <span class="think-big">Think big.</span>
+                <span class="start-small">Start small.</span>
+                <span class="keep-at-it">Keep at it.</span>
+            </h4>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>

@@ -2,10 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from .models import User
 
-@login_required
-def user(request):
-    return render(request, 'toomanydaves_auth/user.html')
-
 def person(request, user_id):
     person = get_object_or_404(User, pk=user_id)
     return render(request, 'toomanydaves_auth/person.html', {'person': person})

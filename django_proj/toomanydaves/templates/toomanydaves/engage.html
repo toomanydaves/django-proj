@@ -18,50 +18,119 @@
 </style>
 {% endblock %}
 
+{% block nav %}
+    {% include "toomanydaves/nav.html" %}
+{% endblock %}
+
 {% block content %}
 <div id="engage-page">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <ul id="engage-page-tabs" class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a
-                            id="join-tab"
-                            class="nav-link active"
-                            data-toggle="tab"
-                            href="#join"
-                            role="tab"
-                            aria-controls="join"
-                        >Join us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            id="project-work-tab"
-                            class="nav-link"
-                            data-toggle="tab"
-                            href="#project-work"
-                            role="tab"
-                            aria-controls="project-work"
-                        >Work on a Project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            id="donations-tab"
-                            class="nav-link"
-                            data-toggle="tab"
-                            href="#donations"
-                            role="tab"
-                            aria-controls="donations"
-                        >Donations</a>
-                    </li>
-                </ul>
+        <div class="row justify-content-between">
+            {% if not user.is_authenticated %}
+            <div class="col-12 col-lg-5 order-lg-7">
+                <div class="jumbotron">
+                    <h3>
+                        Login or register
+                    </h3>
+                    <p>
+                        Use a <a href="{% url 'social:begin' 'facebook' %}">Facebook</a>
+                        (or <a href="{% url 'social:begin' 'github' %}">GitHub</a>)
+                        account,<br>
+                        or <button type="submit" disabled>submit</button>
+                        <input placeholder="your email address">
+                    </p>
+                    <small class="text-secondary">
+                        <p>
+                            If you're wondering what kind of a commitment
+                            you're making by registering,
+                            rest assured that all you're doing is signing up
+                            to receive informative and infrequent emails
+                            that couldn't be easier to unsubscribe from
+                            should you choose to.
+                        </p>
+                        <p>
+                            Plus when you're here and logged in, you can make use this
+                            site's functionality in ways that aren't possible to offer
+                            people who have not registered.
+                        </p>
+                        <p>
+                            To learn more,
+                            our privacy policy and membership terms
+                            are explained <a href="/terms">in detail here</a>.
+                        </p>
+                    </small>
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-12 col-lg-5 order-lg-7">
+                <div class="row">
+                    <div class="col-12">
+                        <ul id="engage-page-tabs" class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a
+                                    id="join-tab"
+                                    class="nav-link active"
+                                    data-toggle="tab"
+                                    href="#join"
+                                    role="tab"
+                                    aria-controls="join"
+                                >Join us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    id="project-work-tab"
+                                    class="nav-link"
+                                    data-toggle="tab"
+                                    href="#project-work"
+                                    role="tab"
+                                    aria-controls="project-work"
+                                >Work on a Project</a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    id="donations-tab"
+                                    class="nav-link"
+                                    data-toggle="tab"
+                                    href="#donations"
+                                    role="tab"
+                                    aria-controls="donations"
+                                >Donations</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="engage-page-tab-content" class="tab-content">
+                                <div
+                                    id="join"
+                                    class="tab-pane fade show active"
+                                    role="tabpanel"
+                                    aria-labelledby="join-tab"
+                                >
+                                    {% include "toomanydaves/engage_join.html" %}
+                                </div>
+                                <div
+                                    id="project-work"
+                                    class="tab-pane fade"
+                                    role="tabpanel"
+                                    aria-labelledby="project-work-tab"
+                                >
+                                    {% include "toomanydaves/engage_project-work.html" %}
+                                </div>
+                                <div
+                                    id="donations"
+                                    class="tab-pane fade"
+                                    role="tabpanel"
+                                    aria-labelledby="donations-tab"
+                                >
+                                    {% include "toomanydaves/engage_donations.html" %}
+                                </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="engage-page-tab-content" class="tab-content">
-        {% include "toomanydaves/engage_join.html" %}
-        {% include "toomanydaves/engage_project-work.html" %}
-        {% include "toomanydaves/engage_donations.html" %}
     </div>
 </div>
 {% endblock %}

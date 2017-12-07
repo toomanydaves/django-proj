@@ -1,0 +1,145 @@
+<script type="text/javascript">
+    var bgImages = [
+        {
+            //Wire Hangers
+            url: 'url(https://s-media-cache-ak0.pinimg.com/originals/05/62/57/056257690b3027178dd7058558390ce6.gif)',
+            duration: 3500
+        },
+        {
+            //Pinwheel
+            url: 'url(https://s-media-cache-ak0.pinimg.com/originals/90/2a/a7/902aa72e018e6eb6a951a0d70fbffb00.gif)',
+            duration: 2500
+        },
+        {
+            //Han Solo
+            url: 'url(https://s-media-cache-ak0.pinimg.com/originals/86/52/b1/8652b1162e9dd69083d99f14cce52bbd.gif)',
+            duration: 2200
+        },
+        {
+            //Superman
+            url: 'url(https://s-media-cache-ak0.pinimg.com/originals/d6/e6/be/d6e6be7a706e8920b9471d9b12340cc1.gif)',
+            duration: 2000
+        }
+    ];
+    var $centeredLogo = $('#centered-logo');
+    var $teaser = $('#teaser');
+    var $bg = $('#bg');
+    // Choose the background image randomly and add it to the body.
+    var bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
+    var $body = $('body')
+    .addClass('text-white')
+    .css('background-image', bgImage.url);;
+
+    // Working with cookies to alter UX (TO DO)
+    if ('{{ extended_appearance }}') { console.log('seen home'); }
+
+    $(document).ready(function () {
+        // Make sure the centered logo is visible
+        $centeredLogo.css('visibility', 'visible');
+
+        // Get the inline logo that isn't being displayed and position
+        // it so that it can later fall into place.
+        fallDown($('#inline-logo rect'), function () { }, '-260px');
+
+        // Streak the letters of the center logo.
+        window.setTimeout(function () {
+            colorFlow($centeredLogo.find('g g'), function () { }, '0.0');
+        }, 500);
+
+        // Reveal the background squares of color
+        $teaser.velocity({ 'opacity': '1' }, 500);
+
+        // Remove the bg image on body (leaves black)
+        // after the appropriate duration
+        window.setTimeout(function () {
+            $body.css('background-image', 'none');
+        }, bgImage.duration);
+
+        // Once the bg image is gone...
+        window.setTimeout(function () {
+            $body
+            .removeClass('text-white')
+            .addClass('text-dark')
+            // Fade in white bg color on body
+            .velocity({'background-color': '#f5f5f5'}, 500, function () {
+                window.setTimeout(function () {
+                    // Show "Think Big."
+                    $centeredLogo.find('.think-big').addClass('text-dark');
+                    // Show the Ali bg photo
+                    $teaser.find('.portfolio.photo-bg').css(
+                        'background-image',
+                        'url(https://i.pinimg.com/564x/e7/01/f3/e701f33e49cccfe00ed01e533a0327bd.jpg'
+                    );
+
+                    window.setTimeout(function () {
+                        var $startSmall = $centeredLogo.find('.start-small');
+                        var $keepAtIt = $centeredLogo.find('.keep-at-it');
+
+                        // Show "Start Small"
+                        $startSmall.addClass('text-dark');
+
+                        // Show Hunter Thompson bg photo
+                        $teaser.find('.posts.photo-bg').css(
+                            'background-image',
+                            'url(https://i.pinimg.com/564x/c7/85/ca/c785ca7d668b1c9edc9911358a635be5.jpg)'
+                        );
+
+                        window.setTimeout(function () {
+                            // Show "Keep at it."
+                            $keepAtIt.addClass('text-dark');
+                            // Show collage bg
+                            $teaser.find('.peeps.photo-bg').css(
+                                'background-image',
+                                'url(https://i.pinimg.com/564x/4f/6d/53/4f6d53e613b2024e2ceda1dc1725bdd6.jpg)'
+                            );
+
+                            // Collapse the centered logo
+                            fallDown($centeredLogo.find(' rect'), function () {
+                                // After the collapse...
+
+                                // Show the PPP headings
+                                $teaser.find('h1').velocity({ opacity: 1 }, 500);
+
+                                // Hide the claim
+                                $centeredLogo.find('.logo-claim').velocity(
+                                    { opacity: 0 },
+                                    450
+                                );
+
+                                window.setTimeout(function () {
+                                    $centeredLogo.velocity(
+                                        { height: 0 },
+                                        450,
+                                        function () {
+                                            $('#inline-logo').css('display', 'block');
+                                            $('nav .claim').removeClass('d-none');
+                                            fallDown(
+                                                $('#inline-logo rect'),
+                                                function () {
+                                                    window.setTimeout(function () {
+                                                        colorFlow(
+                                                            $('#inline-logo g g')
+                                                        );
+                                                    }, 5500);
+
+                                                    window.setTimeout(function () {
+                                                        $('#teaser-portfolio .card-columns').velocity(
+                                                            { 'opacity': 1 },
+                                                            1200
+                                                        );
+                                                    }, 850);
+                                                },
+                                                '0px',
+                                                300
+                                            );
+                                        }
+                                    );
+                                }, 500);
+                            });
+                        }, 700);
+                    }, 700);
+                }, 500);
+            });
+        }, bgImage.duration);
+    });
+</script>

@@ -19,13 +19,13 @@ def home(request):
             else:
                 included_projects.append(project.id)
 
-    if not request.is_ajax():
+    if request.is_ajax():
+        return JsonResponse(included_projects, safe=False)
+    else:
         return render(request, 'portfolio/projects.html', {
             'tag_list': tag_list,
             'project_list': project_list,
         })
-    else:
-        return JsonResponse(included_projects, safe=False)
 
 def project(request, project_id):
     project = get_object_or_404(Project, pk=project_id)

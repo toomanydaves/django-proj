@@ -2,7 +2,10 @@
 
 <style>
 .carousel-indicators {
-    bottom: 10px;
+    top: 70px;
+}
+.carousel-indicators li {
+    cursor: pointer;
 }
 .carousel-slide {
     background-position: center;
@@ -21,7 +24,7 @@
     width: 36px;
     margin-bottom: 1rem;
 }
-#philosophy-carousel .jumbotron {
+#home-about .jumbotron {
     background-color: inherit;
     border-radius: 0;
     padding-left: 7%;
@@ -29,11 +32,11 @@
     text-shadow: 0 0 30px #333;
     height: 550px;
 }
-#platform-slide {
+#portfolio-slide {
     background-position: 50% 25%;
     background-image: url({% static "/images/biggie-color-shift.jpg" %});
 }
-#inspiration-slide {
+#poem-slide {
     background-image: url(https://i.pinimg.com/564x/f9/9d/37/f99d378f2bd308d0285965f29d86adb9.jpg);
 }
 #mission-slide {
@@ -48,38 +51,38 @@
     <div class="row">
         <div class="col-12">
             <div
-                id="philosophy-carousel"
+                id="about-carousel"
                 class="carousel slide"
                 data-ride="carousel"
                 data-interval="12000"
             >
                 <ol class="carousel-indicators">
                     <li
-                        data-target="#philosophy-carousel"
+                        data-target="#about-carousel"
                         data-slide-to="0"
                         class="active"
                     ></li>
-                    <li data-target="#philosophy-carousel" data-slide-to="1"></li>
-                    <li data-target="#philosophy-carousel" data-slide-to="2"></li>
-                    <li data-target="#philosophy-carousel" data-slide-to="3"></li>
+                    <li data-target="#about-carousel" data-slide-to="1"></li>
+                    <li data-target="#about-carousel" data-slide-to="2"></li>
+                    <li data-target="#about-carousel" data-slide-to="3"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        {% include "toomanydaves/about_philosophy_platform.html" %}
+                        {% include "../about/carousel/_portfolio.html" %}
                     </div>
                     <div class="carousel-item">
-                        {% include "toomanydaves/about_philosophy_inspiration.html" %}
+                        {% include "../about/carousel/_poem.html" %}
                     </div>
                     <div class="carousel-item">
-                        {% include "toomanydaves/about_philosophy_mission.html" %}
+                        {% include "../about/carousel/_mission.html" %}
                     </div>
                     <div class="carousel-item">
-                        {% include "toomanydaves/about_philosophy_network.html" %}
+                        {% include "../about/carousel/_network.html" %}
                     </div>
                 </div>
                 <a
                     class="carousel-control-prev align-items-end"
-                    href="#philosophy-carousel"
+                    href="#about-carousel"
                     role="button"
                     data-slide="prev"
                 >
@@ -91,7 +94,7 @@
                 </a>
                 <a
                     class="carousel-control-next align-items-end"
-                    href="#philosophy-carousel"
+                    href="#about-carousel"
                     role="button"
                     data-slide="next"
                 >
