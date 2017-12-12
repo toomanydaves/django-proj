@@ -46,11 +46,14 @@ class Post(models.Model):
         Tag,
         blank=True
     )
+    cover_photo = models.FileField(
+        blank=True,
+        upload_to='post_cover-photo'
+    )
 
     # def publish()
     # def unpublish()
     # def delete()
-
     # https://stackoverflow.com/questions/1737017
     def save(self, *args, **kwargs):
         if not self.id:

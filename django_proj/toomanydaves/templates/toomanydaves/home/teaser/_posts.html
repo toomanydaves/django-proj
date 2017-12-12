@@ -49,6 +49,12 @@
                             {% endfor %}
                         </ul>
                         {% endif %}
+                        <p class="text-dark">
+                            <a
+                                class="h4 text-sans-serif"
+                                href="{{ post.written_by.url }}"
+                            >{{ post.written_by }}</a>
+                        </p>
                         <p class="text-serif text-dark">{{ post.content }}</p>
                     </div>
                 </div>
