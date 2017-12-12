@@ -2,18 +2,27 @@
 
 {% load static %}
 
+{% block style %}
+    <style>
+        .wallpaper-bg {
+            background-image: url("{% static "/images/wallpaper-bg.png" %}");
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
 {% block nav %}
     {% include "toomanydaves/home/_nav.html" %}
 {% endblock %}
 
 {% block content %}
-    <div id="teaser" style="opacity: 0" class="text-white pb-2">
+    <div id="teaser" style="opacity: 0" class="text-white">
         {% include "toomanydaves/home/_teaser.html" %}
     </div>
 
     {% include "toomanydaves/home/_animation.html" %}
 
-    <div id="about" class="pb-5" style="background-color: #f5f5f5">
+    <div id="about" class="pb-5" style="background-color: #e3e3e3">
         {% include "toomanydaves/home/_about.html" %}
     </div>
 {% endblock %}

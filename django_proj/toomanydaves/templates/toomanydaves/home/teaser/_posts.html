@@ -1,0 +1,66 @@
+<div
+    id="teaser-posts"
+    class="posts photo-bg"
+    style="
+        background-position: center;
+        background-size: cover;
+        height: 320px;
+        margin-bottom: 30px;
+    "
+>
+    <div
+        style="
+            height: 100%;
+            overflow: scroll;
+            background-color: rgba(255, 130, 0, 0.4)
+        "
+    >
+        <div class="dot-matrix-bg">
+            <h1
+                style="
+                    opacity: 0;
+                    padding-left: 1rem;
+                    font-size: 4rem
+                "
+                class="text-fat-serif"
+            ><a href="/blog" style="color: #fff;">Posts</a></h1>
+            <div
+                class="card-columns"
+                style="
+                    opacity: 0;
+                    padding: 1rem;
+                    column-count: 1
+                "
+            >
+                {% for post in post_list %}
+                <div
+                    id="post_{{ post.id }}"
+                    class="card"
+                >
+                    <div class="card-body">
+                        {% if post.tags %}
+                        <ul class="list-inline">
+                            {% for tag in post.tags.all %}
+                            <li class="list-inline-item">
+                                <span class="badge badge-warning">
+                                    {{ tag.name }}
+                                </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <p class="text-serif text-dark">{{ post.content }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div style="padding: 1rem; margin-bottom: 10rem">
+                <a
+                    class="btn btn-primary btn-lg"
+                    href="/blog"
+                    role="button"
+                >More Posts</a>
+            </div>
+        </div>
+    </div>
+</div>

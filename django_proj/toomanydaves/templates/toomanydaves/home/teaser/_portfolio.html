@@ -1,0 +1,114 @@
+<style>
+    #teaser-portfolio .card {
+        background-color: rgba(255, 140, 140, 0.1);
+        border: 0px solid rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+    #teaser-portfolio .card:hover {
+        background-color: rgba(0, 0, 0, .7);
+        background-color: rgba(233, 233, 233, 1);
+        border-width: 3px;
+    }
+    #teaser-portfolio .card:hover h4,
+    #teaser-portfolio .card:hover h6 {
+        text-shadow: 0 0 24px #333;
+    }
+    #teaser-portfolio .card:hover .card-body {
+        background: none;
+    }
+    #teaser-portfolio .card-body h4,
+    #teaser-portfolio .card-body h6 {
+        text-shadow: 0 0 34px #000;
+    }
+    #teaser-portfolio .card:hover h4 span,
+    #teaser-portfolio .card:hover h6 span {
+        color: #000;
+        text-shadow: 0 0 34px #ccc;
+    }
+    #teaser-portfolio .card .card-body {
+        background-color: rgba(0, 0, 0, 0.15);
+        width: 100%;
+    }
+</style>
+<div
+    id="teaser-portfolio"
+    class="portfolio photo-bg"
+    style="
+        height: 535px;
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 1rem
+    "
+>
+    <div class="dot-matrix-bg">
+        <div
+            style="
+                height: 100%;
+                background-color: rgba(255, 0, 0, 0.4);
+            "
+        >
+            <h1
+                style="
+                    opacity: 0;
+                    padding-bottom: 1rem;
+                    padding-left: 1rem;
+                    font-size: 4rem
+                "
+                class="text-fat-serif"
+            ><a href="/portfolio" style="color: #fff">Projects</a></h1>
+            <div
+                style="
+                    height: 465px;
+                    overflow: scroll;
+                "
+            >
+                <div
+                    class="card-columns"
+                    style="
+                        opacity: 0;
+                        padding: 0 1rem 1rem 1rem;
+                        column-count: 1
+                    "
+                >
+                    {% for project in project_list %}
+                    <div
+                        id="project_{{ project.id }}"
+                        class="card"
+                        style="position: relative"
+                    >
+                        {% if project.logo %}
+                        <img class="card-img-top" src="{{ project.logo.url }}" alt="logo">
+                        {% endif %}
+                        <div
+                            class="card-body" style="position: absolute; top: 0px; height: 100%">
+                            {% if project.tags %}
+                            <ul class="list-inline">
+                                {% for tag in project.tags.all %}
+                                <li class="list-inline-item">
+                                    <span class="badge badge-warning">{{ tag.name }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            <h4 class="text-sans-serif">
+                                <span>{{ project }}</span>
+                            </h4>
+                            {% if project.claim %}
+                            <h6 class="text-white"><span>{{ project.claim }}</span></h6>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <h3 class="text-sans-serif mt-4">Those are just the beginning...</h3>
+                    <div style="margin-bottom: 20rem">
+                        <a
+                            class="btn btn-primary btn-lg"
+                            href="/portfolio"
+                            role="button"
+                        >Explore the Portfolio<a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

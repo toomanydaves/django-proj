@@ -1,6 +1,16 @@
 {% extends "toomanydaves/base.html" %}
 
+{% load static %}
+
 {% block title %}People{% endblock %}
+
+{% block style %}
+    <style>
+        #bg {
+            background: url("{% static "/images/tile-bg.png" %}");
+        }
+    </style>
+{% endblock %}
 
 {% block nav %}
     {% include "toomanydaves/nav.html" %}
