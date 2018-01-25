@@ -34,7 +34,7 @@
     id="teaser-portfolio"
     class="portfolio photo-bg"
     style="
-        height: 535px;
+        height: 580px;
         background-position: center;
         background-size: cover;
         margin-bottom: 1rem
@@ -51,8 +51,8 @@
             <div
                 style="
                     position: absolute;
-                    top: 4.5rem;
-                    height: 465px;
+                    top: 5rem;
+                    height: 500px;
                     overflow: scroll;
                 "
             >
@@ -66,8 +66,8 @@
                 >
                     {% for project in project_list %}
                     <div
-                        id="project_{{ project.id }}"
-                        class="card"
+                        id="/portfolio/projects/{{ project.id }}"
+                        class="card portfolio-card"
                         style="position: relative"
                     >
                         {% if project.logo %}
@@ -79,7 +79,9 @@
                             <ul class="list-inline">
                                 {% for tag in project.tags.all %}
                                 <li class="list-inline-item">
-                                    <span class="badge badge-warning">{{ tag.name }}</span>
+                                    <a href="/portfolio/?tag={{ tag.id }}">
+                                        <span class="badge badge-warning">{{ tag.name }}</span>
+                                    </a>
                                 </li>
                                 {% endfor %}
                             </ul>
@@ -93,10 +95,10 @@
                         </div>
                     </div>
                     {% endfor %}
-                    <h3 class="text-sans-serif mt-4">There's more where that came from...</h3>
-                    <div style="margin-bottom: 20rem">
+                    <h3 class="text-sans-serif mt-4 mb-3">There's more where that came from...</h3>
+                    <div style="margin-bottom: 21.5rem">
                         <a
-                            class="btn btn-primary btn-lg"
+                            class="btn btn-outline-light btn-lg"
                             href="/portfolio"
                             role="button"
                         >Explore the Portfolio<a>
@@ -109,10 +111,31 @@
                     opacity: 0;
                     padding-bottom: 1rem;
                     padding-left: 1rem;
-                    font-size: 4rem
+                    font-size: 4rem;
+                    width: 100%;
                 "
-                class="text-fat-serif"
-            ><a href="/portfolio" style="color: #fff">Projects</a></h1>
+            >
+                <a class="text-white text-fat-serif" href="/portfolio">Portfolio</a>
+                <p
+                    class="h6"
+                    style="
+                        display: none;
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
+                    "
+                >
+                    <a
+                        class="text-white"
+                        href="/portfolio/projects/recent_additions"
+                    >New arrivals...</a>
+                </p>
+            </h1>
         </div>
     </div>
 </div>
+<script>
+    $('#teaser-portfolio .portfolio-card').click(function(ev) {
+        window.location.href = $(this).attr('id');
+    });
+</script>

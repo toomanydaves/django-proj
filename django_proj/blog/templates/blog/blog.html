@@ -16,21 +16,68 @@
 
 {% block content %}
 <div class="container">
-    <div class="row mb-3">
-        <div class="col-12 text-right mb-3">
-            <h1 class="text-serif" style="margin-bottom: 0">
-                The Journal of
-                <br class="d-lg-none">
-                <span class="text-uppercase">Too Many Daves</span>
-            </h1>
-            <h6><small class="text-serif">A Collaborative Weblog</small></h6>
-        </div>
-    </div>
     <div class="row">
         <div class="col-12 col-sm-8">
+            <div class="mb-4 text-right">
+                <h1 class="text-sans-serif" style="margin-bottom: 0">
+                    The Journey of<br>
+                    <span class="text-uppercase">Too Many Daves</span>
+                </h1>
+                <h6><small class="text-serif">A Collaborative Weblog</small></h6>
+            </div>
+            <div style="
+                width: 100%;
+                height: 46px;
+                background-color: #76c58c;
+                margin-bottom: 2rem;"
+            ></div>
+            {% for post in post_list %}
+                <div id="post_{{ post.id }}" class="post">
+                    {% if post.tags.length %}
+                    <ul class="list-inline">
+                        {% for tag in post.tags.all %}
+                        <li class="list-inline-item">
+                            <span class="badge badge-warning">
+                                {{ tag.name }}
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% if post.cover_photo %}
+                        <img
+                            style="
+                                float: left;
+                                margin-right: 1rem;
+                                max-width: 180px;
+                                vertical-align: top;
+                            "
+                            src="{{ post.cover_photo.url }}"
+                        >
+                    {% endif %}
+                    {% if post.title %}
+                        <h5 class="he text-sans-serif text-dark">{{ post.title }}</h5>
+                        <h6><small><a
+                            class="text-uppercase"
+                            href="{{ post.written_by.url }}"
+                        >{{ post.written_by }}</a></small></h6>
+                        <p class="text-serif text-white">{{ post.content }}</p>
+                    {% else %}
+                        <p class="text-white">
+                            <span class="text-serif">{{ post.content }}</span><br>
+                            <small><a
+                                class="text-muted text-uppercase"
+                                href="{{ post.written_by.url }}"
+                            >{{ post.written_by }}</a></small>
+                        </p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <!--
             <div class="post">
-                <h3 class="text-sans-serif">Up and Running!</h3>
-                <h6>Today at 4:35 by <a href="people/1">Sean Jacke</a></h6>
+                <h6>Today at 4:35</h6>
+                <h2 class="text-fat-serif">Up and Running!</h2>
+                <h6>By <a href="people/1">Sean Jacke</a></h6>
                 <p class="text-serif">
                     This is the crazy thing that happened.
                     Everything! This has been such a rush.
@@ -42,26 +89,23 @@
                     This extension of you...
                 </p>
             </div>
-            <div class="post">
-                <h3 class="text-sans-serif">Lots of Help</h3>
-                <h6>2 days ago by <a href="people/2">Katrin Jacke</a></h6>
-                <p class="text-serif">
-                    It takes a lot of help to do anything big.
-                    It just makes sense.
-                    I've got a body, you do too. We can be in two places at once.
-                    I speak two languages, you do too. If we're lucky we now speak four.
-                </p>
-            </div>
+            -->
         </div>
         <div class="col-12 col-sm-4">
+            <div style="
+                height: 180px;
+                width: 100%;
+                background-color: #76c58c;
+                margin-bottom: 2rem;
+            "></div>
             <div class="mb-sm-4">
-                <h4><a class="text-uppercase" href="/backstory">backstory</a></h4>
+                <h4><a class="text-sans-serif text-uppercase" href="/backstory">backstory</a></h4>
                 <div class="d-none d-sm-block">
                     {% include 'blog/backstory.html' %}
                 </div>
             </div>
             <div>
-                <h4><a class="text-uppercase" href="/about">about</a></h4>
+                <h4><a class="text-sans-serif text-uppercase" href="/about">About These Posts</a></h4>
                 <div class="d-none d-sm-block">
                     {% include 'blog/about.html' %}
                 </div>

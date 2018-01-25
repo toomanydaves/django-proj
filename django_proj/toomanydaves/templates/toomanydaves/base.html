@@ -109,26 +109,25 @@
             style="
                 position: fixed;
                 height: 100%;
-                width: 100%
+                width: 100%;
+                z-index: -1;
             "
-        >{% block bg %}{% endblock %}</div>
-
+        >
+            {% block bg %}{% endblock %}
+        </div>
         {% block nav %}{% endblock %}
-
-        <div id="content" style="margin-bottom: 5rem">
+        <div id="content" style="margin-bottom: 1rem">
             {% block content %}{% endblock %}
         </div>
-
-        {% block footer %}{% endblock %}
-
+        <div id="footer">
+            {% block footer %}{% endblock %}
+        </div>
         {% block modal %}{% endblock %}
-
         <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
         </script>
-
         {% block script %}{% endblock %}
     </body>
 </html>

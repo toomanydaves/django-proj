@@ -47,6 +47,7 @@
         }
     ];
     var $centeredLogo = $('#centered-logo');
+    var $claim = $centeredLogo.find('.logo-claim');
     var $teaser = $('#teaser');
     var $bg = $('#bg');
     // Choose the background image randomly and add it to the body.
@@ -80,6 +81,9 @@
         // after the appropriate duration
         window.setTimeout(function () {
             $body.css('background-image', 'none');
+            // Hide claim and change to text-dark
+            $claim.removeClass('text-white');
+            $claim.children().css('visibility', 'hidden');
         }, bgImage.duration);
 
         // Once the bg image is gone...
@@ -89,178 +93,176 @@
             .addClass('text-dark')
             // Fade in white bg color on body
             .velocity({'background-color': '#e3e3e3'}, 500, function () {
+                // Show a random portfolio background
+                var portfolioBgs = [
+                    // Max Ernst
+                    'url(https://i.pinimg.com/564x/33/4d/0c/334d0c65e7e419747ea5beb956f396ee.jpg)',
+                    // Ali
+                    'url(https://i.pinimg.com/564x/e7/01/f3/e701f33e49cccfe00ed01e533a0327bd.jpg',
+                    // Jackie Robinson
+                    'url(https://i.pinimg.com/564x/5a/c1/eb/5ac1eba1f23ce78e2fb671d3bf7c9688.jpg',
+                    // Planet of the Ape with Umbrella
+                    'url(https://i.pinimg.com/564x/eb/f2/53/ebf25346c64709d7e46525bfe8823746.jpg)',
+                    // Nebula-like Clouds
+                    'url(https://i.pinimg.com/564x/a3/89/79/a38979eccc516b238102651f8f450807.jpg)',
+                    // Michael Jordan
+                    // 'url(https://i.pinimg.com/564x/93/3b/f7/933bf76a7c97e897c5ed700050408d4c.jpg)',
+                    // Cube, pipe, Eames
+                    'url(https://i.pinimg.com/564x/81/e2/02/81e20214982e5c85926e82ccd3c16b50.jpg)',
+                    // Gorilla Slide
+                    'url(https://i.pinimg.com/564x/12/44/5a/12445a025c1a51aa63b22bde44ac2055.jpg)',
+                    // Boy sitting on Street Collage
+                    'url(https://i.pinimg.com/564x/07/c0/d9/07c0d97b41ac4a593b40a742914a66dc.jpg)',
+                    // Backward Yearbook Page
+                    'url(https://i.pinimg.com/564x/b4/d6/0a/b4d60a924ab8326aabc3f7a5fdbede68.jpg)',
+                    // Giraff Football Collage
+                    'url(https://i.pinimg.com/564x/c0/7b/f5/c07bf5cbb0c5592ecdce54bda7628957.jpg)',
+                    // Upside Down Headstand in Water
+                    'url(https://i.pinimg.com/564x/c1/a5/27/c1a5270b96309f405d4f39d4112a62e4.jpg)'
+                    // Jimi 
+                    // 'url(https://i.pinimg.com/564x/e8/50/e5/e850e5e008bb1abbc02c2b28b80f13ed.jpg)',
+                    // Annie Oakley
+                    // 'url(https://i.pinimg.com/564x/54/36/59/5436596cdea70a7a3e68ab0158382b83.jpg'
+                ];
+
+                $teaser.find('.portfolio.photo-bg').css(
+                    'background-image',
+                    portfolioBgs[Math.floor(portfolioBgs.length * Math.random())]
+                );
+
+                // Show wallpaper
+                $('#bg').addClass('wallpaper-bg');
+
+                // Show "Think Big."
+                $centeredLogo.find('.think-big').css('visibility', 'visible');
+
                 window.setTimeout(function () {
-                    // Show a random portfolio background
-                    var portfolioBgs = [
-                        // Max Ernst
-                        'url(https://i.pinimg.com/564x/33/4d/0c/334d0c65e7e419747ea5beb956f396ee.jpg)',
-                        // Ali
-                        'url(https://i.pinimg.com/564x/e7/01/f3/e701f33e49cccfe00ed01e533a0327bd.jpg',
-                        // Annie Oakley
-                        'url(https://i.pinimg.com/564x/54/36/59/5436596cdea70a7a3e68ab0158382b83.jpg',
-                        // Jimi 
-                        // 'url(https://i.pinimg.com/564x/e8/50/e5/e850e5e008bb1abbc02c2b28b80f13ed.jpg)',
-                        // Jackie Robinson
-                        'url(https://i.pinimg.com/564x/5a/c1/eb/5ac1eba1f23ce78e2fb671d3bf7c9688.jpg',
-                        // Planet of the Ape with Umbrella
-                        'url(https://i.pinimg.com/564x/eb/f2/53/ebf25346c64709d7e46525bfe8823746.jpg)',
-                        // Nebula-like Clouds
-                        'url(https://i.pinimg.com/564x/a3/89/79/a38979eccc516b238102651f8f450807.jpg)',
-                        // Michael Jordan
-                        // 'url(https://i.pinimg.com/564x/93/3b/f7/933bf76a7c97e897c5ed700050408d4c.jpg)',
-                        // Cube, pipe, Eames
-                        'url(https://i.pinimg.com/564x/81/e2/02/81e20214982e5c85926e82ccd3c16b50.jpg)',
-                        // Gorilla Slide
-                        'url(https://i.pinimg.com/564x/12/44/5a/12445a025c1a51aa63b22bde44ac2055.jpg)',
-                        // Boy sitting on Street Collage
-                        'url(https://i.pinimg.com/564x/07/c0/d9/07c0d97b41ac4a593b40a742914a66dc.jpg)',
-                        // Palm tree eyes, hot lips, face collage
-                        'url(https://i.pinimg.com/564x/4f/cb/f8/4fcbf859c3b5d1514c8f866896b1d589.jpg)',
-                        // Backward Yearbook Page
-                        'url(https://i.pinimg.com/564x/b4/d6/0a/b4d60a924ab8326aabc3f7a5fdbede68.jpg)',
-                        // Natives versus Burger
-                        'url(https://i.pinimg.com/564x/47/b5/d4/47b5d4dd8bd048df4668fe3a38bd214d.jpg)',
-                        // Giraff Football Collage
-                        'url(https://i.pinimg.com/564x/c0/7b/f5/c07bf5cbb0c5592ecdce54bda7628957.jpg)',
-                        // Upside Down Headstand in Water
-                        'url(https://i.pinimg.com/564x/c1/a5/27/c1a5270b96309f405d4f39d4112a62e4.jpg)'
+                    var $startSmall = $centeredLogo.find('.start-small');
+                    var $keepAtIt = $centeredLogo.find('.keep-at-it');
+                    var postsBgs = [
+                        // Hunter Thompson
+                        'url(https://i.pinimg.com/564x/c7/85/ca/c785ca7d668b1c9edc9911358a635be5.jpg)',
+                        // Hensen & Kermit
+                        'url(https://i.pinimg.com/564x/f4/7b/41/f47b41ec8ccb56d8de15448eac15fe45.jpg)',
+                        // Z-Town
+                        'url(https://i.pinimg.com/564x/f3/01/53/f3015387a6e3a63b2e02be511784d022.jpg)',
+                        // Duchamp Chess
+                        'url(https://i.pinimg.com/564x/d7/69/85/d76985015d154e4df54e0a631169462f.jpg)',
+                        // Angelina & Brad
+                        'url(https://i.pinimg.com/564x/08/27/c6/0827c62f8c342c9bb8337300f53f2072.jpg)',
+                        // Divers with Whale
+                        'url(https://i.pinimg.com/564x/70/6c/fd/706cfd04ce9e5349621653f7c405455c.jpg)',
+                        // Charles and Ray
+                        'url(https://i.pinimg.com/564x/73/1f/0c/731f0c132de3dad3caf144714420d7d6.jpg)',
+                        // Miles
+                        'url(https://i.pinimg.com/564x/63/c8/a2/63c8a26e54efbf431a8b6ae21c036e0b.jpg)',
+                        // Sheep with Earths Interior Infographic Collage
+                        'url(https://i.pinimg.com/564x/7a/1e/be/7a1ebef44aabd9d7bb591d9c6b2ebb99.jpg)',
+                        // cars driving down from sky collage
+                        'url(https://i.pinimg.com/564x/14/ca/94/14ca94560829a18bef464b61729cfe82.jpg)',
+                        // Black Gloves Gold Metals
+                        // 'url(https://i.pinimg.com/564x/44/1a/b0/441ab0c741c4bf606ae79d6bf96b42d5.jpg)',
+                        // Tiananmen Square
+                        // 'url(https://i.pinimg.com/564x/0c/db/c3/0cdbc34a22e6cf4c4cc8c2c7e82ce972.jpg)'
                     ];
 
-                    $teaser.find('.portfolio.photo-bg').css(
+                    $teaser.find('.posts.photo-bg').css(
                         'background-image',
-                        portfolioBgs[Math.floor(portfolioBgs.length * Math.random())]
+                        postsBgs[Math.floor(postsBgs.length * Math.random())]
                     );
 
-                    // Show "Think Big."
-                    $centeredLogo.find('.think-big').addClass('text-dark');
+                    // Show "Start Small"
+                    $startSmall.css('visibility', 'visible');
 
                     window.setTimeout(function () {
-                        var $startSmall = $centeredLogo.find('.start-small');
-                        var $keepAtIt = $centeredLogo.find('.keep-at-it');
-                        var postsBgs = [
-                            // Hunter Thompson
-                            'url(https://i.pinimg.com/564x/c7/85/ca/c785ca7d668b1c9edc9911358a635be5.jpg)',
-                            // Hensen & Kermit
-                            'url(https://i.pinimg.com/564x/f4/7b/41/f47b41ec8ccb56d8de15448eac15fe45.jpg)',
-                            // Z-Town
-                            'url(https://i.pinimg.com/564x/f3/01/53/f3015387a6e3a63b2e02be511784d022.jpg)',
-                            // Duchamp Chess
-                            'url(https://i.pinimg.com/564x/d7/69/85/d76985015d154e4df54e0a631169462f.jpg)',
-                            // Angelina & Brad
-                            'url(https://i.pinimg.com/564x/08/27/c6/0827c62f8c342c9bb8337300f53f2072.jpg)',
-                            // Divers with Whale
-                            'url(https://i.pinimg.com/564x/70/6c/fd/706cfd04ce9e5349621653f7c405455c.jpg)',
-                            // Charles and Ray
-                            'url(https://i.pinimg.com/564x/73/1f/0c/731f0c132de3dad3caf144714420d7d6.jpg)',
-                            // Miles
-                            'url(https://i.pinimg.com/564x/63/c8/a2/63c8a26e54efbf431a8b6ae21c036e0b.jpg)',
-                            // Sheep with Earths Interior Infographic Collage
-                            'url(https://i.pinimg.com/564x/7a/1e/be/7a1ebef44aabd9d7bb591d9c6b2ebb99.jpg)',
-                            // cars driving down from sky collage
-                            'url(https://i.pinimg.com/564x/14/ca/94/14ca94560829a18bef464b61729cfe82.jpg)',
-                            // Black Gloves Gold Metals
-                            // 'url(https://i.pinimg.com/564x/44/1a/b0/441ab0c741c4bf606ae79d6bf96b42d5.jpg)',
-                            // Tiananmen Square
-                            // 'url(https://i.pinimg.com/564x/0c/db/c3/0cdbc34a22e6cf4c4cc8c2c7e82ce972.jpg)'
+                        var peepsBgs = [
+                            // Sophie Taeuber-Arp
+                            'url(https://i.pinimg.com/564x/5d/39/7e/5d397e25372d4ee79524f88fc86b97d3.jpg)',
+                            // Hands Collage
+                            'url(https://i.pinimg.com/564x/4f/6d/53/4f6d53e613b2024e2ceda1dc1725bdd6.jpg)',
+                            // Orange silkscreen
+                            'url(https://i.pinimg.com/564x/97/3b/81/973b81678e3597bd9cb30143f34068f2.jpg)',
+                            // Black and red arabian mosiac pattern
+                            'url(https://i.pinimg.com/564x/4d/50/8e/4d508e433fd31f65eb5f1022a957e1e0.jpg)',
+                            // Girard Sun
+                            'url(https://i.pinimg.com/564x/db/57/04/db570473e3490a8bf4b99ddb6d57a8b9.jpg)',
+                            // Aqua and red rectangle pattern
+                            'url(https://i.pinimg.com/564x/58/b8/ff/58b8ff27849070e7078c57a1a70ced55.jpg)',
+                            // Alexander Gorlizki
+                            'url(https://i.pinimg.com/564x/29/85/f5/2985f51716a5c6ecb6fa5098e4786a14.jpg)',
+                            //  Raspberry lines make triangles on pale blue 
+                            'url(https://i.pinimg.com/564x/1a/28/26/1a2826dc1074a76e3296b7bad9b7d7af.jpg)',
+                            // Dotmatrix Pattern
+                            'url(https://i.pinimg.com/564x/c7/1a/a3/c71aa3fddc388dcb064b5a45b1128c54.jpg)'
+                            // Darwin
+                            // 'url(https://i.pinimg.com/564x/54/49/02/5449024c6a9062063af952f041aaa154.jpg)',
+                            // Debbie Harrie
+                            // 'url(https://i.pinimg.com/564x/76/cc/f1/76ccf1790a943be5acef2cd125245701.jpg)',
+                            // Darth & Luke
+                            // 'url(https://i.pinimg.com/564x/a7/47/ca/a747ca41eaeee3df8868dd48ffc41626.jpg)'
                         ];
-
-                        $teaser.find('.posts.photo-bg').css(
+                        $teaser.find('.peeps.photo-bg').css(
                             'background-image',
-                            postsBgs[Math.floor(postsBgs.length * Math.random())]
+                            peepsBgs[Math.floor(peepsBgs.length * Math.random())]
                         );
 
-                        // Show "Start Small"
-                        $startSmall.addClass('text-dark');
+                        // Show "Keep at it."
+                        $keepAtIt.css('visibility', 'visible');
 
-                        window.setTimeout(function () {
-                            var peepsBgs = [
-                                // Hands Collage
-                                'url(https://i.pinimg.com/564x/4f/6d/53/4f6d53e613b2024e2ceda1dc1725bdd6.jpg)',
-                                // Orange silkscreen
-                                'url(https://i.pinimg.com/564x/97/3b/81/973b81678e3597bd9cb30143f34068f2.jpg)',
-                                // Black and red arabian mosiac pattern
-                                'url(https://i.pinimg.com/564x/4d/50/8e/4d508e433fd31f65eb5f1022a957e1e0.jpg)',
-                                // Girard Sun
-                                'url(https://i.pinimg.com/564x/db/57/04/db570473e3490a8bf4b99ddb6d57a8b9.jpg)',
-                                // Aqua and red rectangle pattern
-                                'url(https://i.pinimg.com/564x/58/b8/ff/58b8ff27849070e7078c57a1a70ced55.jpg)',
-                                // Alexander Gorlizki
-                                'url(https://i.pinimg.com/564x/29/85/f5/2985f51716a5c6ecb6fa5098e4786a14.jpg)',
-                                //  Raspberry lines make triangles on pale blue 
-                                'url(https://i.pinimg.com/564x/1a/28/26/1a2826dc1074a76e3296b7bad9b7d7af.jpg)',
-                                // Dotmatrix Pattern
-                                'url(https://i.pinimg.com/564x/c7/1a/a3/c71aa3fddc388dcb064b5a45b1128c54.jpg)',
-                                // Darwin
-                                // 'url(https://i.pinimg.com/564x/54/49/02/5449024c6a9062063af952f041aaa154.jpg)',
-                                // Debbie Harrie
-                                // 'url(https://i.pinimg.com/564x/76/cc/f1/76ccf1790a943be5acef2cd125245701.jpg)',
-                                // Darth & Luke
-                                // 'url(https://i.pinimg.com/564x/a7/47/ca/a747ca41eaeee3df8868dd48ffc41626.jpg)'
-                            ];
-                            $teaser.find('.peeps.photo-bg').css(
-                                'background-image',
-                                peepsBgs[Math.floor(peepsBgs.length * Math.random())]
+                        // Collapse the centered logo
+                        fallDown($centeredLogo.find(' rect'), function () {
+                            // After the collapse...
+
+                            // Show the PPP headings in teaser
+                            $teaser.find('h1').velocity({ opacity: 1 }, 500);
+
+                            // Hide the claim
+                            $claim.velocity(
+                                { opacity: 0 },
+                                450
                             );
 
-                            // Show "Keep at it."
-                            $keepAtIt.addClass('text-dark');
+                            window.setTimeout(function () {
+                                $centeredLogo.velocity(
+                                    { height: 0 },
+                                    450,
+                                    function () {
+                                        $('#inline-logo').css('display', 'block');
+                                        $('nav .claim').removeClass('d-none');
+                                        fallDown(
+                                            $('#inline-logo rect'),
+                                            function () {
+                                                window.setTimeout(function () {
+                                                    colorFlow(
+                                                        $('#inline-logo g g')
+                                                    );
+                                                }, 5500);
 
-                            // Show wallpaper
-                            $('#bg').addClass('wallpaper-bg');
+                                                window.setTimeout(function () {
+                                                    $('#teaser-portfolio .card-columns').velocity(
+                                                        { 'opacity': 1 },
+                                                        1200
+                                                    );
 
-                            // Collapse the centered logo
-                            fallDown($centeredLogo.find(' rect'), function () {
-                                // After the collapse...
+                                                    // Use CSS transition to fade out image
+                                                }, 650);
 
-                                // Show the PPP headings in teaser
-                                $teaser.find('h1').velocity({ opacity: 1 }, 500);
-
-                                // Hide the claim
-                                $centeredLogo.find('.logo-claim').velocity(
-                                    { opacity: 0 },
-                                    450
+                                                window.setTimeout(function () {
+                                                    $('#teaser-posts .card-columns').velocity(
+                                                        { 'opacity': 1 },
+                                                        1200
+                                                    );
+                                                }, 1600);
+                                            },
+                                            '0px',
+                                            300
+                                        );
+                                    }
                                 );
-
-                                window.setTimeout(function () {
-                                    $centeredLogo.velocity(
-                                        { height: 0 },
-                                        450,
-                                        function () {
-                                            $('#inline-logo').css('display', 'block');
-                                            $('nav .claim').removeClass('d-none');
-                                            fallDown(
-                                                $('#inline-logo rect'),
-                                                function () {
-                                                    window.setTimeout(function () {
-                                                        colorFlow(
-                                                            $('#inline-logo g g')
-                                                        );
-                                                    }, 5500);
-
-                                                    window.setTimeout(function () {
-                                                        $('#teaser-portfolio .card-columns').velocity(
-                                                            { 'opacity': 1 },
-                                                            1200
-                                                        );
-                                                    }, 850);
-
-                                                    window.setTimeout(function () {
-                                                        $('#teaser-posts .card-columns').velocity(
-                                                            { 'opacity': 1 },
-                                                            1200
-                                                        );
-                                                    }, 1900);
-                                                },
-                                                '0px',
-                                                300
-                                            );
-                                        }
-                                    );
-                                }, 500);
-                            });
-                        }, 700);
+                            }, 500);
+                        });
                     }, 700);
-                }, 500);
+                }, 700);
             });
         }, bgImage.duration);
     });

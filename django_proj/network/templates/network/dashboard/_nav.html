@@ -1,0 +1,28 @@
+<style>
+    body {
+        background-color: #fff;
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    #inline-logo {
+        transform-origin: top left;
+        transform: scale(0.3);
+    }
+    g#too { fill: rgba(241, 68, 61, 0.5); }
+    g#many { fill: rgba(241, 68, 61, 0.5); }
+    g#daves { fill: rgba(241, 68, 61, 0.5); }
+</style>
+<nav style="position: fixed; width: 100%">
+    <div style="position: absolute; top: 1rem; left: 1rem;">
+        <a id="inline-logo" href="/" style="display: block;">
+            {% include "toomanydaves/logo/_inline.html" %}
+        </a>
+    </div>
+    <div style="position: absolute; top: 1rem; right: 1rem;">
+    {% include "network/dashboard/nav/_social.html" %}
+    </div>
+</nav>
+{% include "toomanydaves/logo/_api.html" %}
+{% include "toomanydaves/logo/inline/_animation.html" %}

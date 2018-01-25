@@ -3,17 +3,14 @@
 {% block title %}{{ user.first_name }} | Too Many Daves{% endblock %}
 
 {% block nav %}
-    {% include "toomanydaves/nav.html" %}
+    {% include "network/dashboard/_nav.html" %}
 {% endblock %}
 
 {% block content %}
 <div id="dashboard">
     <div class="container">
-        <div class="row mb-4">
+        <div class="row mt-2 mb-4">
             <div class="col-12">
-                <h6 class="text-right">
-                    <small class="text-uppercase">Dashboard</small>
-                </h6>
                 <ul id="dashboard-tabs" class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a
@@ -33,7 +30,7 @@
                             href="#profile-pane"
                             role="tab"
                             aria-controls="profile"
-                        >Profile</a>
+                        ><span class="d-none d-md-inline">Your </span>Profile</a>
                     </li>
                     <li class="nav-item">
                         <a
@@ -43,7 +40,7 @@
                             href="#projects-pane"
                             role="tab"
                             aria-controls="projects"
-                        >Projects</a>
+                        ><span class="d-none d-md-inline">Your </span>Projects</a>
                     </li>
                     <li class="nav-item">
                         <a
@@ -53,7 +50,7 @@
                             href="#posts-pane"
                             role="tab"
                             aria-controls="posts"
-                        >Posts</a>
+                        ><span class="d-none d-md-inline">Your </span>Posts</a>
                     </li>
                     <li class="nav-item">
                         <a
@@ -63,7 +60,7 @@
                             href="#support-pane"
                             role="tab"
                             aria-controls="support"
-                        >Support</a>
+                        ><span class="d-none d-md-inline">Your </span>Support</a>
                     </li>
                 </ul>
             </div>
@@ -75,7 +72,9 @@
             class="tab-pane fade show active"
             role="tabpanel"
             aria-labelledby="activity-tab"
-        >{% include "network/activity.html" %}</div>
+        >
+            {% include "network/activity.html" %}
+        </div>
         <div
             id="profile-pane"
             class="tab-pane fade"
@@ -108,23 +107,55 @@
                 <div class="row text-sans-serif-headings">
                     <div class="col-12 col-lg-6">
                         <h3>Posts</h3>
-                        <p>You haven't posted anything yet...</p>
+                        {% for post in published_list %}
+                            <div class="mt-2 mb-2">
+                                <h6>{{ post.published_at }}</h6>
+                                {% if post.cover_photo %}
+                                    <img
+                                        style="
+                                        max-width: 50%;
+                                        max-height: 200px;
+                                        "
+                                        src="{{ post.cover_photo.url }}"
+                                    >
+                                {% endif %}
+                                {% if post.title %}
+                                    <h6>{{ post.title }}</h6>
+                                {% endif %}
+                                <div>{{ post.content }}</div>
+                            </div>
+                        {% empty %}
+                            <p>You haven't posted anything yet...</p>
+                        {% endfor %}
                     </div>
                     <div class="col-12 col-lg-6">
-                        <h3>Drafts</h3>
-                        <p>
-                            Start by creating a draft.<br>
-                            We'll save it for as long as you'd like.</br>
-                            When you're ready, post it!
-                        </p>
-                        <p>
-                            <button
-                                type="button"
-                                class="btn btn-primary"
-                                data-toggle="modal"
-                                data-target="#new-draft-editor-modal"
-                            >New Draft</button>
-                        </p>
+                            <h3>Drafts</h3>
+                            {% for draft in draft_list %}
+                                <div class="mt-2 mb-2">
+                                    {% if draft.cover_photo %}
+                                        <img alt="PHOTO">
+                                    {% endif %}
+                                    {% if draft.title %}
+                                        <h6>draft.title</h6>
+                                    {% endif %}
+                                    <div>{{ draft.content }}</div>
+                                </div>
+                            {% empty %}
+                                <p>
+                                    Start by creating a draft.<br>
+                                    We'll save it for as long as you'd like.</br>
+                                    When you're ready, post it!
+                                </p>
+                            {% endfor %}
+                            <p>
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    data-toggle="modal"
+                                    data-target="#new-draft-editor-modal"
+                                >New Draft</button>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

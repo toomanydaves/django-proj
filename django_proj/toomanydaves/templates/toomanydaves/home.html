@@ -16,13 +16,23 @@
 {% endblock %}
 
 {% block content %}
-    <div id="teaser" style="opacity: 0" class="text-white">
+    <div id="teaser" style="opacity: 0; margin: 2rem 0 3rem 0;" class="text-white">
         {% include "toomanydaves/home/_teaser.html" %}
     </div>
 
     {% include "toomanydaves/home/_animation.html" %}
 
-    <div id="about" class="pb-5" style="background-color: #e3e3e3">
+    <div id="about" class="pb-5">
         {% include "toomanydaves/home/_about.html" %}
     </div>
+{% endblock %}
+
+{% block footer %}
+<div class="text-center pt-4 pb-1" style="background-color: #76c58c;">
+    <ul class="list-inline text-fat-serif">
+        <li class="list-inline-item h1 p-1">Think big.</li>
+        <li class="list-inline-item h1 p-1">Start small.</li>
+        <li class="list-inline-item h1 p-1">Keep at it.</li>
+    </ul>
+</div>
 {% endblock %}

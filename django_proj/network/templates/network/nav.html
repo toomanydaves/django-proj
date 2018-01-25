@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: #111312;
+        background-color: #fff;
         background-position: center center;
         background-size: cover;
         background-attachment: fixed;
@@ -31,48 +31,14 @@
     g#daves { fill: rgba(241, 68, 61, 0.5); }
 </style>
 {% include "toomanydaves/logo/_api.html" %}
-<nav class="navbar fixed-top navbar-expand-md justify-content-start">
-    <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-    >
-        <span class="navbar-toggler-icon icon-menu"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-        <span style="visibility: hidden">Too Many Daves</span>
-        <div id="inline-logo" style="display: none; position: absolute; top: 10px">
+<nav class="d-flex justify-content-between" style="position: fixed; padding: .5rem;">
+    <a href="/">
+        <div id="inline-logo" style="position: absolute;">
             {% include "toomanydaves/logo/_inline.html" %}
         </div>
     </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav text-fat-serif d-none">
-            <li class="nav-item">
-                <a 
-                    class="nav-link h5"
-                    href="/portfolio"
-                >Portfolio</a>
-            </li>
-            <li class="nav-item">
-                <a 
-                    class="nav-link h5"
-                    href="/blog"
-                >Posts</a>
-            </li>
-            <li class="nav-item">
-                <a 
-                    class="nav-link h5"
-                    href="/people"
-                >Peeps</a>
-            </li>
-        </ul>
-    </div>
-    <ul id="navbar-social" class="navbar-nav ml-auto flex-row">
-       <li class="nav-item">
+    <ul class="navbar-nav ml-auto flex-row">
+        <li class="nav-item">
             <a 
                 class="nav-link"
                 href="http://facebook.com/toomanydaves.net"
@@ -110,21 +76,4 @@
         {% endif %}
     </ul>
 </nav>
-<div
-    id="centered-logo"
-    style="visibility: hidden;"
-    class="row justify-content-center"
->
-    <div class="col"></div>
-    <div class="col-auto">
-        <div style="margin-top: 4.5rem;">
-            {% include "toomanydaves/home/nav/_logo.html" %}
-            <h4 class="logo-claim text-white">
-                <span class="think-big">Think big.</span>
-                <span class="start-small">Start small.</span>
-                <span class="keep-at-it">Keep at it.</span>
-            </h4>
-        </div>
-    </div>
-    <div class="col"></div>
-</div>
+{% include "toomanydaves/logo/inline/_animation.html" %}
