@@ -1,32 +1,57 @@
-<div
-    class="peeps photo-bg"
-    style="
+<div id="teaser-peeps" style="height: 200px;">
+    <div style="
         height: 200px;
-        background-position: center;
-        background-size: cover;
-    "
->
-    <div
-        style="
-            height: 100%;
-            background-color: rgba(0, 150, 255, 0.4)
-        "
-    >
-        <div class="dot-matrix-bg">
+        position: absolute;
+        width:100%;
+        right: 0;
+        padding: 0 15px;
+    ">
+        <div style="
+            overflow: hidden;
+            width: 100%;
+            height: 200px;
+        ">
+            <img id="peeps-photo-bg" style="min-height: 200px; min-width: 100%; opacity: 0.5;" />
+        </div>
+    </div>
+    <div class="dot-matrix-bg">
+        <div style="height: 100%; background-color: rgba(0, 150, 255, 0.4); position: relative;">
+            <div id="peeps-scroller" style="
+                position: absolute;
+                top: 5rem;
+                width: 100%;
+                height: 140px;
+                overflow: scroll;
+            ">
+                <div id="peeps-body" style="display: none; opacity: 0;">
+                    {% if peeps_list %}
+                    <div class="card-columns" style="column-count: 4; padding: 0 1rem 1rem;">
+                    </div>
+                    {% endif %}
+                    <div style="padding: 0 1rem;">
+                        <h3 class="text-sans-serif">Folks worth knowing</h3>
+                        <div style="padding: 1rem 0;">
+                            <a
+                                class="btn btn-lg btn-outline-light"
+                                href="/people"
+                                role="button"
+                            >Get acquainted</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h1
                 style="
+                    position: absolute;
                     opacity: 0;
+                    font-size: 3rem;
                     padding-left: 1rem;
-                    font-size: 4rem
+                    width: 100%;
                 "
                 class="text-fat-serif"
-            ><a href="/people" style="color: #fff">Peeps</a></h1>
-            <h3 class="text-sans-serif mt-4 mb-3">Text...</h3>
-            <a
-                class="btn btn-lg btn-outline-light"
-                href="/people"
-                role="button"
-            >Button</a>
+            >
+                <a href="/people" style="color: #fff">Peeps</a>
+            </h1>
         </div>
     </div>
 </div>

@@ -1,11 +1,10 @@
 <style>
     #teaser-posts .card {
-        background-color: #76c58cbc;
+        background-color: #e3e3e345;
     }
 </style>
 <div
     id="teaser-posts"
-    class="posts photo-bg"
     style="
         height: 360px;
         background-position: center;
@@ -14,6 +13,26 @@
         margin-bottom: 1rem;
     "
 >
+    <div style="
+        height: 360px;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        padding: 0 15px;
+    ">
+        <div
+            style="
+            height: 360px;
+            width: 100%;
+            overflow: hidden;
+            "
+        >
+            <img
+                id="posts-photo-bg"
+                style="min-height: 360px; min-width: 100%; opacity: 0.5;"
+            />
+        </div>
+    </div>
     <div class="dot-matrix-bg">
         <div
             style="
@@ -23,6 +42,7 @@
             "
         >
             <div
+                id="posts-scroller"
                 style="
                     position: absolute;
                     top: 5rem;
@@ -30,72 +50,77 @@
                     overflow: scroll;
                 "
             >
-                <div
-                    class="card-columns"
-                    style="
-                        opacity: 0;
-                        padding: 0px 1rem 1rem;
-                        column-count: 1
-                    "
-                >
-                    {% for post in post_list %}
+                <div id="posts-body" style="display: none; opacity: 0;">
+                    {%if post_list %}
                     <div
-                        id="post_{{ post.id }}"
-                        class="card"
+                        class="card-columns"
+                        style="
+                            padding: 0px 1rem 1rem;
+                            column-count: 1
+                        "
                     >
-                        <div class="card-body">
-                            {% if post.tags.length %}
-                            <ul class="list-inline">
-                                {% for tag in post.tags.all %}
-                                <li class="list-inline-item">
-                                    <span class="badge badge-warning">
-                                        {{ tag.name }}
-                                    </span>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                            <div class="post" style="display: inline-block;">
-                                {% if post.cover_photo %}
-                                    <img
-                                        style="
-                                            float: left;
-                                            margin-right: 1rem;
-                                            max-width: 180px;
-                                            vertical-align: top;
-                                        "
-                                        src="{{ post.cover_photo.url }}"
-                                    >
+                        {% for post in post_list %}
+                        <div
+                            id="post_{{ post.id }}"
+                            class="card"
+                        >
+                            <div class="card-body">
+                                {% if post.tags.length %}
+                                <ul class="list-inline">
+                                    {% for tag in post.tags.all %}
+                                    <li class="list-inline-item">
+                                        <span class="badge badge-warning">
+                                            {{ tag.name }}
+                                        </span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
                                 {% endif %}
-                                {% if post.title %}
-                                    <h5 class="he text-sans-serif text-dark">{{ post.title }}</h5>
-                                    <h6><small><a
-                                        class="text-uppercase"
-                                        href="{{ post.written_by.url }}"
-                                    >{{ post.written_by }}</a></small></h6>
-                                    <p class="text-serif text-white">{{ post.content }}</p>
-                                {% else %}
-                                    <p class="text-white">
-                                        <span class="text-serif">{{ post.content }}</span><br>
-                                        <small><a
-                                            class="text-muted text-uppercase"
+                                <div class="post" style="display: inline-block;">
+                                    {% if post.cover_photo %}
+                                        <img
+                                            style="
+                                                float: left;
+                                                margin-right: 1rem;
+                                                max-width: 180px;
+                                                vertical-align: top;
+                                            "
+                                            src="{{ post.cover_photo.url }}"
+                                        >
+                                    {% endif %}
+                                    {% if post.title %}
+                                        <h5 class="he text-sans-serif text-dark">{{ post.title }}</h5>
+                                        <h6><small><a
+                                            class="text-uppercase"
                                             href="{{ post.written_by.url }}"
-                                        >{{ post.written_by }}</a></small>
-                                    </p>
-                                {% endif %}
+                                        >{{ post.written_by }}</a></small></h6>
+                                        <p class="text-serif text-white">{{ post.content }}</p>
+                                    {% else %}
+                                        <p class="text-white">
+                                            <span class="text-serif">{{ post.content }}</span><br>
+                                            <small><a
+                                                class="text-muted text-uppercase"
+                                                href="{{ post.written_by.url }}"
+                                            >{{ post.written_by }}</a></small>
+                                        </p>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                    <h3 class="text-sans-serif mt-4 mb-3">
-                        Posts from the journey...
-                    </h3>
-                    <div style="margin-bottom: 8rem">
-                        <a
-                            class="btn btn-outline-light btn-lg"
-                            href="/blog"
-                            role="button"
-                        >Go Back in Time</a>
+                    {% endif %} 
+                    <div style="padding: 0 1rem; margin: 7rem 0 10rem 0;">
+                        <h3 class="text-sans-serif">
+                            Posts from the journey...
+                        </h3>
+                        <div style="padding: 1rem 0; margin-bottom: 8rem">
+                            <a
+                                class="btn btn-outline-light btn-lg"
+                                href="/blog"
+                                role="button"
+                            >Go Back in Time</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,12 +130,12 @@
                     opacity: 0;
                     padding-left: 1rem;
                     padding-bottom: 1rem;
-                    font-size: 4rem;
+                    font-size: 3rem;
                     width: 100%;
                 "
                 class="text-fat-serif"
             >
-                <a href="/blog" style="color: #fff;">the Journey</a>
+                <a href="/blog" style="color: #fff;">#theJourney</a>
             </h1>
         </div>
     </div>
