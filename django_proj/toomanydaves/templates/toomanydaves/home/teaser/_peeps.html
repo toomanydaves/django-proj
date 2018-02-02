@@ -1,57 +1,113 @@
-<div id="teaser-peeps" style="height: 200px;">
+<style>
+    #teaser-peeps .card {
+        border: none;
+    }
+    #teaser-peeps .card .card-body {
+        width: 100%;
+        background-color: rgba(0, 150, 255, 0.4);
+    }
+</style>
+<div id="teaser-peeps" style="height: 220px;">
     <div style="
-        height: 200px;
+        height: 220px;
         position: absolute;
         width:100%;
         right: 0;
         padding: 0 15px;
     ">
         <div style="
+            position: relative;
             overflow: hidden;
             width: 100%;
-            height: 200px;
+            height: 220px;
         ">
-            <img id="peeps-photo-bg" style="min-height: 200px; min-width: 100%; opacity: 0.5;" />
+            <img
+                id="peeps-pattern-bg"
+                src="https://i.pinimg.com/564x/c0/a9/d7/c0a9d73d526d03c4478907a5a418930d.jpg"
+                style="
+                    position: absolute;
+                    min-height: 220px;
+                    min-width: 100%;
+                    opacity: 0;
+                "
+            />
+            <img id="peeps-photo-bg" style="min-height: 220px; min-width: 100%; opacity: 0.5;" />
         </div>
     </div>
     <div class="dot-matrix-bg">
-        <div style="height: 100%; background-color: rgba(0, 150, 255, 0.4); position: relative;">
-            <div id="peeps-scroller" style="
-                position: absolute;
-                top: 5rem;
-                width: 100%;
-                height: 140px;
-                overflow: scroll;
-            ">
-                <div id="peeps-body" style="display: none; opacity: 0;">
-                    {% if peeps_list %}
-                    <div class="card-columns" style="column-count: 4; padding: 0 1rem 1rem;">
+        <div style="
+            height: 100%;
+            background-color: rgba(0, 150, 255, 0.3);
+            position: relative;
+        ">
+            <div id="peeps-body" style="display: none; opacity: 0; height: 100%;">
+                <div id="peeps-scroller" style="
+                    position: absolute;
+                    top: 72px;
+                    height: 148px;
+                    overflow: scroll;
+                ">
+                    {% if user_list %}
+                    <div
+                        class="card-columns"
+                        style="
+                            position: relative;
+                            padding: 0 1rem 6rem 1rem;
+                            column-count: 4;
+                            width: 100%;
+                        "
+                    >
+                        {% for user in user_list %}
+                        <div
+                            id="/people/{{ user.id }}"
+                            class="card peeps-card"
+                            style="
+                                position: relative;
+                                height: 138px;
+                                width: 100%;
+                                overflow: hidden;
+                            "
+                        >
+                            <img
+                                class="card-img-top"
+                                src="https://i.pinimg.com/564x/96/ca/0d/96ca0d0c78e2a7001ce9a023138a83e2.jpg"
+                                style="min-height: 120px; min-width: 100%;"
+                            >
+                            <div class="card-body" style="height: 100%; width: 100%;">
+                                <h6><small class="text-uppercase">{{ user }}</small></h6>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
                     {% endif %}
-                    <div style="padding: 0 1rem;">
-                        <h3 class="text-sans-serif">Folks worth knowing</h3>
-                        <div style="padding: 1rem 0;">
+                    <div style="padding: 0 1rem 0.8rem 1rem;">
+                        <h3 class="text-sans-serif">
+                            The power of any journey resides in the extent
+                            to which it can be shared.
+                        </h3>
+                        <div style="padding: 1rem 0 0 0;">
                             <a
                                 class="btn btn-lg btn-outline-light"
                                 href="/people"
                                 role="button"
-                            >Get acquainted</a>
+                            >Cross paths</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <h1
-                style="
-                    position: absolute;
-                    opacity: 0;
-                    font-size: 3rem;
-                    padding-left: 1rem;
-                    width: 100%;
-                "
-                class="text-fat-serif"
-            >
-                <a href="/people" style="color: #fff">Peeps</a>
-            </h1>
         </div>
+        <h1
+            style="
+                position: absolute;
+                top: 10px;
+                opacity: 0;
+                font-size: 3rem;
+                padding-left: 1rem;
+                width: 100%;
+            "
+            class="js-teaser-section-heading"
+        >
+            <a class="text-white text-fat-serif"  href="/people">Peeps</a>
+        </h1>
     </div>
 </div>

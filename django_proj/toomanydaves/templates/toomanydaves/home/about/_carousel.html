@@ -50,6 +50,10 @@
     background-position: 50% 75%;
     background-image: url(https://i.pinimg.com/564x/09/be/43/09be43c29b5d70fd751e33118f6d1fa3.jpg);
 }
+#feeling-slide {
+    background-position: 50% 75%;
+    background-image: url(https://media.giphy.com/media/13Du5h3YBSt7Dq/giphy.gif);
+}
 </style>
 <div class="container">
     <div class="row">
@@ -70,6 +74,7 @@
                     <li data-target="#about-carousel" data-slide-to="2"></li>
                     <li data-target="#about-carousel" data-slide-to="3"></li>
                     <li data-target="#about-carousel" data-slide-to="4"></li>
+                    <li data-target="#about-carousel" data-slide-to="5"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -86,6 +91,9 @@
                     </div>
                     <div class="carousel-item">
                         {% include "../about/carousel/_journey.html" %}
+                    </div>
+                    <div class="carousel-item">
+                        {% include "../about/carousel/_feeling.html" %}
                     </div>
                 </div>
                 <a

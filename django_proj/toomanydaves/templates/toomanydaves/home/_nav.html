@@ -8,7 +8,7 @@
     }
     #inline-logo {
         transform-origin: top left;
-        transform: scale(0.3);
+        transform: scale(0.23);
     }
     .navbar-toggler {
         color: #007bff;
@@ -31,46 +31,13 @@
     g#daves { fill: rgba(241, 68, 61, 0.5); }
 </style>
 {% include "toomanydaves/logo/_api.html" %}
-<nav class="navbar fixed-top navbar-expand-md justify-content-start">
-    <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-    >
-        <span class="navbar-toggler-icon icon-menu"></span>
-    </button>
+<nav class="navbar fixed-top navbar-expand-xl justify-content-start">
     <a class="navbar-brand" href="/">
         <span style="visibility: hidden">Too Many Daves</span>
         <div id="inline-logo" style="display: none; position: absolute; top: 10px">
             {% include "toomanydaves/logo/_inline.html" %}
         </div>
     </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav text-fat-serif d-none">
-            <li class="nav-item">
-                <a 
-                    class="nav-link h5"
-                    href="/portfolio"
-                >Portfolio</a>
-            </li>
-            <li class="nav-item">
-                <a 
-                    class="nav-link h5"
-                    href="/blog"
-                >Posts</a>
-            </li>
-            <li class="nav-item">
-                <a 
-                    class="nav-link h5"
-                    href="/people"
-                >Peeps</a>
-            </li>
-        </ul>
-    </div>
     <ul id="navbar-social" class="navbar-nav ml-auto flex-row">
        <li class="nav-item">
             <a 
@@ -112,12 +79,11 @@
 </nav>
 <div
     id="centered-logo"
-    style="visibility: hidden;"
     class="row justify-content-center"
 >
     <div class="col"></div>
     <div class="col-auto">
-        <div style="margin-top: 4.5rem;">
+        <div id="centered-logo-margin-top" style="margin-top: 12rem;">
             {% include "toomanydaves/home/nav/_logo.html" %}
             <h4 class="logo-claim text-white">
                 <span class="think-big">Think big.</span>

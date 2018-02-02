@@ -2,6 +2,7 @@ from blog.models import Post
 from django.contrib.auth import logout
 from django.shortcuts import render
 from portfolio.models import Project
+from toomanydaves_auth.models import User
 
 def home(request):
     seen_home = True
@@ -12,8 +13,9 @@ def home(request):
 
     return render(request, 'toomanydaves/home.html', {
         'seen_home': seen_home,
-        'project_list': Project.objects.order_by('?')[:4],
+        'project_list': Project.objects.order_by('?')[:8],
         'post_list': Post.objects.filter(status='PUBLISHED').order_by('-published_at')[:4],
+        'user_list': User.objects.order_by('?')[:8],
     })
 
 def backstory(request):

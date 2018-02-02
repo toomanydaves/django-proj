@@ -1,6 +1,6 @@
 {% extends 'toomanydaves/base.html' %}
 
-{% block title %}The Journal of Too Many Daves{% endblock %}
+{% block title %}The Journey of Too Many Daves{% endblock %}
 
 {% block style %}
    <style>
@@ -23,7 +23,7 @@
                     The Journey of<br>
                     <span class="text-uppercase">Too Many Daves</span>
                 </h1>
-                <h6><small class="text-serif">A Collaborative Weblog</small></h6>
+                <h6><small class="text-serif">A Collaborative Blog</small></h6>
             </div>
             <div style="
                 width: 100%;
@@ -73,23 +73,6 @@
                     {% endif %}
                 </div>
             {% endfor %}
-            <!--
-            <div class="post">
-                <h6>Today at 4:35</h6>
-                <h2 class="text-fat-serif">Up and Running!</h2>
-                <h6>By <a href="people/1">Sean Jacke</a></h6>
-                <p class="text-serif">
-                    This is the crazy thing that happened.
-                    Everything! This has been such a rush.
-                    Everyone should have the experience to put something on the Net.
-                    Something they've worked hard on and hope people will respond to.
-                    It's like building a table.
-                    You bring it into the world.
-                    People can then relate to it.
-                    This extension of you...
-                </p>
-            </div>
-            -->
         </div>
         <div class="col-12 col-sm-4">
             <div style="
@@ -99,13 +82,13 @@
                 margin-bottom: 2rem;
             "></div>
             <div class="mb-sm-4">
-                <h4><a class="text-sans-serif text-uppercase" href="/backstory">backstory</a></h4>
+                <h4 class="text-sans-serif text-uppercase">backstory</h4>
                 <div class="d-none d-sm-block">
                     {% include 'blog/backstory.html' %}
                 </div>
             </div>
             <div>
-                <h4><a class="text-sans-serif text-uppercase" href="/about">About These Posts</a></h4>
+                <h4 class="text-sans-serif text-uppercase">About These Posts</h4>
                 <div class="d-none d-sm-block">
                     {% include 'blog/about.html' %}
                 </div>

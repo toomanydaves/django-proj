@@ -1,13 +1,11 @@
 <style>
     #teaser-portfolio .card {
         background-color: rgba(255, 140, 140, 0.1);
-        border: 0px solid rgba(0, 0, 0, 0.5);
+        border: none;
         cursor: pointer;
     }
     #teaser-portfolio .card:hover {
-        background-color: rgba(0, 0, 0, .7);
-        background-color: rgba(233, 233, 233, 1);
-        border-width: 3px;
+        background-color: rgba(233, 233, 233, 0.65);
     }
     #teaser-portfolio .card:hover h4,
     #teaser-portfolio .card:hover h6 {
@@ -32,10 +30,10 @@
 </style>
 <div
     id="teaser-portfolio"
-    style="height: 580px; margin-bottom: 1rem"
+    style="height: 596px; margin-bottom: 1rem"
 >
     <div style="
-        height: 580px;
+        height: 596px;
         width: 100%;
         padding: 0 15px;
         position: absolute;
@@ -43,21 +41,37 @@
     ">
         <div
             style="
-            height: 580px;
+            position: relative;
+            height: 596px;
             width: 100%;
             overflow: hidden;
             "
         >
             <img
+                id="portfolio-pattern-bg"
+                src="https://i.pinimg.com/564x/c0/a9/d7/c0a9d73d526d03c4478907a5a418930d.jpg"
+                style="
+                    position: absolute;
+                    min-height: 596px;
+                    min-width: 100%;
+                    opacity: 0;
+                "
+            />
+            <img
                 id="portfolio-photo-bg"
-                style="min-height: 580px; min-width: 100%; opacity: 0.5;"
+                style="
+                    position: absolute;
+                    min-height: 596px;
+                    min-width: 100%;
+                    opacity: 0.5;
+                "
             />
         </div>
     </div>
     <div class="dot-matrix-bg">
         <div
             style="
-                height: 580px;
+                height: 596px;
                 background-color: rgba(255, 0, 0, 0.4);
                 position: relative;
             "
@@ -67,53 +81,57 @@
                     id="portfolio-scroller"
                     style="
                         position: absolute;
-                        top: 5rem;
-                        height: 500px;
+                        top: 72px;
+                        height: 524px;
                         overflow: scroll;
                     "
                 >
                     {%if project_list %}
                     <div
                         class="card-columns"
-                        style="padding: 0 1rem 1rem 1rem; column-count: 1;"
+                        style="padding: 0 1rem 10rem 1rem; column-count: 2;"
                     >
                         {% for project in project_list %}
                         <div
                             id="/portfolio/projects/{{ project.id }}"
                             class="card portfolio-card"
-                            style="position: relative"
+                            style="position: relative; margin-bottom: 1rem;"
                         >
                             {% if project.logo %}
-                            <img class="card-img-top" src="{{ project.logo.url }}" alt="logo">
+                            <img style="width: 100%;" src="{{ project.logo.url }}" alt="logo">
                             {% endif %}
-                            <div
-                                class="card-body" style="position: absolute; top: 0px; height: 100%">
-                                {% if project.tags %}
-                                <ul class="list-inline">
-                                    {% for tag in project.tags.all %}
-                                    <li class="list-inline-item">
-                                        <a href="/portfolio/?tag={{ tag.id }}">
-                                            <span class="badge badge-warning">{{ tag.name }}</span>
-                                        </a>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
+                            {% if project.tags %}
+                            <ul class="list-inline text-right" style="margin-top: -2rem; margin-right: 0.5rem;">
+                                {% for tag in project.tags.all %}
+                                <li class="list-inline-item">
+                                    <a href="/portfolio/?tag={{ tag.id }}">
+                                        <span class="badge badge-warning">{{ tag.name }}</span>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            <div class="text-dark" style="padding: 0 0.4rem; margin-top: -0.2rem;">
                                 <h4 class="text-sans-serif">
                                     <span>{{ project }}</span>
                                 </h4>
                                 {% if project.claim %}
-                                <h6 class="text-white"><span>{{ project.claim }}</span></h6>
+                                <h6><span>{{ project.claim }}</span></h6>
                                 {% endif %}
                             </div>
                         </div>
                         {% endfor %}
                     </div>
                     {% endif %}
-                    <div style="padding: 0 1rem; margin: 7rem 0 20rem 0;">
-                        <h3 class="text-sans-serif">"Genius is one percent inspiration,
-                            ninety-nine percent perspiration."</h3>
-                        <div style="padding: 1rem 0; margin-bottom: 21.5rem">
+                    <div style="padding: 0 1rem;">
+                        <h3 class="text-sans-serif">
+                            <span class="long-dash-after">
+                                "Genius is one percent inspiration,
+                                ninety-nine percent perspiration."
+                            </span>
+                            Thomas Edison
+                        </h3>
+                        <div style="padding: 1rem 0; margin-bottom: 23.3rem">
                             <a
                                 class="btn btn-outline-light btn-lg"
                                 href="/portfolio"
@@ -126,12 +144,14 @@
             <h1
                 style="
                     position: absolute;
+                    top: 10px;
                     opacity: 0;
                     padding-bottom: 1rem;
                     padding-left: 1rem;
                     font-size: 3rem;
                     width: 100%;
                 "
+                class="js-teaser-section-heading"
             >
                 <a class="text-white text-fat-serif" href="/portfolio">Portfolio</a>
             </h1>
