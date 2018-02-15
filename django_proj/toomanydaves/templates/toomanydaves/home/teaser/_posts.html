@@ -100,7 +100,9 @@
                                         src="{{ post.cover_photo.url }}"
                                     >
                                     {% endif %}
-                                    <h6><small class="text-uppercase">Date</small></h6>
+                                    <h6><small class="text-uppercase">
+                                        {{ post.published_at|date:"D d M Y" }}
+                                    </small></h6>
                                     {% if post.title %}
                                     <h5 class="he text-sans-serif">{{ post.title }}</h5>
                                     <p class="text-serif text-dark">{{ post.content }}</p>
@@ -125,7 +127,7 @@
                     {% endif %} 
                     <div style="padding: 0 1rem;">
                         <h3 class="text-sans-serif">
-                            it&apos;s not where you are.<br>
+                            It&apos;s not where you&apos;re at,<br>
                             it&apos;s how you got there.<br>
                         </h3>
                         <div style="padding: 1rem 0; margin-bottom: 8.7rem">
@@ -133,7 +135,7 @@
                                 class="btn btn-outline-light btn-lg"
                                 href="/blog"
                                 role="button"
-                            >In Retrospect...</a>
+                            >In retrospect...</a>
                         </div>
                     </div>
                 </div>
