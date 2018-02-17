@@ -175,9 +175,11 @@
                                     overflow: hidden;
                                 "
                             >
-                                <h5><small class="text-uppercase">{{ project.name }}</small></h5>
+                                <h5><small class="text-uppercase"><strong>{{ project.name }}</strong></small></h5>
                                 <h6 style="margin-top: -0.5rem;"><small>{{ project.url }}</small></h6>
-                                <small>{{ project.description }}</small>
+                                <small style="background: rgba(255, 255, 255, 0.8);">
+                                    {{ project.description }}
+                                </small>
                             </div>
                         </div>
                         </div>
