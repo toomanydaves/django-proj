@@ -4,6 +4,7 @@
         border: none;
         cursor: pointer;
     }
+/*
     #teaser-portfolio .card:hover {
         background-color: rgba(233, 233, 233, 0.65);
     }
@@ -14,19 +15,20 @@
     #teaser-portfolio .card:hover .card-body {
         background: none;
     }
-    #teaser-portfolio .card-body h4,
-    #teaser-portfolio .card-body h6 {
-        text-shadow: 0 0 34px #000;
-    }
     #teaser-portfolio .card:hover h4 span,
     #teaser-portfolio .card:hover h6 span {
         color: #000;
         text-shadow: 0 0 34px #ccc;
     }
+    #teaser-portfolio .card-body h4,
+    #teaser-portfolio .card-body h6 {
+        text-shadow: 0 0 34px #000;
+    }
     #teaser-portfolio .card .card-body {
         background-color: rgba(0, 0, 0, 0.15);
         width: 100%;
     }
+*/
 </style>
 <div
     id="teaser-portfolio"
@@ -77,6 +79,42 @@
             "
         >
             <div id="portfolio-body" style="display: none; opacity: 0;">
+                <script>
+                    function flip(e) {
+                        $(e.target).find('.card').toggleClass('flipped');
+                    }
+                </script>
+                <style>
+                    .portfolio-card {
+                        -webkit-transition: -webkit-transform 1s;
+                        -moz-transition: -moz-transform 1s;
+                        -o-transition: -o-transform 1s;
+                        transition: transform 1s;
+                        -webkit-transform-style: preserve-3d;
+                        -moz-transform-style: preserve-3d;
+                        -o-transform-style: preserve-3d;
+                        transform-style: preserve-3d;
+                        -webkit-transform-origin: 50% 50%;
+                    }
+                    .portfolio-card-face {
+                        -webkit-backface-visibility: hidden;
+                        -moz-backface-visibility: hidden;
+                        -o-backface-visibility: hidden;
+                        backface-visibility: hidden;
+                    }
+                    .portfolio-card-face.back-face {
+                        -webkit-transform: rotateY( 180deg );
+                        -moz-transform: rotateY( 180deg );
+                        -o-transform: rotateY( 180deg );
+                        transform: rotateY( 180deg );
+                    }
+                    .flipped {
+                        -webkit-transform: rotateY( 180deg );
+                        -moz-transform: rotateY( 180deg );
+                        -o-transform: rotateY( 180deg );
+                        transform: rotateY( 180deg );
+                    }
+                </style>
                 <div
                     id="portfolio-scroller"
                     style="
@@ -93,32 +131,55 @@
                     >
                         {% for project in project_list %}
                         <div
+                            style="width: 100%; height: 100%;"
+                            onmouseenter="return flip(event);"
+                        > 
+                        <div
                             id="/portfolio/projects/{{ project.id }}"
-                            class="card portfolio-card"
-                            style="position: relative; margin-bottom: 1rem;"
+                            class="card portfolio-card text-dark"
+                            style="width: 100%; height: 100%; position: relative; margin-bottom: 1rem;"
                         >
-                            {% if project.logo %}
-                            <img style="width: 100%;" src="{{ project.logo.url }}" alt="logo">
-                            {% endif %}
-                            {% if project.tags %}
-                            <ul class="list-inline text-right" style="margin-top: -2rem; margin-right: 0.5rem;">
-                                {% for tag in project.tags.all %}
-                                <li class="list-inline-item">
-                                    <a href="/portfolio/?tag={{ tag.id }}">
-                                        <span class="badge badge-warning">{{ tag.name }}</span>
-                                    </a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                            <div class="text-dark" style="padding: 0 0.4rem; margin-top: -0.2rem;">
-                                <h4 class="text-sans-serif">
-                                    <span>{{ project }}</span>
-                                </h4>
-                                {% if project.claim %}
-                                <h6><span>{{ project.claim }}</span></h6>
+                            <div class="portfolio-card-face">
+                                {% if project.logo %}
+                                <img style="width: 100%;" src="{{ project.logo.url }}" alt="logo">
                                 {% endif %}
+                                {% if project.tags %}
+                                <ul
+                                    class="list-inline text-right"
+                                    style="margin-top: -2rem; margin-right: 0.5rem;"
+                                >
+                                    {% for tag in project.tags.all %}
+                                    <li class="list-inline-item">
+                                        <a href="/portfolio/?tag={{ tag.id }}">
+                                            <span class="badge badge-warning">{{ tag.name }}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                <div class="text-dark" style="padding: 0 0.4rem; margin-top: -0.2rem;">
+                                    <h4 class="text-sans-serif">
+                                        <span>{{ project }}</span>
+                                    </h4>
+                                    <h6><span>{{ project.claim }}</span></h6>
+                                </div>
                             </div>
+                            <div
+                                class="portfolio-card-face back-face text-dark"
+                                style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    overflow: hidden;
+                                "
+                            >
+                                <h5><small class="text-uppercase">{{ project.name }}</small></h5>
+                                <h6 style="margin-top: -0.5rem;"><small>{{ project.url }}</small></h6>
+                                <small>{{ project.description }}</small>
+                            </div>
+                        </div>
                         </div>
                         {% endfor %}
                     </div>
@@ -153,7 +214,7 @@
                 "
                 class="js-teaser-section-heading"
             >
-                <a class="text-white text-fat-serif" href="/portfolio">Portfolio</a>
+                <a class="text-white text-fat-serif" href="/portfolio"><span class="text-cursive">A </span>Portfolio<span class="text-cursive text-lowercase"> of Projects</span></a>
             </h1>
         </div>
     </div>
