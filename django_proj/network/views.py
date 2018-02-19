@@ -13,7 +13,7 @@ def dashboard(request):
         'Hola',
         'Holla',
         'Yo',
-        'Wilkommen',
+        'Willkommen',
         'Bienvenue',
         'As-salāmu ʿalaykum',
         'Shalom aleikhem',

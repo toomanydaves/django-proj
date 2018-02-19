@@ -156,18 +156,13 @@
             {% block bg %}{% endblock %}
         </div>
         {% block nav %}{% endblock %}
-        <div id="content" style="margin-bottom: 1rem">
+        <div id="content">
             {% block content %}{% endblock %}
         </div>
         <div id="footer">
             {% block footer %}{% endblock %}
         </div>
         {% block modal %}{% endblock %}
-        <script>
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
-        </script>
         {% block script %}{% endblock %}
     </body>
 </html>

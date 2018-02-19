@@ -16,13 +16,13 @@
 {% endblock %}
 
 {% block content %}
-    <div id="teaser" style="opacity: 0; margin: 2rem 0 1.4rem 0;" class="text-white">
+    <div id="teaser" style="opacity: 0; margin: 2rem 0 0.5rem 0;" class="text-white">
         {% include "toomanydaves/home/_teaser.html" %}
     </div>
 
     {% include "toomanydaves/home/_animation.html" %}
 
-    <div id="about" class="pb-5">
+    <div id="about" class="pb-5" style="padding-top: 0.5rem; background-color: rgba(227, 227, 227, 0.4);">
         {% include "toomanydaves/home/_about.html" %}
     </div>
 {% endblock %}
@@ -35,4 +35,12 @@
         <li class="list-inline-item h1 p-1">Keep at it.</li>
     </ul>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
 {% endblock %}

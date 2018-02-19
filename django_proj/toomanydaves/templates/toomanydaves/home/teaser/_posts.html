@@ -1,6 +1,6 @@
 <style>
     #teaser-posts .card {
-        background-color: #e3e3e345;
+        background: none;
         border: none;
     }
 </style>
@@ -41,7 +41,7 @@
             />
             <img
                 id="posts-photo-bg"
-                style="min-height: 360px; min-width: 100%; opacity: 0.5;"
+                style="min-height: 360px; min-width: 100%; opacity: 0.7;"
             />
         </div>
     </div>
@@ -49,7 +49,7 @@
         <div
             style="
                 height: 100%;
-                background-color: rgba(255, 130, 0, 0.4);
+                background-color: rgba(185, 142, 97, 0.4);
                 position: relative;
             "
         >
@@ -105,7 +105,7 @@
                                     </small></h6>
                                     {% if post.title %}
                                     <h5 class="he text-sans-serif">{{ post.title }}</h5>
-                                    <p class="text-serif text-dark">{{ post.content }}</p>
+                                    <p class="text-serif text-white">{{ post.content }}</p>
                                     <h6><small><a
                                         class="text-uppercase"
                                         href="{{ post.written_by.url }}"
@@ -127,15 +127,16 @@
                     {% endif %} 
                     <div style="padding: 0 1rem;">
                         <h3 class="text-sans-serif">
-                            It&apos;s not where you&apos;re at,<br>
+                            It&apos;s not where you&apos;re at;<br>
                             it&apos;s how you got there.<br>
+                            And where you want to go.
                         </h3>
-                        <div style="padding: 1rem 0; margin-bottom: 8.7rem">
+                        <div style="padding: 1rem 0; margin-bottom: 6.7rem">
                             <a
                                 class="btn btn-outline-light btn-lg"
                                 href="/blog"
                                 role="button"
-                            >In retrospect...</a>
+                            >Reflections Along the Way</a>
                         </div>
                     </div>
                 </div>

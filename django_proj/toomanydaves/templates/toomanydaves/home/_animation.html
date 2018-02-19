@@ -118,7 +118,7 @@
 
                                                     // Fade out photo, fade in pattern
                                                     $portfolioPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                    $portfolioPatternBg.velocity({ 'opacity': 0.7 }, 1200);
+                                                    $portfolioPatternBg.velocity({ 'opacity': 0.3 }, 1200);
                                                     
 
                                                     // Show Portfolio content
@@ -135,7 +135,7 @@
                                                                     $portfolioPatternBg.css('opacity', 0); 
                                                                 } else {
                                                                     $portfolioPhotoBg.css('opacity', 0);
-                                                                    $portfolioPatternBg.css('opacity', 0.7); 
+                                                                    $portfolioPatternBg.css('opacity', 0.3); 
                                                                 }
                                                             });
                                                         },
@@ -143,13 +143,14 @@
                                                     );
                                                 }, 650);
 
+/*
                                                 window.setTimeout(function () {
                                                     var $postsPhotoBg = $teaser.find('#posts-photo-bg');
                                                     var $postsPatternBg = $teaser.find('#posts-pattern-bg');
 
                                                     // Fade out photo, fade in pattern
                                                     $postsPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                    $postsPatternBg.velocity({ 'opacity': 0.7 }, 1200);
+                                                    $postsPatternBg.velocity({ 'opacity': 0.3 }, 1200);
 
                                                     // Show Posts content
                                                     $('#posts-body')
@@ -165,7 +166,37 @@
                                                                     $postsPatternBg.css('opacity', 0);
                                                                 } else {
                                                                     $postsPhotoBg.css('opacity', 0);
-                                                                    $postsPatternBg.css('opacity', 0.7);
+                                                                    $postsPatternBg.css('opacity', 0.3);
+                                                                }
+                                                            });
+                                                        },
+                                                        1200
+                                                    );
+                                                }, 1600);
+*/
+                                                window.setTimeout(function () {
+                                                    var $postsPhotoBg = $teaser.find('#posts-photo-bg');
+                                                    var $postsPatternBg = $teaser.find('#posts-pattern-bg');
+
+                                                    // Fade out photo, fade in pattern
+                                                    $postsPhotoBg.velocity({ 'opacity': 0 }, 1000);
+                                                    $postsPatternBg.velocity({ 'opacity': 0.3 }, 1200);
+
+                                                    // Show Posts content
+                                                    $('#posts-body')
+                                                    .css('display', 'block')
+                                                    .velocity(
+                                                        { 'opacity': 1 },
+                                                        function () {
+
+                                                            // Add scroll handlers
+                                                            $('#posts-scroller').scroll(function () {
+                                                                if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 50)) {
+                                                                    $postsPhotoBg.css('opacity', 0.5);
+                                                                    $postsPatternBg.css('opacity', 0);
+                                                                } else {
+                                                                    $postsPhotoBg.css('opacity', 0);
+                                                                    $postsPatternBg.css('opacity', 0.3);
                                                                 }
                                                             });
                                                         },
