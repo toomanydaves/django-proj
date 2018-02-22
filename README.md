@@ -1,14 +1,15 @@
 # Too Many Daves
 This repository contains the source code for the website, [toomanydaves.net](http://toomanydaves.net).
 
-## System requirements for development
+#INSTALLATION
+## System requirements
 *   git
 *   python/pip
 *   mysql
 *   [mysqlclient](https://docs.djangoproject.com/en/1.11/ref/databases/#mysql-db-api-drivers)
 
-## Set up a Dev database
-Create a development database. Name it whatever you like.
+## Set up a Database
+Create a database. Name it whatever you like.
 
     mysql -u root -p
     mysql> CREATE DATABASE toomanydaves_dev;
@@ -27,7 +28,6 @@ Logging in to db with user to confirm success.
     pip3 install
 
 ## Create an .env file in the top-level directory to store your local credentials
-    SECRET_KEY='+-v6=l%adqy7#hv5sff%^@=v-myynv0+47%#^^0f%nesx7a5m7'
     DEBUG=True
     DB_NAME='toomanydaves_dev'
     DB_USER='toomanydaves'
@@ -44,7 +44,9 @@ Logging in to db with user to confirm success.
 ## Run the  server
     python3 manage.py runserver
 
+# DEVELOPMENT
 ## Make migrations
     python3 manage.py makemigrations
 
+# PRODUCTION
 ## Deploy to Production
