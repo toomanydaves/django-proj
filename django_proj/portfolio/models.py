@@ -48,6 +48,9 @@ class Project(models.Model):
         blank=True,
         upload_to='project_logos'
     )
+    internal_rating = models.PositiveSmallIntegerField(
+        default=50,
+    )
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
