@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from toomanydaves_auth.models import User
+from network.models import Peep
 from portfolio.models import Project
 
 class Tag(models.Model):
@@ -39,7 +39,7 @@ class Post(models.Model):
     )
     created_at = models.DateTimeField(editable=False)
     written_by = models.ForeignKey(
-        User,
+        Peep,
         on_delete=models.CASCADE,
     )
     associated_with = models.ForeignKey(

@@ -1,0 +1,31 @@
+{% extends "toomanydaves/base.html" %}
+
+{% load static %}
+
+{% block title %}Peeps{% endblock %}
+
+{% block style %}
+    <style>
+        #bg {
+            background: url("{% static "/images/tile-bg.png" %}");
+        }
+    </style>
+{% endblock %}
+
+{% block nav %}
+    {% include "toomanydaves/nav.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="peeps" class="container">
+        <div class="row">
+            {% for peep in peeps_list %}
+                <div class="col-12">
+                    <h4>
+                        <a href="/network/peeps/{{ peep.id }}">{{ peep }}</a>
+                    </h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -2,20 +2,20 @@ from blog.models import Post
 from django.contrib.auth import logout
 from django.shortcuts import render
 from portfolio.models import Project
-from toomanydaves_auth.models import User
+from network.models import Peep
 
 def home(request):
-    seen_home = True
+    return_visit = True
 
-    if request.session.get('seen_home', False):
-        request.session['seen_home'] = True
-        seen_home = False
+    if request.session.get('return_visit', False):
+        return_visit = False
+        request.session['return_visit'] = True
 
     return render(request, 'toomanydaves/home.html', {
-        'seen_home': seen_home,
+        'return_visit': return_visit,
         'project_list': Project.objects.order_by('?')[:8],
         'post_list': Post.objects.filter(status='PUBLISHED').order_by('-published_at')[:4],
-        'user_list': User.objects.order_by('?')[:8],
+        'peeps_list': Peep.objects.order_by('?')[:8],
     })
 
 def backstory(request):
@@ -27,7 +27,7 @@ def poem(request):
 def logout_user(request):
     logout(request)
 
-    #Redirect to a success page
+    # TODO Redirect to home page
     return render(request, 'toomanydaves/home.html')
 
 def engage(request):

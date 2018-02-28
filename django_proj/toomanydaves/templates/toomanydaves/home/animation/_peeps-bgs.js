@@ -13,10 +13,10 @@ var peepsBgs = [
     'https://i.pinimg.com/564x/58/b8/ff/58b8ff27849070e7078c57a1a70ced55.jpg',
     // Alexander Gorlizki
     'https://i.pinimg.com/564x/29/85/f5/2985f51716a5c6ecb6fa5098e4786a14.jpg',
-    //  Raspberry lines make triangles on pale blue 
-    'https://i.pinimg.com/564x/1a/28/26/1a2826dc1074a76e3296b7bad9b7d7af.jpg',
     // Dotmatrix Pattern
-    'https://i.pinimg.com/564x/c7/1a/a3/c71aa3fddc388dcb064b5a45b1128c54.jpg',
+    'https://i.pinimg.com/564x/c7/1a/a3/c71aa3fddc388dcb064b5a45b1128c54.jpg'
+    //  Raspberry lines make triangles on pale blue 
+    // 'https://i.pinimg.com/564x/1a/28/26/1a2826dc1074a76e3296b7bad9b7d7af.jpg',
     // Darwin
     // 'url(https://i.pinimg.com/564x/54/49/02/5449024c6a9062063af952f041aaa154.jpg)',
     // Debbie Harrie

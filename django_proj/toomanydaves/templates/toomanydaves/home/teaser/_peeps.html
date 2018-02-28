@@ -21,7 +21,7 @@
         ">
             <img
                 id="peeps-pattern-bg"
-                src="https://i.pinimg.com/564x/c0/a9/d7/c0a9d73d526d03c4478907a5a418930d.jpg"
+                src="https://i.pinimg.com/564x/db/9d/2a/db9d2a1e4cf8078416e6c8af6d260233.jpg"
                 style="
                     position: absolute;
                     min-height: 220px;
@@ -45,7 +45,7 @@
                     height: 148px;
                     overflow: scroll;
                 ">
-                    {% if user_list %}
+                    {% if peeps_list %}
                     <div
                         class="card-columns"
                         style="
@@ -53,13 +53,13 @@
                             column-count: 4;
                         "
                     >
-                        {% for user in user_list %}
+                        {% for peep in peeps_list %}
                         <div
                             style="width: 100%; height: 100%;"
                             onmouseenter="return flip(event);"
                         > 
                             <div
-                                id="/people/{{ user.id }}"
+                                id="/network/peeps/{{ peep.id }}"
                                 class="card peeps-card"
                                 style="
                                     position: relative;
@@ -69,7 +69,7 @@
                             >
                                 <div class="card-face">
                                     <img
-                                        src="https://i.pinimg.com/564x/96/ca/0d/96ca0d0c78e2a7001ce9a023138a83e2.jpg"
+                                        src="{{ peep.profile_picture.url }}"
                                         style="width: 100%;"
                                     >
                                 </div>
@@ -85,14 +85,14 @@
                                     "
                                 >
                                     <h6
-                                        class="text-dark text-sans-serif"
+                                        class="text-sans-serif"
                                         style="
                                             position: absolute;
                                             top: 50%;
                                             left: 0;
                                         "
                                     >
-                                        <small class="text-uppercase">{{ user }}</small>
+                                        <small class="text-uppercase">{{ peep }}</small>
                                     </h6>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                         <div style="padding: 1rem 0 0 0;">
                             <a
                                 class="btn btn-lg btn-outline-light"
-                                href="/people"
+                                href="/network/peeps"
                                 role="button"
                             >Cross Paths</a>
                         </div>
@@ -127,8 +127,19 @@
             "
             class="js-teaser-section-heading"
         >
-            <a class="text-white text-fat-serif d-inline d-sm-none"  href="/people">Peeps</a>
-            <a class="text-white text-cursive d-none d-sm-inline"  href="/people">Peeps</a>
+            <a
+                class="text-white text-fat-serif d-inline d-sm-none" 
+                href="/network/peeps"
+            >Peeps</a>
+            <a
+                class="text-white text-cursive d-none d-sm-inline"
+                href="/network/peeps"
+            >Peeps</a>
         </h1>
     </div>
 </div>
+<script>
+    $('#teaser-peeps .peeps-card').click(function(ev) {
+        window.location.href = $(this).attr('id');
+    });
+</script>

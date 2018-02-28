@@ -1,11 +1,20 @@
 import random
 
+from .models import Peep
 from blog.models import Post
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 def index(request):
     return render(request, 'network/network.html')
+
+def peep(request, peep_id):
+    peep = get_object_or_404(Peep, pk=peep_id)
+    return render(request, 'network/peep.html', { 'peep': peep })
+
+def peeps(request):
+    peeps_list = Peep.objects.all()
+    return render(request, 'network/peeps.html', { 'peeps_list': peeps_list })
 
 @login_required
 def dashboard(request):

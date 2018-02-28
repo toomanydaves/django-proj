@@ -7,6 +7,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from network.models import Peep
 
 """
     It's highly recommended to set up a custom User and UserManager model,
@@ -85,6 +86,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     username_validator = UnicodeUsernameValidator()
 
+    first_name = models.CharField(_('first name'), max_length=100)
+    last_name = models.CharField(_('last name'), max_length=150)
+    peep = models.OneToOneField(
+        Peep,
+        on_delete=models.CASCADE,
+        unique=True,
+    )
     email = models.EmailField(
         _('email address'),
         unique=True,
@@ -103,8 +111,6 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
-    first_name = models.CharField(_('first name'), max_length=30)
-    last_name = models.CharField(_('last name'), max_length=150)
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
