@@ -82,164 +82,141 @@
                         // Show "Keep at it."
                         $keepAtIt.css('visibility', 'visible');
 
-                        // Collapse the centered logo
-                        fallDown($centeredLogo.find(' rect'), function () {
-                            // After the collapse...
+                        window.setTimeout(function () {
 
-                            // Show the PPP headings in teaser
-                            $teaser.find('.js-teaser-section-heading').velocity({ opacity: 1 }, 500);
+                            // Collapse the centered logo
+                            fallDown($centeredLogo.find(' rect'), function () {
+                                // After the collapse...
 
-                            // Hide the claim
-                            $logoClaim.velocity(
-                                { opacity: 0 },
-                                450
-                            );
+                                // Show the PPP headings in teaser
+                                $teaser.find('.js-teaser-section-heading').velocity({ opacity: 1 }, 500);
 
-                            window.setTimeout(function () {
-                                $centeredLogo.velocity(
-                                    { height: 0 },
-                                    450,
-                                    function () {
-                                        $('#inline-logo').css('display', 'block');
-                                        $('nav .claim').removeClass('d-none');
-                                        // Let the inline logo fall into place
-                                        fallDown(
-                                            $('#inline-logo rect'),
-                                            function () {
-                                                window.setTimeout(function () {
-                                                    colorFlow(
-                                                        $('#inline-logo g g')
-                                                    );
-                                                }, 5500);
-
-                                                window.setTimeout(function () {
-                                                    var $portfolioPhotoBg = $teaser.find('#portfolio-photo-bg');
-                                                    var $portfolioPatternBg = $teaser.find('#portfolio-pattern-bg');
-
-                                                    // Fade out photo, fade in pattern
-                                                    $portfolioPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                    $portfolioPatternBg.velocity({ 'opacity': 0.3 }, 1200);
-                                                    
-
-                                                    // Show Portfolio content
-                                                    $('#portfolio-body')
-                                                    .css('display', 'block')
-                                                    .velocity(
-                                                        { 'opacity': 1 },
-                                                        function () {
-                                                            // Add scroll handler
-                                                            $('#portfolio-scroller').scroll(function () {
-                                                                // If near bottom show photo, otherwise show pattern
-                                                                if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 250)) {
-                                                                    $portfolioPhotoBg.css('opacity', 0.5);
-                                                                    $portfolioPatternBg.css('opacity', 0); 
-                                                                } else {
-                                                                    $portfolioPhotoBg.css('opacity', 0);
-                                                                    $portfolioPatternBg.css('opacity', 0.3); 
-                                                                }
-                                                            });
-                                                        },
-                                                        1200
-                                                    );
-                                                }, 650);
-
-/*
-                                                window.setTimeout(function () {
-                                                    var $postsPhotoBg = $teaser.find('#posts-photo-bg');
-                                                    var $postsPatternBg = $teaser.find('#posts-pattern-bg');
-
-                                                    // Fade out photo, fade in pattern
-                                                    $postsPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                    $postsPatternBg.velocity({ 'opacity': 0.3 }, 1200);
-
-                                                    // Show Posts content
-                                                    $('#posts-body')
-                                                    .css('display', 'block')
-                                                    .velocity(
-                                                        { 'opacity': 1 },
-                                                        function () {
-
-                                                            // Add scroll handlers
-                                                            $('#posts-scroller').scroll(function () {
-                                                                if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 50)) {
-                                                                    $postsPhotoBg.css('opacity', 0.5);
-                                                                    $postsPatternBg.css('opacity', 0);
-                                                                } else {
-                                                                    $postsPhotoBg.css('opacity', 0);
-                                                                    $postsPatternBg.css('opacity', 0.3);
-                                                                }
-                                                            });
-                                                        },
-                                                        1200
-                                                    );
-                                                }, 1600);
-*/
-                                                window.setTimeout(function () {
-                                                    var $postsPhotoBg = $teaser.find('#posts-photo-bg');
-                                                    var $postsPatternBg = $teaser.find('#posts-pattern-bg');
-
-                                                    // Fade out photo, fade in pattern
-                                                    $postsPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                    $postsPatternBg.velocity({ 'opacity': 0.3 }, 1200);
-
-                                                    // Show Posts content
-                                                    $('#posts-body')
-                                                    .css('display', 'block')
-                                                    .velocity(
-                                                        { 'opacity': 1 },
-                                                        function () {
-
-                                                            // Add scroll handlers
-                                                            $('#posts-scroller').scroll(function () {
-                                                                if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 50)) {
-                                                                    $postsPhotoBg.css('opacity', 0.5);
-                                                                    $postsPatternBg.css('opacity', 0);
-                                                                } else {
-                                                                    $postsPhotoBg.css('opacity', 0);
-                                                                    $postsPatternBg.css('opacity', 0.3);
-                                                                }
-                                                            });
-                                                        },
-                                                        1200
-                                                    );
-                                                }, 1600);
-
-                                                window.setTimeout(function () {
-                                                    var $peepsPhotoBg = $teaser.find('#peeps-photo-bg');
-                                                    var $peepsPatternBg = $teaser.find('#peeps-pattern-bg');
-
-                                                    // Fade out photo, fade in pattern
-                                                    $peepsPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                    $peepsPatternBg.velocity({ 'opacity': 0.3 }, 1200); 
-
-                                                    // Show Peeps content
-                                                    $('#peeps-body')
-                                                    .css('display', 'block')
-                                                    .velocity(
-                                                        { 'opacity': 1 },
-                                                        function () {
-                                                            // Add scroll handlers on teaser sections that reveal image on bottom
-                                                            $('#peeps-scroller').scroll(function () {
-                                                                if ($(this).scrollTop() > ($(this).find('.card-columns').height() + 10)) {
-                                                                    $peepsPhotoBg.css('opacity', 0.5);
-                                                                    $peepsPatternBg.css('opacity', 0);
-                                                                } else {
-                                                                    $peepsPhotoBg.css('opacity', 0);
-                                                                    $peepsPatternBg.css('opacity', 0.3);
-                                                                }
-                                                            });
-                                                        },
-                                                        1200
-                                                    );
-                                                }, 2400);
-                                            },
-                                            '0px',
-                                            300
-                                        );
-                                    }
+                                // Hide the claim
+                                $logoClaim.velocity(
+                                    { opacity: 0 },
+                                    450
                                 );
-                            }, 500);
-                        });
+
+                                window.setTimeout(function () {
+                                    $centeredLogo.velocity(
+                                        { height: 0 },
+                                        450,
+                                        function () {
+                                            $('#inline-logo').css('display', 'block');
+                                            $('nav .claim').removeClass('d-none');
+                                            // Let the inline logo fall into place
+                                            fallDown(
+                                                $('#inline-logo rect'),
+                                                function () {
+                                                    window.setTimeout(function () {
+                                                        colorFlow(
+                                                            $('#inline-logo g g')
+                                                        );
+                                                    }, 5500);
+
+                                                    window.setTimeout(function () {
+                                                        var $portfolioPhotoBg = $teaser.find('#portfolio-photo-bg');
+                                                        var $portfolioPatternBg = $teaser.find('#portfolio-pattern-bg');
+
+                                                        // Fade out photo, fade in pattern
+                                                        $portfolioPhotoBg.velocity({ 'opacity': 0 }, 1000);
+                                                        $portfolioPatternBg.velocity({ 'opacity': 0.3 }, 1200);
+                                                        
+
+                                                        // Show Portfolio content
+                                                        $('#portfolio-body')
+                                                        .css('display', 'block')
+                                                        .velocity(
+                                                            { 'opacity': 1 },
+                                                            function () {
+                                                                // Add scroll handler
+                                                                $('#portfolio-scroller').scroll(function () {
+                                                                    // If near bottom show photo, otherwise show pattern
+                                                                    if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 250)) {
+                                                                        $portfolioPhotoBg.css('opacity', 0.5);
+                                                                        $portfolioPatternBg.css('opacity', 0); 
+                                                                    } else {
+                                                                        $portfolioPhotoBg.css('opacity', 0);
+                                                                        $portfolioPatternBg.css('opacity', 0.3); 
+                                                                    }
+                                                                });
+                                                            },
+                                                            1200
+                                                        );
+                                                    }, 650);
+
+                                                    window.setTimeout(function () {
+                                                        var $postsPhotoBg = $teaser.find('#posts-photo-bg');
+                                                        var $postsPatternBg = $teaser.find('#posts-pattern-bg');
+
+                                                        // Fade out photo, fade in pattern
+                                                        $postsPhotoBg.velocity({ 'opacity': 0 }, 1000);
+                                                        $postsPatternBg.velocity({ 'opacity': 0.3 }, 1200);
+
+                                                        // Show Posts content
+                                                        $('#posts-body')
+                                                        .css('display', 'block')
+                                                        .velocity(
+                                                            { 'opacity': 1 },
+                                                            function () {
+
+                                                                // Add scroll handlers
+                                                                $('#posts-scroller').scroll(function () {
+                                                                    if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 50)) {
+                                                                        $postsPhotoBg.css('opacity', 0.5);
+                                                                        $postsPatternBg.css('opacity', 0);
+                                                                    } else {
+                                                                        $postsPhotoBg.css('opacity', 0);
+                                                                        $postsPatternBg.css('opacity', 0.3);
+                                                                    }
+                                                                });
+                                                            },
+                                                            1200
+                                                        );
+                                                    }, 1600);
+
+                                                    window.setTimeout(function () {
+                                                        var $peepsPhotoBg = $teaser.find('#peeps-photo-bg');
+                                                        var $peepsPatternBg = $teaser.find('#peeps-pattern-bg');
+
+                                                        // Fade out photo, fade in pattern
+                                                        $peepsPhotoBg.velocity({ 'opacity': 0 }, 1000);
+                                                        $peepsPatternBg.velocity({ 'opacity': 0.3 }, 1200); 
+
+                                                        // Show Peeps content
+                                                        $('#peeps-body')
+                                                        .css('display', 'block')
+                                                        .velocity(
+                                                            { 'opacity': 1 },
+                                                            function () {
+                                                                // Add scroll handlers on teaser sections that reveal image on bottom
+                                                                $('#peeps-scroller').scroll(function () {
+                                                                    if ($(this).scrollTop() > ($(this).find('.card-columns').height() + 10)) {
+                                                                        $peepsPhotoBg.css('opacity', 0.5);
+                                                                        $peepsPatternBg.css('opacity', 0);
+                                                                    } else {
+                                                                        $peepsPhotoBg.css('opacity', 0);
+                                                                        $peepsPatternBg.css('opacity', 0.3);
+                                                                    }
+                                                                });
+                                                            },
+                                                            1200
+                                                        );
+
+                                                        window.setTimeout(function() {
+                                                            $('#about').velocity('scroll',  { duration: 800, easing: 'out' });
+                                                        }, 1200);
+                                                            
+                                                    }, 2400);
+                                                },
+                                                '0px',
+                                                300
+                                            );
+                                        }
+                                    );
+                                }, 500);
+                            });
+                        }, 700);
                     }, 700);
                 }, 700);
             });

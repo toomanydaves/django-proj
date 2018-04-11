@@ -17,7 +17,6 @@ class Tag(models.Model):
         ordering = ('name',)
 
 class Post(models.Model):
-
     DELETED = 'DELETED'
     DRAFT = 'DRAFT'
     PUBLISHED = 'PUBLISHED'
@@ -44,6 +43,7 @@ class Post(models.Model):
     )
     associated_with = models.ForeignKey(
         Project,
+        blank=True,
         null=True,
         on_delete=models.SET_NULL,
     )
@@ -60,9 +60,11 @@ class Post(models.Model):
         upload_to='post_cover-photo'
     )
 
+    # TODO API
     # def publish()
     # def unpublish()
     # def delete()
+
     # https://stackoverflow.com/questions/1737017
     def save(self, *args, **kwargs):
         if not self.id:
@@ -70,7 +72,17 @@ class Post(models.Model):
         return super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.written_by.first_name + ' | ' + str(self.created_at)
+        return self.written_by.first_name + ' | ' + (self.title if self.title else str(self.created_at))
 
     class Meta:
         ordering = ('created_at',)
+
+class SEO(models.Model):
+    key_word = models.CharField(max_length=50)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.key_word
+
+    class Meta:
+        ordering = ('post', 'key_word',)

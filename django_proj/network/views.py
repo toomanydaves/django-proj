@@ -28,16 +28,17 @@ def dashboard(request):
         'Shalom aleikhem',
         
     ]
+        
     return render(request, 'network/dashboard.html', {
         'greeting': random.choice(greetings),
         'draft_list': Post.objects.filter(
-            written_by=request.user,
+            written_by=request.user.peep,
             status='DRAFT',
         ).order_by(
             '-published_at'
         ),
         'published_list': Post.objects.filter(
-            written_by=request.user,
+            written_by=request.user.peep,
             status='PUBLISHED'
         ).order_by(
             '-created_at'

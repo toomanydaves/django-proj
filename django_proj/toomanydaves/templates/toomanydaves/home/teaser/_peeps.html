@@ -4,6 +4,28 @@
         border: none;
         cursor: pointer;
     }
+    #teaser-peeps:before {
+        background-image: url("data:image/svg+xml;charset=utf8,<svg id='stripe-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='rgba(30, 30, 30, 0.7)' stroke-width='2' /></svg>");
+        background-size: 10px 10px;
+        top: 0px;
+        right:-7px;
+        content: "";
+        display: block;
+        height: calc(100% + 24px);
+        position: absolute;
+        width: 22px;
+    }
+    #teaser-peeps:after {
+        content: "";
+        display: block;
+        background-image: url("data:image/svg+xml;charset=utf8,<svg id='stripe-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='rgba(30, 30, 30, 0.7)' stroke-width='2' /></svg>");
+        background-size: 10px 10px;
+        bottom: -24px;
+        height: 23px;
+        right: 15px;
+        position: absolute;
+        width: calc(100% - 29px);
+    }
 </style>
 <div id="teaser-peeps" style="height: 220px;">
     <div style="
@@ -21,7 +43,7 @@
         ">
             <img
                 id="peeps-pattern-bg"
-                src="https://i.pinimg.com/564x/db/9d/2a/db9d2a1e4cf8078416e6c8af6d260233.jpg"
+                src="https://i.pinimg.com/564x/1a/28/26/1a2826dc1074a76e3296b7bad9b7d7af.jpg"
                 style="
                     position: absolute;
                     min-height: 220px;
@@ -29,7 +51,7 @@
                     opacity: 0;
                 "
             />
-            <img id="peeps-photo-bg" style="min-height: 220px; min-width: 100%; opacity: 0.7;" />
+            <img id="peeps-photo-bg" style="min-height: 220px; width: 100%; opacity: 0.7;" />
         </div>
     </div>
     <div class="dot-matrix-bg">
@@ -67,11 +89,12 @@
                                     width: 100%;
                                 "
                             >
-                                <div class="card-face">
+                                <div class="card-face" style="position: relative;">
                                     <img
                                         src="{{ peep.profile_picture.url }}"
-                                        style="width: 100%;"
+                                        style="width: 100%; border: 1px solid rgba(200, 200, 200, 0.8);"
                                     >
+                                    <div class="dot-matrix-bg" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
                                 </div>
                                 <div
                                     class="card-face back-face"
@@ -123,7 +146,6 @@
                 opacity: 0;
                 font-size: 3rem;
                 padding-left: 1rem;
-                width: 100%;
             "
             class="js-teaser-section-heading"
         >
@@ -134,7 +156,7 @@
             <a
                 class="text-white text-cursive d-none d-sm-inline"
                 href="/network/peeps"
-            >Peeps</a>
+            >Peeps</a> <span class="text-uppercase h6">contributing a verse &gt;</span>
         </h1>
     </div>
 </div>

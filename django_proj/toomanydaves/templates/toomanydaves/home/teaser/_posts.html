@@ -1,4 +1,15 @@
 <style>
+    #teaser-posts:before {
+        background-image: url("data:image/svg+xml;charset=utf8,<svg id='stripe-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='rgba(30, 30, 30, 0.7)' stroke-width='2' /></svg>");
+        background-size: 10px 10px;
+        top: 0px;
+        right:-7px;
+        content: "";
+        display: block;
+        height: calc(100% - 16px);
+        position: absolute;
+        width: 22px;
+    }
     #teaser-posts .card {
         background: none;
         border: none;
@@ -31,7 +42,7 @@
         >
             <img
                 id="posts-pattern-bg"
-                src="https://i.pinimg.com/564x/1a/28/26/1a2826dc1074a76e3296b7bad9b7d7af.jpg"
+                src="https://i.pinimg.com/564x/91/1f/2b/911f2b44584876dd15ea1ff928aeef68.jpg"
                 style="
                     position: absolute;
                     min-height: 360px;
@@ -88,7 +99,10 @@
                                 {% endfor %}
                             </ul>
                             {% endif %}
-                            <div class="post" style="display: inline-block;">
+                            <div class="post" style="
+                                display: inline-block;
+                                color: rgba(40, 40, 40, 0.8);
+                            ">
                                 {% if post.cover_photo %}
                                 <img
                                     style="
@@ -104,14 +118,16 @@
                                     {{ post.published_at|date:"D d M Y" }}
                                 </small></h6>
                                 {% if post.title %}
-                                <h4 class="text-white text-sans-serif">{{ post.title }}</h4>
-                                <p class="text-serif text-white">{{ post.content }}</p>
+                                <h4 class="text-sans-serif">{{ post.title }}</h4>
+                                <p class="text-serif"><span style="background-color: #fff">
+                                    {{ post.content }}
+                                </span></p>
                                 <h6><small><a
                                     class="text-uppercase"
                                     href="/network/peeps/{{ post.written_by.id }}"
                                 >{{ post.written_by }}</a></small></h6>
                                 {% else %}
-                                <p class="text-white">
+                                <p>
                                     <span class="text-serif">{{ post.content }}</span><br>
                                     <small><a
                                         class="text-muted text-uppercase"
@@ -126,8 +142,10 @@
                     {% endif %} 
                     <div style="padding: 0 1rem;">
                         <h3 class="text-sans-serif">
-                            It&apos;s not where you&apos;re at;<br>
-                            it&apos;s how you got there.<br>
+                            <span class="long-dash-after">
+                                It&apos;s not where you&apos;re at
+                            </span><br>
+                            It&apos;s how you got there,<br>
                             And where you want to go.
                         </h3>
                         <div style="padding: 1rem 0; margin-bottom: 5.7rem">
@@ -140,22 +158,22 @@
                     </div>
                 </div>
             </div>
-            <h1
+            <div
                 style="
                     position: absolute;
                     top: 10px;
                     opacity: 0;
                     padding-left: 1rem;
                     padding-bottom: 1rem;
-                    font-size: 3rem;
                     width: 100%;
                 "
                 class="js-teaser-section-heading"
             >
-                <a class="text-white" href="/blog">
-                    <span class="text-fat-serif">#theJourney</span>
-                </a>
-            </h1>
+                <h6 style="margin-bottom: 0;" class="text-uppercase">&gt; Posts from</h6>
+                <h1 style="font-size: 3rem; margin-top: -0.3rem;">
+                    <a class="text-white text-fat-serif" href="/blog">#theJourney</a>
+                </h1>
+            </div>
         </div>
     </div>
 </div>

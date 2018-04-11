@@ -40,7 +40,7 @@
                             href="#projects-pane"
                             role="tab"
                             aria-controls="projects"
-                        ><span class="d-none d-md-inline">Your </span>Projects</a>
+                        ><span class="d-none d-md-inline">Your </span>Portfolio</a>
                     </li>
                     <li class="nav-item">
                         <a
@@ -50,17 +50,7 @@
                             href="#posts-pane"
                             role="tab"
                             aria-controls="posts"
-                        ><span class="d-none d-md-inline">Your </span>Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            id="support-tab"
-                            class="nav-link"
-                            data-toggle="tab"
-                            href="#support-pane"
-                            role="tab"
-                            aria-controls="support"
-                        ><span class="d-none d-md-inline">Your </span>Support</a>
+                        ><span class="d-none d-md-inline">Your </span>Journey</a>
                     </li>
                 </ul>
             </div>
@@ -103,62 +93,7 @@
             role="tabpanel"
             aria-labelledby="posts-tab"
         >
-            <div id="blog-editor" class="container">
-                <div class="row text-sans-serif-headings">
-                    <div class="col-12 col-lg-6">
-                        <h3>Posts</h3>
-                        {% for post in published_list %}
-                            <div class="mt-2 mb-2">
-                                <h6>{{ post.published_at }}</h6>
-                                {% if post.cover_photo %}
-                                    <img
-                                        style="
-                                        max-width: 50%;
-                                        max-height: 200px;
-                                        "
-                                        src="{{ post.cover_photo.url }}"
-                                    >
-                                {% endif %}
-                                {% if post.title %}
-                                    <h6>{{ post.title }}</h6>
-                                {% endif %}
-                                <div>{{ post.content }}</div>
-                            </div>
-                        {% empty %}
-                            <p>You haven't posted anything yet...</p>
-                        {% endfor %}
-                    </div>
-                    <div class="col-12 col-lg-6">
-                            <h3>Drafts</h3>
-                            {% for draft in draft_list %}
-                                <div class="mt-2 mb-2">
-                                    {% if draft.cover_photo %}
-                                        <img alt="PHOTO">
-                                    {% endif %}
-                                    {% if draft.title %}
-                                        <h6>draft.title</h6>
-                                    {% endif %}
-                                    <div>{{ draft.content }}</div>
-                                </div>
-                            {% empty %}
-                                <p>
-                                    Start by creating a draft.<br>
-                                    We'll save it for as long as you'd like.</br>
-                                    When you're ready, post it!
-                                </p>
-                            {% endfor %}
-                            <p>
-                                <button
-                                    type="button"
-                                    class="btn btn-primary"
-                                    data-toggle="modal"
-                                    data-target="#new-draft-editor-modal"
-                                >New Draft</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include "network/dashboard/_posts.html" %}
         </div>
         <div
             id="support-pane"

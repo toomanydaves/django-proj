@@ -1,8 +1,74 @@
 <style>
+    #teaser-portfolio:before {
+        background-image: url("data:image/svg+xml;charset=utf8,<svg id='stripe-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='rgba(30, 30, 30, 0.7)' stroke-width='2' /></svg>");
+        background-size: 10px 10px;
+        top: 0px;
+        content: "";
+        display: block;
+        height: calc(100% + 7px);
+        position: absolute;
+        left: -7px;
+        width: 22px;
+    }
+    #teaser-portfolio:after {
+        content: "";
+        display: block;
+        background-image: url("data:image/svg+xml;charset=utf8,<svg id='stripe-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='rgba(30, 30, 30, 0.7)' stroke-width='2' /></svg>");
+        background-size: 10px 10px;
+        bottom: -7px;
+        height: 23px;
+        right: 15px;
+        position: absolute;
+        width: calc(100% - 29px);
+    }
     #teaser-portfolio .card {
-        background-color: rgba(255, 140, 140, 0.1);
-        border: none;
+        background: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        border-right: 8px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 8px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0;
         cursor: pointer;
+    }
+    #teaser-portfolio .card-caption {
+        background-color: rgba(255, 255, 255, 0.8);
+        height: 100%;
+    }
+    #teaser-portfolio .card:before {
+        background-image: url("data:image/svg+xml;charset=utf8,<svg id='stripe-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' /></svg>");
+        background-size: 10px 10px;
+        bottom: -7px;
+        display: block;
+        height: 100%;
+        position: absolute;
+        right: -7px;
+        width: 6px;
+    }
+    #teaser-portfolio .card:after {
+        display: block;
+        background-image: url("data:image/svg+xml;charset=utf8,<svg id='stripe-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' /></svg>");
+        background-size: 10px 10px;
+        bottom: -7px;
+        height: 6px;
+        left: 6px;
+        position: absolute;
+        width: calc(100% - 5px);
+    }
+    #teaser-portfolio .card .front-face{
+        background: none;
+        height: 100%;
+        background-color: rgba(130, 129, 123, 0.2);
+    }
+    #teaser-portfolio .card .back-face{
+        background-color: rgba(255, 255, 255, 0.8);
+        height: 100%;
+        padding: 4px;
+    }
+    #teaser-portfolio .card .back-face .description {
+        padding: 4px 0px;
+    }
+    #teaser-portfolio .teaser-section-heading:hover h1 {
+        text-decoration: underline;
     }
 </style>
 <div
@@ -85,9 +151,9 @@
                             <div
                                 id="/portfolio/projects/{{ project.id }}"
                                 class="card portfolio-card text-dark"
-                                style="width: 100%; height: 100%; position: relative; margin-bottom: 1rem;"
+                                style="width: 100%; height: 100%; position: relative; margin-bottom: 3rem;"
                             >
-                                <div class="card-face">
+                                <div class="card-face front-face">
                                     {% if project.logo %}
                                     <img style="width: 100%;" src="{{ project.logo.url }}" alt="logo">
                                     {% endif %}
@@ -105,7 +171,7 @@
                                         {% endfor %}
                                     </ul>
                                     {% endif %}
-                                    <div class="text-dark" style="padding: 0 0.4rem; margin-top: -0.2rem;">
+                                    <div class="card-caption text-dark" style="padding: 0 0.4rem; margin-top: -0.2rem;">
                                         <h4 class="text-sans-serif">
                                             <span>{{ project }}</span>
                                         </h4>
@@ -125,7 +191,7 @@
                                 >
                                     <h5><small class="text-uppercase"><strong>{{ project.name }}</strong></small></h5>
                                     <h6 style="margin-top: -0.5rem;"><small>{{ project.url }}</small></h6>
-                                    <small style="background: rgba(255, 255, 255, 0.8);">
+                                    <small class="description text-light" style="background-color: #ee6b68;">
                                         {{ project.description }}
                                     </small>
                                 </div>
@@ -134,7 +200,7 @@
                         {% endfor %}
                     </div>
                     {% endif %}
-                    <div style="padding: 0 1rem;">
+                    <div style="padding: 0 1rem; height: 100%; cursor: pointer" class="js-call-to-action">
                         <h3 class="text-sans-serif">
                             <span class="long-dash-after">
                                 "Genius is one percent inspiration,
@@ -152,28 +218,41 @@
                     </div>
                 </div>
             </div>
-            <h1
+            <div
+                class="teaser-section-heading js-teaser-section-heading"
                 style="
                     position: absolute;
-                    top: 10px;
+                    top: 4px;
                     opacity: 0;
                     padding-bottom: 1rem;
                     padding-left: 1rem;
-                    font-size: 3rem;
                     width: 100%;
+                    cursor: pointer
                 "
-                class="js-teaser-section-heading"
             >
-                <a class="text-white text-fat-serif" href="/portfolio">
-                    <span class="text-cursive d-none d-sm-inline d-lg-none d-xl-inline">A </span>
-                    Portfolio
-                    <span class="text-cursive d-none d-sm-inline d-lg-none d-xl-inline">of Projects</span>
-                </a>
-            </h1>
+                <h1 style="font-size: 3rem;">
+                    <a class="text-white text-fat-serif" href="/portfolio">
+                        <span class="text-cursive d-none d-sm-inline d-lg-none d-xl-inline">
+                            A
+                        </span>
+                        Portfolio
+                        <span class="text-cursive d-none d-sm-inline d-lg-none d-xl-inline">
+                            of Projects
+                        </span>
+                    </a>
+                </h1>
+                <h6 class="text-uppercase" style="margin-top: -1rem;">&gt; pointing the way</h6>
+            </div>
         </div>
     </div>
 </div>
 <script>
+    function goToPortfolio (ev) {
+        window.location.href = "/portfolio";
+    }
+    $('#teaser-portfolio .js-teaser-section-heading').click(goToPortfolio);
+    $('#teaser-portfolio .js-call-to-action').click(goToPortfolio);
+
     $('#teaser-portfolio .portfolio-card').click(function(ev) {
         window.location.href = $(this).attr('id');
     });
