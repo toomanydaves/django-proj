@@ -5,6 +5,18 @@
     var $body = $('body');
     var bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
     
+    function cycleThroughItems ($list, ms, index) {
+        ms = ms || 500;
+        index = index || 0;
+
+        $list.eq(index).show();
+        window.setTimeout(function () {
+            $list.eq(index).hide();
+            cycleThroughItems($list, ms, index < $list.length ? (index + 1) : 0);
+        }, ms);
+        
+    }
+
     // Show a GIF
     $body.css('background-image', bgImage.url);
 
@@ -12,10 +24,12 @@
         var $teaser = $('#teaser');
         var $centeredLogo = $('#centered-logo');
         var $logoClaim = $centeredLogo.find('.logo-claim');
-        var portfolioBgs, postsBgs, peepsBgs;
+        var $claimBg = $('#home-claim-bg');
+        var portfolioBgs, postsBgs, peepsBgs, patternBgs;
         {% include "toomanydaves/home/animation/_portfolio-bgs.js" %}
         {% include "toomanydaves/home/animation/_posts-bgs.js" %}
         {% include "toomanydaves/home/animation/_peeps-bgs.js" %}
+        {% include "toomanydaves/home/animation/_patterns-bgs.js" %}
 
         // Get the hidden inline logo into position
         // so that it can later fall into place.
@@ -40,8 +54,11 @@
             $logoClaim.children().css('visibility', 'hidden');
         }, bgImage.duration);
 
+
         // Once the GIF is gone...
         window.setTimeout(function () {
+            var $thinkBig = $centeredLogo.find('.think-big');
+
             // Fade in white bg on body
             $body
             .removeClass('text-white')
@@ -49,45 +66,137 @@
             .velocity({'background-color': '#e3e3e3'}, 500, function () {
                 // Show wallpaper
                 $('#bg').addClass('wallpaper-bg');
+                // Add colored squares
+/*
+                var $claimBgSquares = $([
+                '<div style="position: absolute; height: 100%; left: 0; right: 67%; opacity: 0; background-size: cover; background-position: center;"></div>',
+                '<div style="position: absolute; height: 62vh; left: 67%; right: 0; opacity: 0; background-size: cover; background-position: center;"></div>',
+                '<div style="position: absolute; height: 36vh; top: 64vh; left: 67%; right: 0%; opacity: 0; background-size: cover; background-position: center;"></div>'
+                ].join('')).appendTo($bg);
+*/
+
+                var $bg = $('#bg');
+                var $curtains = $('#curtains');
+                var portfolioBg = portfolioBgs[Math.floor(portfolioBgs.length * Math.random())];
+                var patternBg = patternBgs[Math.floor(patternBgs.length * Math.random())];
+
+                // Show left banner
+/*
+                $claimBgSquares.eq(0).css({
+                    opacity: 1,
+                    backgroundImage: 'url(' + portfolioBg + ')' 
+                });
+*/
+
+/*
+                // Show NW and Sw curtains
+                $curtains
+                .find('.curtain-nw')
+                .add($curtains.find('.curtain-sw'))
+                .css('opacity', 1);
+*/
 
                 // Show a random Portfolio bg
                 $teaser.find('#portfolio-photo-bg').attr(
                     'src',
-                    portfolioBgs[Math.floor(portfolioBgs.length * Math.random())]
+                    portfolioBg
                 );
+                $bg.css('background-image', 'url(' + portfolioBg + ')');
 
                 // Show "Think Big."
-                $centeredLogo.find('.think-big').css('visibility', 'visible');
+                $centeredLogo.find('.think-big').css({
+                    visibility: 'visible',
+                    backgroundColor: '#fff'
+                });
 
                 window.setTimeout(function () {
                     var $startSmall = $centeredLogo.find('.start-small');
                     var $keepAtIt = $centeredLogo.find('.keep-at-it');
+                    var postsBg = postsBgs[Math.floor(postsBgs.length * Math.random())];
 
                     // Show a random Posts bg
-                    $teaser.find('#posts-photo-bg').attr(
+                    $teaser
+                    .find('#posts-photo-bg')
+                    .add('body')
+                    .attr(
                         'src',
-                        postsBgs[Math.floor(postsBgs.length * Math.random())]
+                        postsBg
                     );
+                    $bg.css('background-image', 'url(' + postsBg + ')');
+
+                    // Show right top banner
+/*
+                    $claimBgSquares.eq(1).css({
+                        opacity: 1,
+                        backgroundImage: 'url(' + postsBg + ')'
+                    });
+*/
 
                     // Show "Start Small"
-                    $startSmall.css('visibility', 'visible');
+                    $startSmall.css({
+                        visibility: 'visible',
+                        backgroundColor: '#fff'
+                    });
+
+/*
+
+                    // Hide NW and Sw curtains
+                    $curtains
+                    .find('.curtain-nw')
+                    .add($curtains.find('.curtain-sw'))
+                    .css('opacity', 0);
+*/
 
                     window.setTimeout(function () {
+                        var peepsBg = peepsBgs[Math.floor(peepsBgs.length * Math.random())];
+
                         // Show a random Peeps bg
-                        $teaser.find('#peeps-photo-bg').attr(
+                        $teaser
+                        .find('#peeps-photo-bg')
+                        .add('#bg')
+                        .attr(
                             'src',
-                            peepsBgs[Math.floor(peepsBgs.length * Math.random())]
+                            peepsBg
                         );
+                        $bg.css('background-image', 'url(' + peepsBg + ')');
 
                         // Show "Keep at it."
-                        $keepAtIt.css('visibility', 'visible');
+                        $keepAtIt.css({
+                            visibility: 'visible',
+                            backgroundColor: '#fff'
+                        });
+
+                        // Show NE and SE curtains
+                        $curtains
+                        .find('.curtain-ne')
+                        .add($curtains.find('.curtain-se'))
+                        .css('opacity', 1);
+
+                        // Show NW and Sw curtains
+                        $curtains
+                        .find('.curtain-nw')
+                        .add($curtains.find('.curtain-sw'))
+                        .css('opacity', 1);
+
+                        $('#bg').css('background-color', 'blue');
+
+
+                        // Show right bottom banner
+/*
+                        $claimBgSquares.eq(2).css({
+                            opacity: 1,
+                            backgroundImage: 'url(' + peepsBg +')'
+                        });
+*/
 
                         window.setTimeout(function () {
-
+                            // Fade out squares
+/*
+                            $claimBgSquares.velocity({ opacity: 0 }, 400);
+*/
                             // Collapse the centered logo
                             fallDown($centeredLogo.find(' rect'), function () {
                                 // After the collapse...
-
                                 // Show the PPP headings in teaser
                                 $teaser.find('.js-teaser-section-heading').velocity({ opacity: 1 }, 500);
 
@@ -97,123 +206,193 @@
                                     450
                                 );
 
-                                window.setTimeout(function () {
-                                    $centeredLogo.velocity(
-                                        { height: 0 },
-                                        450,
-                                        function () {
-                                            $('#inline-logo').css('display', 'block');
-                                            $('nav .claim').removeClass('d-none');
-                                            // Let the inline logo fall into place
-                                            fallDown(
-                                                $('#inline-logo rect'),
-                                                function () {
-                                                    window.setTimeout(function () {
-                                                        colorFlow(
-                                                            $('#inline-logo g g')
-                                                        );
-                                                    }, 5500);
+                                // Hide the squares
+/*
+                                $claimBgSquares.remove();
+*/
 
-                                                    window.setTimeout(function () {
-                                                        var $portfolioPhotoBg = $teaser.find('#portfolio-photo-bg');
-                                                        var $portfolioPatternBg = $teaser.find('#portfolio-pattern-bg');
+                                var $choice = $('#home-direction-choice');
+                                var $aboutOption = $choice.find('.about-option');
+                                var $teaserOption = $choice.find('.teaser-option');
 
-                                                        // Fade out photo, fade in pattern
-                                                        $portfolioPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                        $portfolioPatternBg.velocity({ 'opacity': 0.3 }, 1200);
-                                                        
+                                // Show the choice
+                                $choice.css('opacity', 1);
 
-                                                        // Show Portfolio content
-                                                        $('#portfolio-body')
-                                                        .css('display', 'block')
-                                                        .velocity(
-                                                            { 'opacity': 1 },
-                                                            function () {
-                                                                // Add scroll handler
-                                                                $('#portfolio-scroller').scroll(function () {
-                                                                    // If near bottom show photo, otherwise show pattern
-                                                                    if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 250)) {
-                                                                        $portfolioPhotoBg.css('opacity', 0.5);
-                                                                        $portfolioPatternBg.css('opacity', 0); 
-                                                                    } else {
-                                                                        $portfolioPhotoBg.css('opacity', 0);
-                                                                        $portfolioPatternBg.css('opacity', 0.3); 
-                                                                    }
-                                                                });
-                                                            },
-                                                            1200
-                                                        );
-                                                    }, 650);
+/*
+                                cycleThroughItems(
+                                    $('#home-direction-choice .about-option .diamond-text li')
+                                );
+                                cycleThroughItems(
+                                    $('#home-direction-choice .teaser-option .diamond-text li')
+                                );
+*/
+/*
+                                $aboutOption.velocity({ opacity: 1 }, 'ease-in', function () {
+                                    $aboutOption.find('.top-triangle').velocity({
+                                        borderTopWidth: '50vh',
+                                        borderRightWidth: '50vw'
+                                    }, 700);
+                                    $aboutOption.find('.diamond').velocity({
+                                        borderTopWidth: '50vh',
+                                        borderBottomWidth: '50vh', 
+                                        borderRightWidth: '50vw'
+                                    }, 'ease-in-out', 700);
+                                    $aboutOption.find('.bottom-triangle').velocity({
+                                        borderBottomWidth: '50vh',
+                                        borderRightWidth: '50vw'
+                                    }, 700);
+                                    $teaserOption.find('.top-triangle').velocity({
+                                        borderTopWidth: '50vh',
+                                        borderLeftWidth: '50vw'
+                                    }, 700);
+                                    $teaserOption.find('.diamond').velocity({
+                                        borderTopWidth: '50vh',
+                                        borderBottomWidth: '50vh', 
+                                        borderLeftWidth: '50vw'
+                                    }, 'ease-in-out', function () {
+                                        $aboutOption.find('.diamond-text').velocity({ opacity: 1 }, function () {
+                                        }, 700);
+                                    }, 700);
+                                    $teaserOption.find('.bottom-triangle').velocity({
+                                        borderBottomWidth: '50vh',
+                                        borderLeftWidth: '50vw'
+                                    }, 700);
+                                }, 200);
+                                $teaserOption.velocity({ opacity: 1 }, 'ease-in', function () {
+                                    window.setTimeout(function () {
+                                        $teaserOption.find('.diamond-text').velocity({ opacity: 1 }, function () {
+                                            window.setTimeout(function () {
+                                                $aboutOption.find('a').velocity({ opacity: 1 }, function () {
+                                                    $teaserOption.find('a').velocity({ opacity: 1 }, 500);
+                                                }, 500);
+                                            }, 7000);
+                                        }, 500);
+                                    }, 1500);
+                                }, 200);
+*/
 
-                                                    window.setTimeout(function () {
-                                                        var $postsPhotoBg = $teaser.find('#posts-photo-bg');
-                                                        var $postsPatternBg = $teaser.find('#posts-pattern-bg');
 
-                                                        // Fade out photo, fade in pattern
-                                                        $postsPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                        $postsPatternBg.velocity({ 'opacity': 0.3 }, 1200);
+                                $('#inline-logo').css('display', 'block');
 
-                                                        // Show Posts content
-                                                        $('#posts-body')
-                                                        .css('display', 'block')
-                                                        .velocity(
-                                                            { 'opacity': 1 },
-                                                            function () {
-
-                                                                // Add scroll handlers
-                                                                $('#posts-scroller').scroll(function () {
-                                                                    if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 50)) {
-                                                                        $postsPhotoBg.css('opacity', 0.5);
-                                                                        $postsPatternBg.css('opacity', 0);
-                                                                    } else {
-                                                                        $postsPhotoBg.css('opacity', 0);
-                                                                        $postsPatternBg.css('opacity', 0.3);
-                                                                    }
-                                                                });
-                                                            },
-                                                            1200
-                                                        );
-                                                    }, 1600);
-
-                                                    window.setTimeout(function () {
-                                                        var $peepsPhotoBg = $teaser.find('#peeps-photo-bg');
-                                                        var $peepsPatternBg = $teaser.find('#peeps-pattern-bg');
-
-                                                        // Fade out photo, fade in pattern
-                                                        $peepsPhotoBg.velocity({ 'opacity': 0 }, 1000);
-                                                        $peepsPatternBg.velocity({ 'opacity': 0.3 }, 1200); 
-
-                                                        // Show Peeps content
-                                                        $('#peeps-body')
-                                                        .css('display', 'block')
-                                                        .velocity(
-                                                            { 'opacity': 1 },
-                                                            function () {
-                                                                // Add scroll handlers on teaser sections that reveal image on bottom
-                                                                $('#peeps-scroller').scroll(function () {
-                                                                    if ($(this).scrollTop() > ($(this).find('.card-columns').height() + 10)) {
-                                                                        $peepsPhotoBg.css('opacity', 0.5);
-                                                                        $peepsPatternBg.css('opacity', 0);
-                                                                    } else {
-                                                                        $peepsPhotoBg.css('opacity', 0);
-                                                                        $peepsPatternBg.css('opacity', 0.3);
-                                                                    }
-                                                                });
-                                                            },
-                                                            1200
-                                                        );
-
-                                                        window.setTimeout(function() {
-                                                            $('#about').velocity('scroll',  { duration: 800, easing: 'out' });
-                                                        }, 1200);
-                                                            
-                                                    }, 2400);
-                                                },
-                                                '0px',
-                                                300
+                                $('nav .claim').removeClass('d-none');
+                                // Let the inline logo fall into place
+                                fallDown(
+                                    $('#inline-logo rect'),
+                                    function () {
+                                        window.setTimeout(function () {
+                                            colorFlow(
+                                                $('#inline-logo g g')
                                             );
-                                        }
-                                    );
+                                        }, 5500);
+
+                                        window.setTimeout(function () {
+                                            var $portfolioPhotoBg = $teaser.find('#portfolio-photo-bg');
+                                            var $portfolioPatternBg = $teaser.find('#portfolio-pattern-bg');
+
+                                            // Fade out photo, fade in pattern
+                                            $portfolioPhotoBg.velocity({ 'opacity': 0 }, 1000);
+                                            $portfolioPatternBg.velocity({ 'opacity': 0.3 }, 1200);
+                                            
+
+                                            // Show Portfolio content
+                                            $('#portfolio-body')
+                                            .css('display', 'block')
+                                            .velocity(
+                                                { 'opacity': 1 },
+                                                function () {
+                                                    // Add scroll handler
+                                                    $('#portfolio-scroller').scroll(function () {
+                                                        // If near bottom show photo, otherwise show pattern
+                                                        if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 250)) {
+                                                            $portfolioPhotoBg.css('opacity', 0.5);
+                                                            $portfolioPatternBg.css('opacity', 0); 
+                                                        } else {
+                                                            $portfolioPhotoBg.css('opacity', 0);
+                                                            $portfolioPatternBg.css('opacity', 0.3); 
+                                                        }
+                                                    });
+                                                },
+                                                1200
+                                            );
+                                        }, 650);
+
+                                        window.setTimeout(function () {
+                                            var $postsPhotoBg = $teaser.find('#posts-photo-bg');
+                                            var $postsPatternBg = $teaser.find('#posts-pattern-bg');
+
+                                            // Fade out photo, fade in pattern
+                                            $postsPhotoBg.velocity({ 'opacity': 0 }, 1000);
+                                            $postsPatternBg.velocity({ 'opacity': 0.3 }, 1200);
+
+                                            // Show Posts content
+                                            $('#posts-body')
+                                            .css('display', 'block')
+                                            .velocity(
+                                                { 'opacity': 1 },
+                                                function () {
+
+                                                    // Add scroll handlers
+                                                    $('#posts-scroller').scroll(function () {
+                                                        if ($(this).scrollTop() > ($(this).find('.card-columns').height() - 50)) {
+                                                            $postsPhotoBg.css('opacity', 0.5);
+                                                            $postsPatternBg.css('opacity', 0);
+                                                        } else {
+                                                            $postsPhotoBg.css('opacity', 0);
+                                                            $postsPatternBg.css('opacity', 0.3);
+                                                        }
+                                                    });
+                                                },
+                                                1200
+                                            );
+                                        }, 1600);
+
+                                        window.setTimeout(function () {
+                                            var $peepsPhotoBg = $teaser.find('#peeps-photo-bg');
+                                            var $peepsPatternBg = $teaser.find('#peeps-pattern-bg');
+
+                                            // Fade out photo, fade in pattern
+                                            $peepsPhotoBg.velocity({ 'opacity': 0 }, 1000);
+                                            $peepsPatternBg.velocity({ 'opacity': 0.3 }, 1200); 
+
+                                            // Show Peeps content
+                                            $('#peeps-body')
+                                            .css('display', 'block')
+                                            .velocity(
+                                                { 'opacity': 1 },
+                                                function () {
+                                                    // Add scroll handlers on teaser sections that reveal image on bottom
+                                                    $('#peeps-scroller').scroll(function () {
+                                                        if ($(this).scrollTop() > ($(this).find('.card-columns').height() + 10)) {
+                                                            $peepsPhotoBg.css('opacity', 0.5);
+                                                            $peepsPatternBg.css('opacity', 0);
+                                                        } else {
+                                                            $peepsPhotoBg.css('opacity', 0);
+                                                            $peepsPatternBg.css('opacity', 0.3);
+                                                        }
+                                                    });
+                                                },
+                                                1200
+                                            );
+
+                                            window.setTimeout(function() {
+                                                //$('#about').velocity('scroll',  { duration: 800, easing: 'out' });
+                                            }, 1200);
+                                                
+                                        }, 2400);
+                                    },
+                                    '0px',
+                                    300
+                                );
+
+                                // Remove the centered logo
+                                $centeredLogo.velocity(
+                                    { height: 0 },
+                                    450,
+                                    function () {
+                                    }
+                                );
+
+                                window.setTimeout(function () {
                                 }, 500);
                             });
                         }, 700);

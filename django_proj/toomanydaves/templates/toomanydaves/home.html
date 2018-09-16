@@ -4,9 +4,23 @@
 
 {% block style %}
     <style>
+        #bg {
+            background-size: cover;
+            background-position: center;
+        }
         .wallpaper-bg {
             background-image: url("{% static "/images/wallpaper-bg.png" %}");
             height: 100%;
+        }
+        .building-left-bg {
+            background-image: url("{% static "/images/building-left-side.jpg" %}");
+            background-size: cover;
+            background-position: center;
+        }
+        .building-right-bg {
+            background-image: url("{% static "/images/building-right-side.jpg" %}");
+            background-size: cover;
+            background-position: center;
         }
     </style>
 {% endblock %}
@@ -16,15 +30,245 @@
 {% endblock %}
 
 {% block content %}
-    <div id="teaser" style="opacity: 0; margin: 2rem 0 0.5rem 0;" class="text-white">
+    <div id="curtains" class="d-none d-md-block" style="
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    ">
+        <div class="curtain-nw" style="
+            opacity: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 50vh solid rgba(255, 255, 255, 0.4);
+            border-right: 50vw solid transparent;
+        "></div>
+        <div class="curtain-ne" style="
+            opacity: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 50vw;
+            border-right: 50vw solid rgba(0, 0, 0, 0.7);;
+            border-bottom: 50vh solid transparent;
+        "></div>
+        <div class="curtain-sw" style="
+            opacity: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50vh;
+            border-bottom: 50vh solid rgba(255, 255, 255, 0.4);;
+            border-right: 50vw solid transparent;
+        "></div>
+        <div class="curtain-se" style="
+            opacity: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50vh;
+            left: 50vw;
+            border-bottom: 50vh solid rgba(0, 0, 0, 0.7);;
+            border-left: 50vw solid transparent;
+        "></div>
+    </div>
+    <div style="opacity: 0;">
+        <div class="d-md-none" style="position: fixed; width: 100vw; height: 100vh;">
+            <div style="position: absolute; height: 50vh; width: 100vw">
+                <div style="
+                    border-left: 50vw solid transparent;
+                    border-right: 50vw solid transparent;
+                    border-bottom: 50vh solid black;
+                    position: absolute;
+                "></div>
+            </div>
+            <div style="position: absolute; top: 50vh; height: 50vh; width: 100vw">
+                <div style="
+                    border-left: 50vw solid transparent;
+                    border-right: 50vw solid transparent;
+                    border-top: 50vh solid gold;
+                    position: absolute;
+                "></div>
+            </div>
+        </div>
+        <div class="d-none d-md-block" style="position: fixed; width: 100vw; height: 100vh;">
+            <div style="position: absolute; height: 100%; width: 50vw;">
+                <div style="
+                    border-top: 50vh solid transparent;
+                    border-bottom: 50vh solid transparent;
+                    border-right: 50vw solid black;
+                    position: absolute;
+                "></div>
+            </div>
+            <div style="position: absolute; left: 50vw; height: 100%; width: 50vw">
+                <div style="
+                    border-top: 50vh solid transparent;
+                    border-bottom: 50vh solid transparent;
+                    border-left: 50vw solid gold;
+                    position: absolute;
+                "></div>
+            </div>
+        </div>
+    </div>
+    <div id="home-direction-choice" class="text-sans-serif" style="
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        opacity: 0;
+    ">
+        <div class="about-option text-light" style="
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 50%;
+            padding-right: 1.5rem;
+            padding-top: 50vh;
+        ">
+            <div class="top-triangle" style="
+                border-right: 50vw solid transparent;
+                border-top: 50vh solid gold;
+                position: absolute;
+                width: 100%;
+                margin-top: -50vh;
+                opacity: 0;
+            "></div>
+            <div class="diamond" style="
+                border-top: 50vh solid transparent;
+                border-bottom: 50vh solid transparent;
+                border-right: 50vw solid rgba(52, 58, 64, .85);
+                height: 0;
+                position: absolute;
+                width: 100%;
+                margin-top: -50vh;
+            "></div> 
+            <div class="bottom-triangle" style="
+                border-right: 50vw solid transparent;
+                border-bottom: 50vh solid #fff;;
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+            "></div>
+            <div class="diamond-text" style="
+                margin-top: -1.6rem;
+                position: absolute;
+                width: 100%;
+                padding-right: 1.5rem;
+            ">
+                <h2 class="text-right mb-4">
+                    <small class="text-uppercase">Q:</small> What
+                    <i style="padding-right: 0.4rem; padding-left: 0.2rem;"><span class="text-fat-serif text-uppercase">is</span></i>
+                    <span style="
+                        color: transparent;
+                        text-transform: uppercase;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
+                    ">Too Many Daves</span>?
+                </h2>
+                <ul class="list-unstyled text-right">
+                    <li style="display: none;">&#149; A Portfolio</li>
+                    <li style="display: none;">&#149; A Poem</li>
+                    <li style="display: none;">&#149; A Mission</li>
+                    <li style="display: none;">&#149; A Network of Individuals</li>
+                    <li style="display: none;">&#149; A Common Journey</li>
+                </ul>
+                <div class="text-right" style="display: none;">
+                    <a
+                        class="btn btn-outline-light btn-lg"
+                        href="/poem"
+                        role="button"
+                    >
+                        Learn more
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="teaser-option" style="
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            right: 0%;
+            padding-top: 50vh;
+        ">
+            <div class="top-triangle" style="
+                border-left: 50vw solid transparent;
+                border-top: 50vh solid rgb(52, 58, 64);
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                margin-top: -50vh;
+            "></div>
+            <div class="diamond" style="
+                border-top: 50vh solid transparent;
+                border-bottom: 50vh solid transparent;
+                border-left: 50vw solid rgba(255, 255, 255, 0.95);
+                height: 0;
+                position: absolute;
+                width: 100%;
+                margin-top: -50vh;
+            "></div> 
+            <div class="bottom-triangle" style="
+                border-left: 50vw solid transparent;
+                border-bottom: 50vh solid rgb(52, 58, 64);
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+            "></div>
+            <div class="diamond-text" style="
+                margin-top: -1.6rem;
+                position: absolute;
+                width: 100%;
+                padding-left: 1.5rem;
+            ">
+                <h2 class="mb-4">
+                    <small class="text-uppercase">Q:</small>
+                    What&apos;s
+                    <i style="padding-right: 0.4rem"><span class="text-fat-serif text-uppercase">&#8220;in&#8221;</span></i>
+                    <span style="
+                        color: transparent;
+                        text-transform: uppercase;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #343A40;
+                    ">Too Many Daves</span>?
+                </h2>
+                <ul class="list-unstyled">
+                    <li style="display: none;">+ Projects</li>
+                    <li style="display: none;">+ Peeps</li>
+                    <li style="display: none;">+ Posts</li>
+                </ul>
+                <div style="display: none;">
+                    <a
+                        class="btn btn-outline-dark btn-lg"
+                        href="/poem"
+                        role="button"
+                    >
+                        Have a look
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="teaser" style="
+        background-color: rgba(0, 0, 0, 0.15);
+        margin: 2rem 0 0.5rem 0;
+        opacity: 0;
+        padding: 1.5rem 0 3rem 0;
+    " class="text-white">
         {% include "toomanydaves/home/_teaser.html" %}
     </div>
 
-    {% include "toomanydaves/home/_animation.html" %}
-
-    <div id="about" class="pb-5" style="padding-top: 3rem; background-color: rgba(227, 227, 227, 0.4);">
+    <div id="about" class="pb-5" style="
+        padding-top: 1.5rem;
+        background-color: rgba(227, 227, 227, 0.4);
+    ">
         {% include "toomanydaves/home/_about.html" %}
     </div>
+
+    {% include "toomanydaves/home/_animation.html" %}
 {% endblock %}
 
 {% block footer %}
